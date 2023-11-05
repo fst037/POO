@@ -2,10 +2,9 @@ package usuarios;
 
 import clases.Clase;
 
-import java.io.*;
 import java.util.*;
 
-class Profesor {
+public class Profesor {
 
     public Profesor(String nombre) {
         this.nombre = nombre;

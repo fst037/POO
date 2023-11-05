@@ -2,12 +2,8 @@ package clases;
 
 import articulos.TipoArticulo;
 
-import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class TipoClase {
     private String nombre;
     private List<TipoArticulo> articulosNecesariosParaProfesor;
@@ -26,7 +22,7 @@ public class TipoClase {
     }
 
     public List<TipoArticulo> getArticulosNecesariosParaProfesor() {
-        return this.getArticulosNecesariosParaProfesor();
+        return this.articulosNecesariosParaProfesor;
     }
 
     public void setArticulosNecesariosParaProfesor(List<TipoArticulo> articulos) {

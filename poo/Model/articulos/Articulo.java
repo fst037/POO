@@ -4,13 +4,9 @@ import gimnasios.Sede;
 import clases.Clase;
 import enums.Amortizacion;
 
-import java.io.*;
 import java.time.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Articulo {
 
     private TipoArticulo tipo;
@@ -24,32 +20,41 @@ public class Articulo {
         this.sede = sede;
         this.desgasteActual = 0;
         this.fechaFabricacion = fechaFabricacion;
-        this.agendaReservas = new ArrayList<Clase>()
+        this.agendaReservas = new ArrayList<Clase>();
     }
+
     public Amortizacion getAmortizacion() {
         return this.tipo.getAmortizacion();
     }
+
     public Sede getSede() {
         return this.sede;
     }
+
     public void setSede(Sede sede) {
         this.sede = sede;
     }
+
     public int getDesgasteMax() {
         return this.tipo.getDesgasteMax();
     }
+
     public int getDesgasteActual() {
         return this.desgasteActual;
     }
+
     public void setDesgasteActual(int desgasteActual) {
         this.desgasteActual = desgasteActual;
     }
+
     public LocalDate getFechaFabricacion() {
         return this.fechaFabricacion;
     }
+
     public float getCosto() {
         return this.tipo.getCosto();
     }
+
     public boolean isDisponibleParaFechaHorario(LocalDateTime fechaHoraInicio, LocalTime duracion) {
         boolean disponible = true;
 
@@ -57,24 +62,15 @@ public class Articulo {
         LocalDateTime fechaHoraFin = LocalDateTime.of(fechaHoraInicio.toLocalDate(), horaFin);
 
         for (Clase clase: agendaReservas) {
-            //si la clase es el mismo dia
+            //si la clase para la que se quiere reservar el articulo se superpone con alguna clase ya reservada, no se puede reservar
             if
             (
-                (
-                    fechaHoraFin.isAfter(clase.getFechaHoraInicio())
-                    &&
-                    fechaHoraFin.isBefore(clase.getFechaHoraFin())
-                ) || (
-                    fechaHoraInicio.isAfter(clase.getFechaHoraInicio())
-                    &&
-                    fechaHoraFin.isBefore(clase.getFechaHoraFin())
-                ) || (
-                    fechaHoraInicio.isBefore(clase.getFechaHoraInicio())
-                    &&
-                    fechaHoraFin.isAfter(clase.getFechaHoraFin())
+                !(
+                    fechaHoraInicio.isAfter(clase.getFechaHoraFin()) ||
+                    fechaHoraFin.isBefore(clase.getFechaHoraInicio())
                 )
             ) {
-                disponible = true;
+                disponible = false;
                 break;
             }
         }
@@ -82,7 +78,7 @@ public class Articulo {
         return disponible;
     }
     public void reservarEnAgenda(Clase clase) {
-        if (!this.agendaReservas.contains(clase)){
+        if (!this.agendaReservas.contains(clase) && this.isDisponibleParaFechaHorario(clase.getFechaHoraInicio(), clase.getDuracion())){
             this.agendaReservas.add(clase);
         }
     }
@@ -90,12 +86,16 @@ public class Articulo {
         return this.getDesgasteActual() < this.getDesgasteMax();
     }
     public void actualizarDesgaste() {
-        // TODO implement here
-        return null;
+        // si su desgaste es por uso, le suma 1 y sino calcula la diferencia de dias entre la fecha de fabricacion y la fecha actual
+        if (this.getAmortizacion() == Amortizacion.porUso) {
+            this.setDesgasteActual(this.getDesgasteActual() + 1);
+        } else {
+            this.setDesgasteActual(this.fechaFabricacion.until(LocalDate.now()).getDays());
+        }
     }
     public float verDesgasteEnPorcentaje() {
-        // TODO implement here
-        return 0.0f;
+        // devuelve el desgaste entre 1.00 y 0.00. Siendo 1.00 el 100% de desgaste y 0.00 el 0% de desgaste
+        return this.getDesgasteActual() / this.getDesgasteMax();
     }
 
 }

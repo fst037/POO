@@ -6,12 +6,8 @@ import clases.Clase;
 import clases.StreamingClass;
 import articulos.Articulo;
 
-import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Sede {
 
     private String nombre;
@@ -42,63 +38,83 @@ public class Sede {
     public String getNombre() {
         return this.nombre;
     }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public Nivel getNivelMinimo() {
         return this.nivelMinimo;
     }
+
     public void setNivelMinimo(Nivel nivelMinimo) {
         this.nivelMinimo = nivelMinimo;
     }
+
     public List<Administrativo> getAdministrativos() {
         return this.administrativos;
     }
+
     public void setAdministrativos(List<Administrativo> administrativos) {
         this.administrativos = administrativos;
     }
+
     public List<Clase> getClasesAgendadas() {
         return this.clasesAgendadas;
     }
+
     public void setClasesAgendadas(List<Clase> clasesAgendadas) {
         this.clasesAgendadas = clasesAgendadas;
     }
+
     public List<Clase> getClasesConfirmadas() {
         return this.clasesConfirmadas;
     }
+
     public void setClasesConfirmadas(List<Clase> clasesConfirmadas) {
         this.clasesConfirmadas = clasesConfirmadas;
     }
+
     public List<Clase> getClasesFinalizadas() {
         return this.clasesFinalizadas;
     }
+
     public void setClasesFinalizadas(List<Clase> clasesFinalizadas) {
         this.clasesFinalizadas = clasesFinalizadas;
     }
+
     public List<StreamingClass> getClasesAlmacenadasPorTipo() {
         return this.clasesGrabadasPorTipo;
     }
+
     public void setClasesAlmacenadasPorTipo(List<StreamingClass> claseGrabadaPorTipo) {
         this.clasesGrabadasPorTipo = claseGrabadaPorTipo;
     }
+
     public List<Articulo> getArticulos() {
         return this.articulos;
     }
+
     public void setArticulos(List<Articulo> articulos) {
         this.articulos = articulos;
     }
+
     public float getAlquiler() {
         return this.alquiler;
     }
+
     public void setAlquiler(float alquiler) {
         this.alquiler = alquiler;
     }
+
     public String getBarrio() {
         return this.barrio;
     }
+
     public List<Emplazamiento> getEmplazamientos() {
         return this.emplazamientos;
     }
+
     public void setEmplazamientos(List<Emplazamiento> emplazamientos) {
         this.emplazamientos = emplazamientos;
     }

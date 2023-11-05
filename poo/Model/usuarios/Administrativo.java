@@ -2,43 +2,38 @@ package usuarios;
 
 import gimnasios.Sede;
 import clases.Clase;
+import enums.EstadoClase;
 import enums.Nivel;
 import articulos.TipoArticulo;
 import articulos.Articulo;
 import clases.TipoClase;
 
-import java.io.*;
 import java.util.*;
 
 public class Administrativo extends Usuario {
 
-    public Administrativo() {
-    }
-
-    private Set<Sede> sedes;
+    private List<Sede> sedes;
 
     public Administrativo(String nombre, int dni) {
-        // TODO implement here
+        super(nombre, dni);
+        this.sedes = new ArrayList<Sede>();
     }
 
-    public Set<Sede> getSedes() {
+    public List<Sede> getSedes() {
         // TODO implement here
-        return null;
+        return this.sedes;
     }
 
-    public void setSedes(Set<Sede> sedes) {
+    public void setSedes(List<Sede> sedes) {
         // TODO implement here
-        return null;
     }
 
     public void addSede(Sede sede) {
         // TODO implement here
-        return null;
     }
 
     public void agendarClase(Clase clase) {
         // TODO implement here
-        return null;
     }
 
     public boolean confirmarClase(Clase clase) {
@@ -46,57 +41,49 @@ public class Administrativo extends Usuario {
         return false;
     }
 
-    public void actualizarClase(Clase clase, estadoClase estado) {
+    public void actualizarClase(Clase clase, EstadoClase estado) {
         // TODO implement here
-        return null;
     }
 
     public void darAltaCliente(String nombre, int dni, Set<Sede> sedes) {
         // TODO implement here
-        return null;
     }
 
     public void darBajaCliente(Cliente cliente) {
         // TODO implement here
-        return null;
     }
 
     public void actualizarCliente(Cliente cliente, Nivel nivel) {
         // TODO implement here
-        return null;
     }
 
     public void incorporarArticulo(Sede sede, TipoArticulo tipoArticulo) {
         // TODO implement here
-        return null;
     }
 
     public void actualizarDesgasteArticulos(Sede sede) {
         // TODO implement here
-        return null;
     }
 
     public void darBajaArticulo(Sede sede, Articulo articulo) {
         // TODO implement here
-        return null;
     }
 
-    public Set<Clase> verClasesAlmacenadas(TipoClase tipoClase, Sede sede) {
+    public List<Clase> verClasesAlmacenadas(TipoClase tipoClase, Sede sede) {
         // TODO implement here
         return null;
     }
 
-    public void removeSede(void Sede sede) {
+    public void removeSede(Sede sede) {
+        // TODO implement here
+    }
+
+    public List<Articulo> listarArticulos() {
         // TODO implement here
         return null;
     }
 
-    public Set<Articulo> listarArticulos() {
-        // TODO implement here
-        return null;
-    }
-
-    public Set<Clase> listarClases() {
+    public List<Clase> listarClases() {
         // TODO implement here
         return null;
     }
@@ -106,7 +93,7 @@ public class Administrativo extends Usuario {
         return 0.0f;
     }
 
-    public int contarArticulosDisponibles(Set<Articulo> articulos) {
+    public int contarArticulosDisponibles(List<Articulo> articulos) {
         // TODO implement here
         return 0;
     }

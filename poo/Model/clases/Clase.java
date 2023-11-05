@@ -7,291 +7,138 @@ import gimnasios.Sede;
 import gimnasios.Emplazamiento;
 import usuarios.Cliente;
 
-import java.io.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Clase {
 
-    public Clase() {
-    }
+    private EstadoClase estadoClase;    
+    private Profesor profesor;    
+    private TipoClase tipoClase;    
+    private List<Articulo> articulosReservados;    
+    private float costos;    
+    private float ingresos;    
+    private LocalDateTime fechaHoraInicio;    
+    private LocalTime duracion;    
+    private Sede sede;    
+    private Emplazamiento emplazamiento;    
+    private int capacidadMaxima;    
+    private List<Cliente> alumnosInscriptosPresencial;    
+    private List<Cliente> alumnosInscriptosOnline;
 
-    /**
-     * 
-     */
-    private EstadoClase estadoClase;
-
-    /**
-     * 
-     */
-    private Profesor profesor;
-
-    /**
-     * 
-     */
-    private TipoClase tipoClase;
-
-    /**
-     * 
-     */
-    private Set<Articulo> articulosReservados;
-
-    /**
-     * 
-     */
-    private float costos;
-
-    /**
-     * 
-     */
-    private float ingresos;
-
-    /**
-     * 
-     */
-    private LocalDateTime fechaHoraInicio;
-
-    /**
-     * 
-     */
-    private LocalTime duracion;
-
-    /**
-     * 
-     */
-    private Sede sede;
-
-    /**
-     * 
-     */
-    private Emplazamiento emplazamiento;
-
-    /**
-     * 
-     */
-    private int capacidadMaxima;
-
-    /**
-     * 
-     */
-    private Set<Cliente> clientesInscriptosPresencial;
-
-    /**
-     * 
-     */
-    private Set<Cliente> clientesInscriptosOnline;
-
-    /**
-     * Default constructor
-     * @param prof 
-     * @param tipoClase 
-     * @param sede 
-     * @param emp 
-     * @param fHI 
-     * @param duracion
-     */
     public Clase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion) {
-        // TODO implement here
+        this.profesor = prof;
+        this.tipoClase = tipoClase;
+        this.sede = sede;
+        this.emplazamiento = emp;
+        this.fechaHoraInicio = fHI;
+        this.duracion = duracion;
+        this.articulosReservados = new ArrayList<Articulo>();
+        this.alumnosInscriptosPresencial = new ArrayList<Cliente>();
+        this.alumnosInscriptosOnline = new ArrayList<Cliente>();
+        this.estadoClase = EstadoClase.Agendada;
     }
-
-    /**
-     * @return
-     */
+    
     public EstadoClase getEstadoClase() {
-        // TODO implement here
-        return null;
+        return this.estadoClase;
     }
 
-    /**
-     * @param estadoClase 
-     * @return
-     */
-    public void setEstadoClase(void estadoClase) {
-        // TODO implement here
-        return null;
+    public void setEstadoClase(EstadoClase estadoClase) {
+        this.estadoClase = estadoClase;      
     }
 
-    /**
-     * @return
-     */
     public Profesor getProfesor() {
-        // TODO implement here
-        return null;
+        return this.profesor;
     }
 
-    /**
-     * @param profesor 
-     * @return
-     */
     public void setProfesor(Profesor profesor) {
-        // TODO implement here
-        return null;
+        this.profesor = profesor;      
     }
 
-    /**
-     * @return
-     */
     public TipoClase getTipoClase() {
-        // TODO implement here
-        return null;
+        return this.tipoClase;
     }
 
-    /**
-     * @return
-     */
-    public Set<Articulo> getArticulosReservados() {
-        // TODO implement here
-        return null;
+    public List<Articulo> getArticulosReservados() {
+        return this.articulosReservados;
     }
 
-    /**
-     * @param articulos 
-     * @return
-     */
-    public void setArticulosReservados(Set<Articulo> articulos) {
-        // TODO implement here
-        return null;
+    public void setArticulosReservados(List<Articulo> articulos) {
+        this.articulosReservados = articulos;    
     }
 
-    /**
-     * @return
-     */
     public float getCostos() {
-        // TODO implement here
-        return 0.0f;
+        return this.costos;
     }
 
-    /**
-     * @return
-     */
     public float getIngresos() {
-        // TODO implement here
-        return 0.0f;
+        return this.ingresos;
     }
 
-    /**
-     * @return
-     */
     public LocalDateTime getFechaHoraInicio() {
-        // TODO implement here
-        return null;
+        return this.fechaHoraInicio;
     }
 
-    /**
-     * @param fecha 
-     * @return
-     */
+    public LocalDateTime getFechaHoraFin() {
+        return this.fechaHoraInicio.plusMinutes(this.duracion.getMinute()).plusHours(this.duracion.getHour());
+    }
+
     public void setFechaHoraInicio(LocalDateTime fecha) {
-        // TODO implement here
-        return null;
+        this.fechaHoraInicio = fecha;    
     }
 
-    /**
-     * @return
-     */
     public LocalTime getDuracion() {
-        // TODO implement here
-        return null;
+        return this.duracion;
     }
 
-    /**
-     * @param duracion 
-     * @return
-     */
     public void setDuracion(LocalTime duracion) {
-        // TODO implement here
-        return null;
+        this.duracion = duracion;
     }
 
-    /**
-     * @return
-     */
     public Sede getSede() {
-        // TODO implement here
-        return null;
+        return this.sede;
     }
 
-    /**
-     * @return
-     */
     public Emplazamiento getEmplazamiento() {
-        // TODO implement here
-        return null;
+        return this.emplazamiento;
     }
 
-    /**
-     * @param emplazamiento 
-     * @return
-     */
     public void setEmplazamiento(Emplazamiento emplazamiento) {
-        // TODO implement here
-        return null;
+        this.emplazamiento = emplazamiento;    
     }
 
-    /**
-     * @return
-     */
     public int getCapacidadMaxima() {
-        // TODO implement here
-        return 0;
+        return this.capacidadMaxima;
     }
 
-    /**
-     * @return
-     */
-    public Set<Cliente> getAlumnosInscriptosPresencial() {
-        // TODO implement here
-        return null;
+    public List<Cliente> getAlumnosInscriptosPresencial() {
+        return this.alumnosInscriptosPresencial;
     }
 
-    /**
-     * @param alumnosInscriptosPresencial 
-     * @return
-     */
-    public void setAlumnosInscriptosPresencial(Set<Cliente> alumnosInscriptosPresencial) {
-        // TODO implement here
-        return null;
+    public void setAlumnosInscriptosPresencial(List<Cliente> alumnosInscriptosPresencial) {
+        this.alumnosInscriptosPresencial = alumnosInscriptosPresencial;
     }
 
-    /**
-     * @return
-     */
-    public Set<Cliente> getAlumnosInscriptosOnline() {
-        // TODO implement here
-        return null;
+    public List<Cliente> getAlumnosInscriptosOnline() {
+        return this.alumnosInscriptosOnline;
     }
 
-    /**
-     * @param alumnosInscriptosOnline 
-     * @return
-     */
-    public void setAlumnosInscriptosOnline(Set<Cliente> alumnosInscriptosOnline) {
-        // TODO implement here
-        return null;
+    public void setAlumnosInscriptosOnline(List<Cliente> alumnosInscriptosOnline) {
+        this.alumnosInscriptosOnline = alumnosInscriptosOnline;
     }
 
-    /**
-     * @return
-     */
     public boolean isClaseRentable() {
         // TODO implement here
         return false;
     }
 
-    /**
-     * @param alumno 
-     * @return
-     */
     public boolean inscribirAlumno(Cliente alumno) {
         // TODO implement here
         return false;
     }
 
-    /**
-     * @return
-     */
     public void dictarClase() {
         // TODO implement here
-        return null;
     }
-
 }

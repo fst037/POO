@@ -1,8 +1,5 @@
 package enums;
 
-/**
- * 
- */
 public enum Marca {
     Pampero,
     IronMan,

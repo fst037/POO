@@ -6,7 +6,6 @@ import articulos.TipoArticulo;
 import enums.TipoUsoPesa;
 import enums.Amortizacion;
 
-import java.io.*;
 import java.util.*;
 
 public class SoporteTecnico extends Usuario {
@@ -25,6 +24,7 @@ public class SoporteTecnico extends Usuario {
 
     public void crearNuevoAdministrativo(String nombre, int dni, Set<Sede> sedes) {
         // TODO implement here
+    }
 
     public void crearTipoDeClase(String nombre, Set<TipoArticulo> artNecPProf, Set<TipoArticulo> artNecPCli, int grabMax) {
 

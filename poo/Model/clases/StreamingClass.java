@@ -5,29 +5,37 @@ import java.util.*;
 public class StreamingClass {
 
     private TipoClase tipoClase;
-    private int almacenadas;
+    private int cantAlmacenadas;
     private List<Clase> clases;
 
     public StreamingClass(TipoClase tipoClase) {
-        this.tipoClase=tipoClase;
+        this.tipoClase = tipoClase;
+        this.cantAlmacenadas = 0;
+        this.clases = new ArrayList<Clase>();
     }
+
     public TipoClase getTipoClase() {
         return this.tipoClase;
     }
 
-    public int getAlmacenadas() {
-        return this.almacenadas;
+    public int getCantAlmacenadas() {
+        return this.cantAlmacenadas;
     }
 
-    public void setAlmacenadas(int almacenadas) {    //suma 1 a las clases almacenadas
-        this.almacenadas++;
+    public void setAlmacenadas(int cantAlmacenadas) {
+        this.cantAlmacenadas = cantAlmacenadas;
     }
 
     public List<Clase> getClases() {
         return this.clases;
     }
 
-    public void setClases(Clase clase) {        //agrega una clase
-         this.clases.add(clase);
+    public void addClase(Clase clase) {        //agrega una clase
+        if (this.cantAlmacenadas >= this.tipoClase.getGrabacionesMaximas()) {
+            clases.remove(0);
+            this.cantAlmacenadas--;
+        }
+        this.clases.add(clase);
+        this.cantAlmacenadas++;
     }
 }

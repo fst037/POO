@@ -1,9 +1,7 @@
 package usuarios;
 
-import java.io.*;
-import java.util.*;
-
 public class Usuario {
+    
     private String nombre;
     private int dni;
 
