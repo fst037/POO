@@ -93,8 +93,8 @@ public class Administrativo extends Usuario {
         }
     }
 
-    public List<Articulo> listarArticulos() {
-        return null;
+    public List<Articulo> listarArticulos(Sede sede) {
+        return sede.getArticulos();
     }
 
     public List<Clase> listarClases() {
