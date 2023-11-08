@@ -2,11 +2,7 @@ package usuarios;
 
 import enums.Nivel;
 import gimnasios.Sede;
-import articulos.TipoAccesorio;
 import articulos.TipoArticulo;
-import articulos.TipoColchoneta;
-import articulos.TipoPesa;
-import clases.TipoClase;
 import enums.TipoUsoPesa;
 import enums.Amortizacion;
 
@@ -18,40 +14,32 @@ public class SoporteTecnico extends Usuario {
         super(nombre, dni);
     }
 
-    public Sede crearNuevaSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
-        Sede sedeNueva = new Sede(nombre, nivelMinimo, barrio, alquiler);
-        return sedeNueva;
+    public void crearNuevaSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
+        // TODO implement here
     }
 
-
-    public Cliente crearNuevoCliente(String nombre, int dni, Nivel nivel) {
-        Cliente nuevoCliente = new Cliente(nombre, dni, nivel);
-        return nuevoCliente;
+    public void crearNuevoCliente(String nombre, int dni, Nivel nivel) {
+        // TODO implement here
     }
 
-    public Administrativo crearNuevoAdministrativo(String nombre, int dni) {
-        Administrativo nuevoAdministrativo = new Administrativo(nombre, dni);
-        return nuevoAdministrativo;
+    public void crearNuevoAdministrativo(String nombre, int dni, Set<Sede> sedes) {
+        // TODO implement here
     }
 
-    public TipoClase crearTipoDeClase(String nombre, Set<TipoArticulo> artNecPProf, Set<TipoArticulo> artNecPCli, int grabMax) {
-        TipoClase nuevoTipoClase = new TipoClase(nombre, null, null, grabMax);
-        return nuevoTipoClase;
+    public void crearTipoDeClase(String nombre, Set<TipoArticulo> artNecPProf, Set<TipoArticulo> artNecPCli, int grabMax) {
+
     }
 
-    public TipoPesa crearTipoDePesa(float peso, TipoUsoPesa tipoUso, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
-        TipoPesa nuevoTipoPesa = new TipoPesa(peso, tipoUso, amortizacion, desgasteMax, marca, nombre, costo);
-        return nuevoTipoPesa;
+    public void crearTipoDePesa(float peso, TipoUsoPesa tipoUso, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
+        // TODO implement here
     }
 
-    public TipoColchoneta crearTipoDeColchoneta(float ancho, float largo, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
-        TipoColchoneta nuevoTipoColchoneta = new TipoColchoneta(ancho, largo, amortizacion, desgasteMax, marca, nombre, costo);
-        return nuevoTipoColchoneta;
+    public void crearTipoDeColchoneta(float ancho, float largo, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
+        // TODO implement here
     }
 
-    public TipoAccesorio crearTipoDeAccesorio(String descripcion, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
-        TipoAccesorio nuevoTipoAccesorio = new TipoAccesorio(descripcion, amortizacion, desgasteMax, marca, nombre, costo);
-        return nuevoTipoAccesorio;
+    public void crearTipoDeAccesorio(String descripcion, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
+        // TODO implement here
     }
 
 }

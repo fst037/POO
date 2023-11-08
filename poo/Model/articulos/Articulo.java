@@ -27,6 +27,10 @@ public class Articulo {
         return this.tipo.getAmortizacion();
     }
 
+    public TipoArticulo getTipo() {
+        return this.tipo;
+    }
+
     public Sede getSede() {
         return this.sede;
     }
@@ -77,14 +81,17 @@ public class Articulo {
 
         return disponible;
     }
+
     public void reservarEnAgenda(Clase clase) {
         if (!this.agendaReservas.contains(clase) && this.isDisponibleParaFechaHorario(clase.getFechaHoraInicio(), clase.getDuracion())){
             this.agendaReservas.add(clase);
         }
     }
+
     public boolean tieneVidaUtilRestante() {
         return this.getDesgasteActual() < this.getDesgasteMax();
     }
+
     public void actualizarDesgaste() {
         // si su desgaste es por uso, le suma 1 y sino calcula la diferencia de dias entre la fecha de fabricacion y la fecha actual
         if (this.getAmortizacion() == Amortizacion.porUso) {
@@ -93,6 +100,7 @@ public class Articulo {
             this.setDesgasteActual(this.fechaFabricacion.until(LocalDate.now()).getDays());
         }
     }
+    
     public float verDesgasteEnPorcentaje() {
         // devuelve el desgaste entre 1.00 y 0.00. Siendo 1.00 el 100% de desgaste y 0.00 el 0% de desgaste
         return this.getDesgasteActual() / this.getDesgasteMax();

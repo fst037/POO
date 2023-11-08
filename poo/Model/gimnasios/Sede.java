@@ -95,12 +95,8 @@ public class Sede {
         return this.articulos;
     }
 
-    public void darBajaArticulo(Articulo articulo){
-        this.articulos.remove(articulo);
-    }
-
-    public void darAltaArticulo(Articulo articulo) {
-        this.articulos.add(articulo);
+    public void setArticulos(List<Articulo> articulos) {
+        this.articulos = articulos;
     }
 
     public float getAlquiler() {

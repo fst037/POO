@@ -2,15 +2,12 @@ package usuarios;
 
 import gimnasios.Sede;
 import clases.Clase;
-import clases.StreamingClass;
 import enums.EstadoClase;
 import enums.Nivel;
 import articulos.TipoArticulo;
 import articulos.Articulo;
 import clases.TipoClase;
-import controladores.Gimnasio;
 
-import java.time.*;
 import java.util.*;
 
 public class Administrativo extends Usuario {
@@ -23,11 +20,16 @@ public class Administrativo extends Usuario {
     }
 
     public List<Sede> getSedes() {
+        // TODO implement here
         return this.sedes;
     }
 
+    public void setSedes(List<Sede> sedes) {
+        // TODO implement here
+    }
+
     public void addSede(Sede sede) {
-        this.sedes.add(sede);
+        // TODO implement here
     }
 
     public void agendarClase(Clase clase) {
@@ -43,58 +45,41 @@ public class Administrativo extends Usuario {
         // TODO implement here
     }
 
-    public Cliente darAltaCliente(String nombre, int dni) {
-        Cliente nuevoCliente = new Cliente(nombre, dni, Nivel.Black);
-        return nuevoCliente;
+    public void darAltaCliente(String nombre, int dni, Set<Sede> sedes) {
+        // TODO implement here
     }
 
-    public Usuario darBajaCliente(Cliente cliente, List<Usuario> usuarios) {
-        if (usuarios.contains(cliente)){
-            return cliente;
-        }        
-        return null;
+    public void darBajaCliente(Cliente cliente) {
+        // TODO implement here
     }
 
     public void actualizarCliente(Cliente cliente, Nivel nivel) {
-        cliente.setNivel(nivel);
+        // TODO implement here
     }
 
-    public Articulo darAltaArticulo(Sede sede, TipoArticulo tipoArticulo, LocalDate fechaFabricacion) {
-        Articulo nuevoArticulo = new Articulo(tipoArticulo, sede, fechaFabricacion);
-        sede.darAltaArticulo(nuevoArticulo);
-        return nuevoArticulo;
+    public void incorporarArticulo(Sede sede, TipoArticulo tipoArticulo) {
+        // TODO implement here
+    }
+
+    public void actualizarDesgasteArticulos(Sede sede) {
+        // TODO implement here
     }
 
     public void darBajaArticulo(Sede sede, Articulo articulo) {
-        sede.darBajaArticulo(articulo);
-    }
-
-    public float verDesgasteArticulo(Articulo articulo, Sede sede) {
-        if(sede.getArticulos().contains(articulo)){
-            return articulo.getDesgasteActual();
-        } else {
-            assert false: "No se encontro el articulo en la sede";
-            return 0.0f;
-        }
-
+        // TODO implement here
     }
 
     public List<Clase> verClasesAlmacenadas(TipoClase tipoClase, Sede sede) {
-        for (StreamingClass clase : sede.getClasesAlmacenadasPorTipo()){
-            if(clase.getTipoClase() == tipoClase){
-                return clase.getClases();
-            }
-        }
+        // TODO implement here
         return null;
     }
 
-    public void removeSede(Sede sede, List<Sede> sedes) {
-        if (sedes.contains(sede)){
-            sedes.remove(sede);
-        }
+    public void removeSede(Sede sede) {
+        // TODO implement here
     }
 
     public List<Articulo> listarArticulos() {
+        // TODO implement here
         return null;
     }
 
@@ -103,7 +88,10 @@ public class Administrativo extends Usuario {
         return null;
     }
 
-
+    public float verDesgasteArticulo(Articulo articulo, Sede sede) {
+        // TODO implement here
+        return 0.0f;
+    }
 
     public int contarArticulosDisponibles(List<Articulo> articulos) {
         // TODO implement here

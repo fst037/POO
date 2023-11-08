@@ -3,7 +3,6 @@ package controladores;
 import gimnasios.Sede;
 import articulos.TipoArticulo;
 import clases.TipoClase;
-import usuarios.Cliente;
 import usuarios.Usuario;
 
 import java.util.*;
@@ -16,11 +15,7 @@ public class Gimnasio {
     private List<Usuario> usuarios;
 
     public void crearSede() {
-        
-    }
-    
-    public void eliminarSede (){
-        
+        // TODO implement here        
     }
 
     public void crearUsuario() {
@@ -60,7 +55,7 @@ public class Gimnasio {
     }
 
     public void darBajaCliente() {
-        
+        // TODO implement here
     }
 
     public void actualizarNivelCliente() {

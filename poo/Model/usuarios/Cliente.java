@@ -27,12 +27,28 @@ public class Cliente extends Usuario {
         this.clases = clases;
     }
 
+    public float getCostoMensual() {
+        switch (this.getNivel()) {
+            case Black:
+                return (float)3000;
+            case Oro:
+                return (float)2000;
+            case Platinum:
+                return (float)1000;
+            default:
+                return (float)0;
+        }
+    }
+
     public boolean reservarClase(Clase clase, boolean isOnline) {
         if (clienteDisponibleParaClase(clase)) {
             this.clases.add(clase);
-            clase.inscribirAlumno(this);
-            //System.out.println("clase reservada");
-            return true;
+            if (isOnline) {
+                return clase.inscribirAlumnoOnline(this);
+            } else {
+                return clase.inscribirAlumnoPresencial(this);
+            }
+            //System.out.println("clase reservada");            
         }
         //System.out.println("la clase no puede ser reservada");
         return false;

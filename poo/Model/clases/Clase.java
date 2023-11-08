@@ -1,8 +1,10 @@
 package clases;
 
+import enums.Amortizacion;
 import enums.EstadoClase;
 import usuarios.Profesor;
 import articulos.Articulo;
+import articulos.TipoArticulo;
 import gimnasios.Sede;
 import gimnasios.Emplazamiento;
 import usuarios.Cliente;
@@ -16,9 +18,7 @@ public class Clase {
     private EstadoClase estadoClase;    
     private Profesor profesor;    
     private TipoClase tipoClase;    
-    private List<Articulo> articulosReservados;    
-    private float costos;    
-    private float ingresos;    
+    private List<Articulo> articulosReservados;  
     private LocalDateTime fechaHoraInicio;    
     private LocalTime duracion;    
     private Sede sede;    
@@ -34,7 +34,52 @@ public class Clase {
         this.emplazamiento = emp;
         this.fechaHoraInicio = fHI;
         this.duracion = duracion;
+        this.capacidadMaxima = ((int)emp.getMetrosCuadrados() / 2);
         this.articulosReservados = new ArrayList<Articulo>();
+
+        HashMap<TipoArticulo, Integer> cantidadesArticulosNecesarios = new HashMap<TipoArticulo, Integer>();
+
+        for (TipoArticulo tipoArticulo: tipoClase.getArticulosNecesariosParaProfesor())
+            //guarda la cantidad de articulos necesarios para el profesor
+            if (cantidadesArticulosNecesarios.containsKey(tipoArticulo))
+                cantidadesArticulosNecesarios.put(tipoArticulo, cantidadesArticulosNecesarios.get(tipoArticulo) + 1);
+            else
+                cantidadesArticulosNecesarios.put(tipoArticulo, 1);
+        
+        for (TipoArticulo tipoArticulo : tipoClase.getArticulosNecesariosPorCliente()){
+            //guarda la cantidad de articulos necesarios para los clientes maximos de la clase
+            if (cantidadesArticulosNecesarios.containsKey(tipoArticulo)){
+                cantidadesArticulosNecesarios.put(tipoArticulo, cantidadesArticulosNecesarios.get(tipoArticulo) + this.capacidadMaxima);
+            }
+            else{
+                cantidadesArticulosNecesarios.put(tipoArticulo, this.capacidadMaxima);
+            }
+        }        
+        for (TipoArticulo tipoArticulo: cantidadesArticulosNecesarios.keySet()){
+            for (Articulo articulo : this.sede.getArticulos()) {
+                if (
+                    articulo.getTipo() == tipoArticulo && 
+                    cantidadesArticulosNecesarios.get(tipoArticulo) > 0 &&
+                    articulo.isDisponibleParaFechaHorario(fHI, duracion)
+                    ) {//agrega los articulos como reservados, pero los articulos no lo saben todavia, ya que si encuentra faltantes, la clase no se da, y los articulos nunca se reservan
+                    this.articulosReservados.add(articulo);
+                    cantidadesArticulosNecesarios.put(tipoArticulo, cantidadesArticulosNecesarios.get(tipoArticulo) - 1);
+                }
+            }
+        }
+
+        for (TipoArticulo tipoArticulo: cantidadesArticulosNecesarios.keySet()) {
+            if (cantidadesArticulosNecesarios.get(tipoArticulo) > 0) {
+                this.articulosReservados.clear();
+                assert false : "No hay suficientes articulos para dictar la clase. Faltan articulos de tipo " + tipoArticulo.getNombre() + ".";
+            }
+        }
+
+        //confirma las reservas, ya se que sabe que esta todo ok
+        for (Articulo articulo : this.articulosReservados) {
+            articulo.reservarEnAgenda(this);
+        }
+
         this.alumnosInscriptosPresencial = new ArrayList<Cliente>();
         this.alumnosInscriptosOnline = new ArrayList<Cliente>();
         this.estadoClase = EstadoClase.Agendada;
@@ -69,11 +114,46 @@ public class Clase {
     }
 
     public float getCostos() {
-        return this.costos;
+        float costo = 0;
+
+        costo = costo + this.profesor.getSueldo() / 90;
+
+        switch (emplazamiento.getTipo()) {
+            case Salon:
+                costo = costo + this.sede.getAlquiler() / 300;                
+                break;
+            
+            case Pileta:
+                costo = costo + this.sede.getAlquiler() / 150;                
+                break;
+            case AireLibre:
+                costo = costo + this.emplazamiento.getMetrosCuadrados() * 500 * (this.getDuracion().getMinute() / 60 + this.getDuracion().getHour());                
+                break;            
+        }
+
+        for (Articulo articulo : this.articulosReservados) {
+            if (articulo.getAmortizacion() == Amortizacion.porUso) {
+                costo = costo + articulo.getCosto() / articulo.getDesgasteMax(); //costo por uso
+            } else {
+                costo = costo + ((this.getDuracion().getMinute() / 60 + this.getDuracion().getHour()) / 8) * articulo.getCosto() / articulo.getDesgasteMax() ; //costo por fecha
+            }
+        }
+
+        return costo;
     }
 
     public float getIngresos() {
-        return this.ingresos;
+        float ingresos = 0;
+
+        for (Cliente alumno : this.alumnosInscriptosPresencial) {
+            ingresos = ingresos + alumno.getCostoMensual() / 30;
+        }
+
+        for (Cliente alumno : this.alumnosInscriptosOnline) {
+            ingresos = ingresos + alumno.getCostoMensual() / 30;
+        }
+
+        return ingresos;
     }
 
     public LocalDateTime getFechaHoraInicio() {
@@ -129,16 +209,34 @@ public class Clase {
     }
 
     public boolean isClaseRentable() {
-        // TODO implement here
+        return this.getCostos() < this.getIngresos();
+    }
+
+    public boolean inscribirAlumnoPresencial(Cliente alumno) {
+        if (this.alumnosInscriptosPresencial.size() < this.capacidadMaxima) {
+            this.alumnosInscriptosPresencial.add(alumno);
+            if (this.isClaseRentable() && fechaHoraInicio.isBefore(LocalDateTime.now())){
+                this.setEstadoClase(EstadoClase.Confirmada);
+            }
+            return true;
+        }
         return false;
     }
 
-    public boolean inscribirAlumno(Cliente alumno) {
-        // TODO implement here
-        return false;
+    public boolean inscribirAlumnoOnline(Cliente alumno) {
+        this.alumnosInscriptosOnline.add(alumno);
+        if (this.isClaseRentable() && fechaHoraInicio.isBefore(LocalDateTime.now())){
+                this.setEstadoClase(EstadoClase.Confirmada);
+        }
+        return true;
     }
 
     public void dictarClase() {
-        // TODO implement here
+        if (this.getEstadoClase() == EstadoClase.Confirmada){
+            this.setEstadoClase(EstadoClase.Finalizada);            
+            for (Articulo articulo : this.articulosReservados) {
+                articulo.actualizarDesgaste();
+            }
+        }
     }
 }
