@@ -89,6 +89,7 @@ public class Articulo {
     }
 
     public boolean tieneVidaUtilRestante() {
+        this.setDesgasteActual(this.fechaFabricacion.until(LocalDate.now()).getDays());
         return this.getDesgasteActual() < this.getDesgasteMax();
     }
 

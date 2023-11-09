@@ -60,7 +60,8 @@ public class Clase {
                 if (
                     articulo.getTipo() == tipoArticulo && 
                     cantidadesArticulosNecesarios.get(tipoArticulo) > 0 &&
-                    articulo.isDisponibleParaFechaHorario(fHI, duracion)
+                    articulo.isDisponibleParaFechaHorario(fHI, duracion) &&
+                    articulo.tieneVidaUtilRestante()
                     ) {//agrega los articulos como reservados, pero los articulos no lo saben todavia, ya que si encuentra faltantes, la clase no se da, y los articulos nunca se reservan
                     this.articulosReservados.add(articulo);
                     cantidadesArticulosNecesarios.put(tipoArticulo, cantidadesArticulosNecesarios.get(tipoArticulo) - 1);

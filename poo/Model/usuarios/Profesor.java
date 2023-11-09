@@ -42,8 +42,23 @@ public class Profesor {
     }
 
     public boolean isDisponibleParaClase(LocalDateTime fHI, LocalTime duracion) {  //verifica si el profesor esta disponible para dar una clase
-        //TODO: implement here
-        return true;
+        boolean disponible = false;
+
+        List<Clase> clasesDelDia = new ArrayList<Clase>();       
+
+        for (Clase clase : this.getClases()) {
+            if (clase.getFechaHoraInicio().toLocalDate().equals(fHI.toLocalDate())) {  //si la clase es en el mismo dia
+                clasesDelDia.add(clase);
+            }
+        }
+
+        if (clasesDelDia.size() < 3){
+            for (Clase clase : clasesDelDia) {
+                //TODO: ver si la clase se superpone con otra clase dentro de un rango de 3 hs
+            }
+        }
+
+        return disponible;
     }
 
     public void removeClase(Clase clase) {

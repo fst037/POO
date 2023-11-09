@@ -38,13 +38,8 @@ public class Administrativo extends Usuario {
         }
     }
 
-    public boolean confirmarClase(Clase clase) {
-        // TODO implement here
-        return false;
-    }
-
     public void actualizarClase(Clase clase, EstadoClase estado) {
-        // TODO implement here
+        clase.setEstadoClase(estado);
     }
 
     public Cliente darAltaCliente(String nombre, int dni) {
@@ -96,21 +91,34 @@ public class Administrativo extends Usuario {
         if (sedes.contains(sede)){
             sedes.remove(sede);
         }
+    }    
+
+    public List<Clase> listarClases(Sede sede, EstadoClase estadoClase) {
+        switch (estadoClase) {
+            case Agendada:
+                return sede.getClasesAgendadas();
+            case Confirmada:
+                return sede.getClasesConfirmadas();
+            case Finalizada:             
+                return sede.getClasesFinalizadas();        
+            default:
+                return null;
+        }
     }
 
     public List<Articulo> listarArticulos(Sede sede) {
         return sede.getArticulos();
     }
 
-    public List<Clase> listarClases() {
-        // TODO implement here
-        return null;
-    }
+    public List<Articulo> listarArticulosDisponibles(List<Articulo> articulos, LocalDateTime fechaHoraInicio, LocalTime duracion) {        
+        List<Articulo> articulosDisponibles = new ArrayList<Articulo>();
 
-
-
-    public int contarArticulosDisponibles(List<Articulo> articulos) {
-        // TODO implement here
-        return 0;
+        for (Articulo articulo : articulos) {
+            if (articulo.isDisponibleParaFechaHorario(fechaHoraInicio, duracion)) {
+                articulosDisponibles.add(articulo);
+            }
+        }
+        
+        return articulosDisponibles;
     }
 }
