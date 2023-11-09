@@ -28,13 +28,22 @@ public class SoporteTecnico extends Usuario {
         return nuevoCliente;
     }
 
+    public Profesor crearNuevoProfesor(String nombre, int dni, float salario) {
+        Profesor nuevoProfesor = new Profesor(nombre, dni, salario);
+        return nuevoProfesor;
+    }
+
     public Administrativo crearNuevoAdministrativo(String nombre, int dni) {
         Administrativo nuevoAdministrativo = new Administrativo(nombre, dni);
         return nuevoAdministrativo;
     }
 
-    public TipoClase crearTipoDeClase(String nombre, Set<TipoArticulo> artNecPProf, Set<TipoArticulo> artNecPCli, int grabMax) {
-        TipoClase nuevoTipoClase = new TipoClase(nombre, null, null, grabMax);
+    public void agregarSedeAdministrativo(Sede sede, Administrativo administrativo) {
+        administrativo.addSede(sede);
+    }
+
+    public TipoClase crearTipoDeClase(String nombre, List<TipoArticulo> artNecPProf, List<TipoArticulo> artNecPCli, int grabMax) {
+        TipoClase nuevoTipoClase = new TipoClase(nombre, artNecPProf, artNecPCli, grabMax);
         return nuevoTipoClase;
     }
 

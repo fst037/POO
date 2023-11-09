@@ -1,37 +1,69 @@
 package controladores;
 
+import gimnasios.Emplazamiento;
 import gimnasios.Sede;
 import articulos.TipoArticulo;
 import clases.TipoClase;
+import enums.Amortizacion;
+import enums.Nivel;
+import enums.TipoUsoPesa;
+import usuarios.Administrativo;
+import usuarios.Profesor;
+import usuarios.SoporteTecnico;
 import usuarios.Usuario;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Gimnasio {
-
+    
     private List<Sede> sedes;
     private static List<TipoClase> tiposDeClase;
     private static List<TipoArticulo> tiposDeArticulo;
     private List<Usuario> usuarios;
+    private SoporteTecnico soporteTecnico;
+
+    public Gimnasio() {
+        this.sedes = new ArrayList<Sede>();
+        this.usuarios = new ArrayList<Usuario>();
+        this.soporteTecnico = new SoporteTecnico("Soporte Tecnico", 0);
+    }
 
     public void crearSede() {
-        // TODO implement here        
+        // TODO implement here    
     }
 
-    public void crearUsuario() {
-        // TODO implement here
+    public void crearCliente() {
+        // TODO implement here 
     }
 
-    public void asignarRolAUsuarios() {
-        // TODO implement here
+    public void crearAdministrativo() {
+        // TODO implement here 
+    }
+
+    public void agregarSedeAdministrativo() {
+        // TODO implement here 
+    }
+
+    public void crearProfesor() {
+        // TODO implement here 
     }
 
     public void crearTipoClase() {
-        // TODO implement here
+        // TODO implement here 
     }
 
-    public void crearTipoArticulo() {
-        // TODO implement here
+    public void crearTipoDePesa() {
+        // TODO implement here 
+    }
+
+    public void crearTipoDeColchoneta() {
+        // TODO implement here 
+    }
+
+    public void crearTipoDeAccesorio() {
+        // TODO implement here       
     }
 
     public void agendarClase() {

@@ -6,27 +6,23 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
-public class Profesor {
-
-    public Profesor(String nombre) {
-        this.nombre = nombre;
-    }
-
-    private String nombre;
-    private float sueldo;
+public class Profesor extends Usuario{    
+    
+    private float salario;
     private List<Clase> clases;
 
-
-    public String getNombre() {
-        return nombre;
+    public Profesor(String nombre, int dni, float salario) {
+        super(nombre, dni);
+        this.salario = salario;
+        this.clases = new ArrayList<Clase>();
     }
 
-    public float getSueldo() {
-        return sueldo;
+    public float getSalario() {
+        return salario;
     }
 
-    public void setSueldo(float sueldo) {
-        this.sueldo = sueldo;
+    public void setSalario(float salario) {
+        this.salario = salario;
     }
 
     public List<Clase> getClases() {
@@ -42,7 +38,7 @@ public class Profesor {
     }
 
     public boolean isDisponibleParaClase(LocalDateTime fHI, LocalTime duracion) {  //verifica si el profesor esta disponible para dar una clase
-        boolean disponible = false;
+        boolean disponible = true;
 
         List<Clase> clasesDelDia = new ArrayList<Clase>();       
 
@@ -51,11 +47,18 @@ public class Profesor {
                 clasesDelDia.add(clase);
             }
         }
-
+        //valida si el profesor tiene menos de 3 clases agendadas para el dia
         if (clasesDelDia.size() < 3){
             for (Clase clase : clasesDelDia) {
-                //TODO: ver si la clase se superpone con otra clase dentro de un rango de 3 hs
+                //chequea si para cada clase ya agendada si se superpone en 3 hs con el horario actual
+                if (!(clase.getFechaHoraInicio().toLocalTime().isBefore(fHI.toLocalTime().minusHours(3)) || 
+                    clase.getFechaHoraFin().toLocalTime().isAfter(fHI.toLocalTime().plusHours(3)))) {
+                    disponible = false;
+                    break;
+                }                
             }
+        } else {
+            disponible = false;
         }
 
         return disponible;

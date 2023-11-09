@@ -117,7 +117,7 @@ public class Clase {
     public float getCostos() {
         float costo = 0;
 
-        costo = costo + this.profesor.getSueldo() / 90;
+        costo = costo + this.profesor.getSalario() / 90;
 
         switch (emplazamiento.getTipo()) {
             case Salon:

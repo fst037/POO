@@ -27,7 +27,8 @@ public class Administrativo extends Usuario {
     }
 
     public void addSede(Sede sede) {
-        this.sedes.add(sede);
+        if (!this.sedes.contains(sede))
+            this.sedes.add(sede);
     }
 
     public void agendarClase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion) {
