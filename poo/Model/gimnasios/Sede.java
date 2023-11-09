@@ -67,6 +67,14 @@ public class Sede {
         this.clasesAgendadas = clasesAgendadas;
     }
 
+    public void agendarClase(Clase clase) {
+        this.clasesAgendadas.add(clase);
+    }
+
+    public void borrarClase(Clase clase) {
+        this.clasesAgendadas.remove(clase);
+    }
+
     public List<Clase> getClasesConfirmadas() {
         return this.clasesConfirmadas;
     }

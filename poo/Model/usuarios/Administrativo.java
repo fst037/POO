@@ -1,5 +1,6 @@
 package usuarios;
 
+import gimnasios.Emplazamiento;
 import gimnasios.Sede;
 import clases.Clase;
 import clases.StreamingClass;
@@ -29,8 +30,12 @@ public class Administrativo extends Usuario {
         this.sedes.add(sede);
     }
 
-    public void agendarClase(Clase clase) {
-        // TODO implement here
+    public void agendarClase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion) {
+        if (sedes.contains(sede) && prof.isDisponibleParaClase(fHI, duracion)){
+            Clase nuevaClase = new Clase(prof, tipoClase, sede, emp, fHI, duracion);
+            prof.agendarClase(nuevaClase);
+            sede.agendarClase(nuevaClase);
+        }
     }
 
     public boolean confirmarClase(Clase clase) {

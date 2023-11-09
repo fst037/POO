@@ -2,6 +2,8 @@ package usuarios;
 
 import clases.Clase;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class Profesor {
@@ -35,8 +37,13 @@ public class Profesor {
         this.clases = clases;
     }
 
-    public void addClase(Clase clase) {  //agrega clase a la lista
+    public void agendarClase(Clase clase) {  //agrega clase a la lista
         this.clases.add(clase);
+    }
+
+    public boolean isDisponibleParaClase(LocalDateTime fHI, LocalTime duracion) {  //verifica si el profesor esta disponible para dar una clase
+        //TODO: implement here
+        return true;
     }
 
     public void removeClase(Clase clase) {

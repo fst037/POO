@@ -23,7 +23,6 @@ public class SoporteTecnico extends Usuario {
         return sedeNueva;
     }
 
-
     public Cliente crearNuevoCliente(String nombre, int dni, Nivel nivel) {
         Cliente nuevoCliente = new Cliente(nombre, dni, nivel);
         return nuevoCliente;
