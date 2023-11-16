@@ -10,14 +10,14 @@ import Aplication.Gimnasio;
  *
  * @author Santi
  */
-public class SoporteTecnico extends javax.swing.JFrame {
+public class VentanaSoporteTecnico extends javax.swing.JFrame {
 
     Gimnasio controller;
     /**
      * Creates new form SoporteTecnico
      * @param controller
      */
-    public SoporteTecnico(Gimnasio controller) {
+    public VentanaSoporteTecnico(Gimnasio controller) {
         initComponents();
         this.controller = controller;
     }
@@ -47,7 +47,6 @@ public class SoporteTecnico extends javax.swing.JFrame {
         });
 
         btnAdministrarUsuarios.setText("Administrar Usuarios");
-        btnAdministrarUsuarios.setActionCommand("Administrar Usuarios");
         btnAdministrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdministrarUsuariosActionPerformed(evt);

@@ -5,6 +5,7 @@
 package interfaz;
 
 import Aplication.Gimnasio;
+import Negocio.enums.Nivel;
 import Negocio.usuarios.Administrativo;
 import java.awt.Component;
 
@@ -19,9 +20,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
-        initComponents();
-        this.controller = new Gimnasio();
+    public VentanaPrincipal(Gimnasio controller) {
+        this.controller = controller;
+        initComponents();        
     }
 
     /**
@@ -34,7 +35,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnSoporteTecnico = new javax.swing.JButton();
-        selectAdministrador = new javax.swing.JComboBox<>();
+        selectAdministrativo = new javax.swing.JComboBox<>();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesion");
@@ -46,10 +48,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        selectAdministrador.setInheritsPopupMenu(true);
-        selectAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        selectAdministrativo.setInheritsPopupMenu(true);
+        for(Administrativo admin : controller.listarAdministrativos()){
+            selectAdministrativo.addItem(admin);
+        }
+        selectAdministrativo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectAdministrativoFocusGained(evt);
+            }
+        });
+        selectAdministrativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectAdministradorActionPerformed(evt);
+                selectAdministrativoActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
             }
         });
 
@@ -60,9 +77,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(selectAdministrador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(selectAdministrativo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSoporteTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jToggleButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,31 +91,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(btnSoporteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addComponent(selectAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jToggleButton1)
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionSoporteTecnico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionSoporteTecnico
-        SoporteTecnico ventanaSoporteTecnico = new SoporteTecnico(this.controller);
+        VentanaSoporteTecnico ventanaSoporteTecnico = new VentanaSoporteTecnico(this.controller);
         ventanaSoporteTecnico.setLocationRelativeTo(null);
-        ventanaSoporteTecnico.setVisible(true);
-        
-        selectAdministrador.add(this);
+        ventanaSoporteTecnico.setVisible(true);        
     }//GEN-LAST:event_btnIniciarSesionSoporteTecnico
 
-    private void selectAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAdministradorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectAdministradorActionPerformed
+    private void selectAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAdministrativoActionPerformed
+        
+    }//GEN-LAST:event_selectAdministrativoActionPerformed
 
-    private void actualizarSelectAdministrador(){
-        selectAdministrador.removeAllItems();
-        for(Administrativo admin : controller.getAdministrativos()){
-            
+    private void selectAdministrativoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectAdministrativoFocusGained
+        selectAdministrativo.removeAllItems();
+        for(Administrativo admin : controller.listarAdministrativos()){
+            selectAdministrativo.addItem(admin);
         }
-    }
+    }//GEN-LAST:event_selectAdministrativoFocusGained
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        if (jToggleButton1.isSelected()){
+            jToggleButton1.setText("Si");
+        } else {
+            jToggleButton1.setText("No");
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    
     
     /**
      * @param args the command line arguments
@@ -127,17 +158,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gimnasio controller = new Gimnasio();
-                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-                ventanaPrincipal.setVisible(true);
+                controller.crearAdministrativo("juan", 1);
+                controller.crearAdministrativo("juan2", 2);
+                controller.crearAdministrativo("juan3", 3);
+                controller.crearSede("sede1", Nivel.Platinum, "barrio1", (float) 10);
+                controller.agregarSedeAdministrativo(controller.listarAdministrativos().get(0), controller.listarSedes().get(0));
+                
+                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controller);
+                ventanaPrincipal.setLocationRelativeTo(null);
+                ventanaPrincipal.setVisible(true); 
                 
                 
-                
-            }
+            };
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSoporteTecnico;
-    private javax.swing.JComboBox<String> selectAdministrador;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JComboBox<Administrativo> selectAdministrativo;
     // End of variables declaration//GEN-END:variables
 }

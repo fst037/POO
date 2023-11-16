@@ -25,6 +25,10 @@ public class Administrativo extends Usuario {
         this.sedes = new ArrayList<Sede>();
     }
 
+    public String toString(){
+        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
+    }
+    
     public List<Sede> getSedes() {
         return this.sedes;
     }

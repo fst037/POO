@@ -5,6 +5,7 @@ import Negocio.enums.EstadoClase;
 import Negocio.usuarios.Profesor;
 import Negocio.articulos.Articulo;
 import Negocio.articulos.TipoArticulo;
+import Negocio.enums.Nivel;
 import Negocio.inmuebles.Sede;
 import Negocio.inmuebles.Emplazamiento;
 import Negocio.usuarios.Cliente;
@@ -212,9 +213,14 @@ public class Clase {
     public boolean isClaseRentable() {
         return this.getCostos() < this.getIngresos();
     }
+    
+    public boolean isAlumnoPermitido(Cliente alumno){
+        List<Nivel> niveles = Arrays.asList(Nivel.values());
+        return niveles.indexOf(alumno.getNivel()) >= niveles.indexOf(this.sede.getNivelMinimo());
+    }
 
     public boolean inscribirAlumnoPresencial(Cliente alumno) {
-        if (this.alumnosInscriptosPresencial.size() < this.capacidadMaxima) {
+        if (isAlumnoPermitido(alumno) && this.alumnosInscriptosPresencial.size() < this.capacidadMaxima) {
             this.alumnosInscriptosPresencial.add(alumno);
             if (this.isClaseRentable() && fechaHoraInicio.isBefore(LocalDateTime.now())){
                 this.setEstadoClase(EstadoClase.Confirmada);
@@ -225,6 +231,7 @@ public class Clase {
     }
 
     public boolean inscribirAlumnoOnline(Cliente alumno) {
+        assert this.tipoClase.getGrabacionesMaximas() > 0 : "Este tipo de clase no acepta modalidad Online";
         this.alumnosInscriptosOnline.add(alumno);
         if (this.isClaseRentable() && fechaHoraInicio.isBefore(LocalDateTime.now())){
                 this.setEstadoClase(EstadoClase.Confirmada);

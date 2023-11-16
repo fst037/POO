@@ -43,15 +43,19 @@ public class Gimnasio {
         this.soporteTecnico = new SoporteTecnico("Soporte Tecnico", 0);
     }
 
-    public List<Administrativo> getAdministrativos(){
+    public List<Administrativo> listarAdministrativos(){
         return this.administrativos;
     }
     
-    public void crearSede(String nombre, String nivelMinimo, String barrio, float alquiler) {
+    public List<Sede> listarSedes(){
+        return this.sedes;
+    }
+    
+    public void crearSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
         for (Sede sede : sedes ){
             assert sede.getBarrio().equals(barrio) : "Ya existe una sede en ese barrio";
         }
-        Sede sede = soporteTecnico.crearNuevaSede(nombre, Nivel.valueOf(nivelMinimo), barrio, alquiler);
+        Sede sede = soporteTecnico.crearNuevaSede(nombre, nivelMinimo, barrio, alquiler);
         sedes.add(sede);
     }
 
