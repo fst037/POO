@@ -42,13 +42,29 @@ public class Gimnasio {
         this.profesores = new ArrayList<Profesor>();
         this.soporteTecnico = new SoporteTecnico("Soporte Tecnico", 0);
     }
-
+    
+    public List<Sede> listarSedes(){
+        return this.sedes;
+    }
+    
+    public List<TipoClase> listarTiposDeClase(){
+        return this.tiposDeClase;
+    }
+    
+    public List<TipoArticulo> listarTiposDeArticulo(){
+        return this.tiposDeArticulo;
+    }
+    
+    public List<Cliente> listarClientes(){
+        return this.clientes;
+    }
+    
     public List<Administrativo> listarAdministrativos(){
         return this.administrativos;
     }
     
-    public List<Sede> listarSedes(){
-        return this.sedes;
+    public List<Profesor> listarProfesores(){
+        return this.profesores;
     }
     
     public void crearSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
@@ -77,41 +93,13 @@ public class Gimnasio {
         profesores.add(soporteTecnico.crearNuevoProfesor(nombre, dni, salario));
     }
 
-    public void crearTipoClase(String nombre, List<String> nombresArtNecPProf, List<String> nombresArtNecPCli, int grabMax) {
+    public void crearTipoClase(String nombre, List<TipoArticulo> artNecPProf, List<TipoArticulo> artNecPCli, int grabMax) {
         
-        List<TipoArticulo> articulosNecesariosParaProfesor = new ArrayList<TipoArticulo>();
-        List<TipoArticulo> articulosNecesariosPorCliente = new ArrayList<TipoArticulo>();;
-        TipoArticulo articuloAgregar = null;
-
         for (TipoClase tipoClase : this.tiposDeClase){
             assert !tipoClase.getNombre().equals(nombre) : "Ya existe un TipoClase con ese nombre";
-        }         
+        }                 
 
-        for (String nombreArt : nombresArtNecPProf){
-            articuloAgregar = null;
-            for (TipoArticulo tipoArticulo : tiposDeArticulo){
-                if (tipoArticulo.getNombre().equals(nombreArt)){
-                    articuloAgregar = tipoArticulo;
-                    break;
-                }
-            }
-            assert articuloAgregar != null : "No existe el tipo de articulo" + nombreArt;
-            articulosNecesariosParaProfesor.add(articuloAgregar);
-        }
-
-        for (String nombreArt : nombresArtNecPCli){
-            articuloAgregar = null;
-            for (TipoArticulo tipoArticulo : tiposDeArticulo){
-                if (tipoArticulo.getNombre().equals(nombreArt)){
-                    articuloAgregar = tipoArticulo;
-                    break;
-                }
-            }
-            assert articuloAgregar != null : "No existe el tipo de articulo" + nombreArt;
-            articulosNecesariosPorCliente.add(articuloAgregar);
-        }
-
-        TipoClase tipoClase = soporteTecnico.crearTipoDeClase(nombre, articulosNecesariosParaProfesor, articulosNecesariosPorCliente, grabMax); 
+        TipoClase tipoClase = soporteTecnico.crearTipoDeClase(nombre, artNecPProf, artNecPCli, grabMax); 
     
         tiposDeClase.add(tipoClase);
     }
@@ -132,18 +120,34 @@ public class Gimnasio {
     }
 
     public void agendarClase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion, Administrativo administrativo) {
+        assert administrativo.getSedes().contains(sede) : "El administrativo seleccionado no maneja la sede";
+        
         administrativo.agendarClase(prof, tipoClase, sede, emp, fHI, duracion);
     }
-
-    public void actualizarEstadoClase(Sede sede, Clase clase, Administrativo administrador, EstadoClase estado) {
-        administrador.actualizarClase(clase, estado);
+    
+    public List<Sede> listarSedesAdministrativo(Administrativo admin){
+        return admin.getSedes();
+    }
+    
+    public List<Emplazamiento> listarEmplazamientosSede(Sede sede){
+        return sede.getEmplazamientos();
+    }
+    
+    public void actualizarEstadoClase(Sede sede, Clase clase, Administrativo administrativo, EstadoClase estado) {
+        assert administrativo.getSedes().contains(sede) : "El administrativo seleccionado no maneja la sede";
+        
+        administrativo.actualizarClase(clase, estado);
     }
 
     public void darAltaArticulo(Administrativo administrativo, Sede sede, TipoArticulo tipoArticulo, LocalDate fechaFabricacion) {
+        assert administrativo.getSedes().contains(sede) : "El administrativo seleccionado no maneja la sede";
+        
         administrativo.darAltaArticulo(sede, tipoArticulo, fechaFabricacion);
     }
  
     public void darBajaArticulo(Administrativo administrativo, Sede sede, Articulo articulo) {
+        assert administrativo.getSedes().contains(sede) : "El administrativo seleccionado no maneja la sede";
+        
         administrativo.darBajaArticulo(sede, articulo);
     }
 
@@ -168,18 +172,15 @@ public class Gimnasio {
         assert false : "No existe el dni especificado";
     }
 
-    public List<Articulo> verArtDisp(String barrio, Administrativo administrativo, LocalDateTime fechaHoraInicio, LocalTime duracion) {
-        Sede sedeElegida = null;
+    public List<Articulo> verArtDisp(Sede sede, Administrativo administrativo, LocalDateTime fechaHoraInicio, LocalTime duracion) {
         
-        for (Sede sede : this.sedes){
-            if (sede.getBarrio().equals(barrio)){
-                sedeElegida = sede;
-            }
-        }
- 
-        return administrativo.listarArticulosDisponibles(sedeElegida, fechaHoraInicio, duracion);
+        return administrativo.listarArticulosDisponibles(sede, fechaHoraInicio, duracion);
     }
 
+    public List<Articulo> verTodosArt(Sede sede, Administrativo administrativo){
+        return administrativo.listarArticulos(sede);
+    }
+    
     public float verDesgasteActArt(Sede sede, Administrativo administrativo, Articulo articulo) {
         return administrativo.verDesgasteArticulo(articulo, sede);
     }
@@ -195,18 +196,10 @@ public class Gimnasio {
         assert cliente.reservarClase(clase, online) : "No se pudo reservar la clase";
     }
 
-    public List<Clase> visualizarClases(String barrioSede, EstadoClase estadoClase, Administrativo administrativo) {
-        Sede sedeElegida = null;
+    public List<Clase> visualizarClases(Sede sede, EstadoClase estadoClase, Administrativo administrativo) {
+             
+        assert administrativo.getSedes().contains(sede) : "El administrativo actual no maneja la sede elegida";
 
-        for (Sede sede : sedes){
-            if (sede.getBarrio().equals(barrioSede)){
-                sedeElegida = sede;
-            }
-        }
-
-        assert sedeElegida != null: "La sede elegida no existe";        
-        assert administrativo.getSedes().contains(sedeElegida) : "El administrativo actual no maneja la sede elegida";
-
-        return administrativo.listarClases(sedeElegida, estadoClase);
+        return administrativo.listarClases(sede, estadoClase);
     }
 }

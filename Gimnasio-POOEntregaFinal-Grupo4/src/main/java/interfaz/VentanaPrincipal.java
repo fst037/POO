@@ -7,6 +7,7 @@ package interfaz;
 import Aplication.Gimnasio;
 import Negocio.enums.Nivel;
 import Negocio.usuarios.Administrativo;
+import Negocio.usuarios.Cliente;
 import java.awt.Component;
 
 /**
@@ -36,7 +37,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnSoporteTecnico = new javax.swing.JButton();
         selectAdministrativo = new javax.swing.JComboBox<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnAdministrativo = new javax.swing.JButton();
+        labelDNICliente = new javax.swing.JLabel();
+        labelNombreCliente = new javax.swing.JLabel();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtDNICliente = new javax.swing.JTextField();
+        btnCliente = new javax.swing.JButton();
+        labelTituloIniciarSesionCliente = new javax.swing.JLabel();
+        labelTituloIniciarSesionAdministrativo = new javax.swing.JLabel();
+        labelTituloIniciarSesionSoporteTecnico = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesion");
@@ -44,7 +53,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnSoporteTecnico.setText("Iniciar Sesion Soporte Tecnico");
         btnSoporteTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarSesionSoporteTecnico(evt);
+                btnSoporteTecnico(evt);
             }
         });
 
@@ -63,48 +72,102 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("jToggleButton1");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministrativo.setText("Iniciar Sesion Administrativo");
+        btnAdministrativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnAdministrativo(evt);
             }
         });
+
+        labelDNICliente.setText("DNI:");
+
+        labelNombreCliente.setText("Nombre:");
+
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        txtDNICliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNIClienteActionPerformed(evt);
+            }
+        });
+
+        btnCliente.setText("Iniciar Sesion Cliente");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCliente(evt);
+            }
+        });
+
+        labelTituloIniciarSesionCliente.setText("INICIAR SESION CLIENTE");
+
+        labelTituloIniciarSesionAdministrativo.setText("INICIAR SESION ADMINISTRATIVO");
+
+        labelTituloIniciarSesionSoporteTecnico.setText("INICIAR SESION SOPORTE TECNICO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(selectAdministrativo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSoporteTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
-                .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jToggleButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelNombreCliente)
+                    .addComponent(selectAdministrativo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSoporteTecnico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                    .addComponent(btnAdministrativo, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                    .addComponent(txtNombreCliente)
+                    .addComponent(txtDNICliente)
+                    .addComponent(labelDNICliente)
+                    .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloIniciarSesionSoporteTecnico)
+                    .addComponent(labelTituloIniciarSesionAdministrativo)
+                    .addComponent(labelTituloIniciarSesionCliente))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
+                .addComponent(labelTituloIniciarSesionSoporteTecnico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSoporteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addComponent(labelTituloIniciarSesionAdministrativo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(labelTituloIniciarSesionCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelNombreCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(labelDNICliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtDNICliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIniciarSesionSoporteTecnico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionSoporteTecnico
+    private void btnSoporteTecnico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoporteTecnico
         VentanaSoporteTecnico ventanaSoporteTecnico = new VentanaSoporteTecnico(this.controller);
         ventanaSoporteTecnico.setLocationRelativeTo(null);
         ventanaSoporteTecnico.setVisible(true);        
-    }//GEN-LAST:event_btnIniciarSesionSoporteTecnico
+    }//GEN-LAST:event_btnSoporteTecnico
 
     private void selectAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAdministrativoActionPerformed
         
@@ -117,13 +180,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_selectAdministrativoFocusGained
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        if (jToggleButton1.isSelected()){
-            jToggleButton1.setText("Si");
-        } else {
-            jToggleButton1.setText("No");
-        }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btnAdministrativo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrativo
+        
+        // TODO corregir por el administrador elegido correcto
+        Administrativo admin = new Administrativo("Admin1", 1);        
+        
+        VentanaAdministrativo ventanaAdministrativo = new VentanaAdministrativo(this.controller, admin);
+        ventanaAdministrativo.setLocationRelativeTo(null);
+        ventanaAdministrativo.setVisible(true);
+    }//GEN-LAST:event_btnAdministrativo
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtDNIClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIClienteActionPerformed
+
+    private void btnCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliente
+        // TODO corregir por el cliente elegido correcto (Hay que buscarlo en la lista del controller)
+        Cliente cliente = new Cliente("Cliente1", 1, Nivel.Platinum);       
+        
+        VentanaCliente ventanaCliente = new VentanaCliente(this.controller, cliente);
+        ventanaCliente.setLocationRelativeTo(null);
+        ventanaCliente.setVisible(true);
+    }//GEN-LAST:event_btnCliente
 
     
     
@@ -166,16 +248,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controller);
                 ventanaPrincipal.setLocationRelativeTo(null);
-                ventanaPrincipal.setVisible(true); 
-                
+                ventanaPrincipal.setVisible(true);
                 
             };
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdministrativo;
+    private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnSoporteTecnico;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel labelDNICliente;
+    private javax.swing.JLabel labelNombreCliente;
+    private javax.swing.JLabel labelTituloIniciarSesionAdministrativo;
+    private javax.swing.JLabel labelTituloIniciarSesionCliente;
+    private javax.swing.JLabel labelTituloIniciarSesionSoporteTecnico;
     private javax.swing.JComboBox<Administrativo> selectAdministrativo;
+    private javax.swing.JTextField txtDNICliente;
+    private javax.swing.JTextField txtNombreCliente;
     // End of variables declaration//GEN-END:variables
 }

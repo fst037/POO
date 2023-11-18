@@ -38,6 +38,8 @@ public class Clase {
         this.capacidadMaxima = ((int)emp.getMetrosCuadrados() / 2);
         this.articulosReservados = new ArrayList<Articulo>();
 
+        assert emp.isDisponibleParaFechaHorario(fHI, duracion) : "El Emplazamiento no esta disponible en ese momento.";
+        
         HashMap<TipoArticulo, Integer> cantidadesArticulosNecesarios = new HashMap<TipoArticulo, Integer>();
 
         for (TipoArticulo tipoArticulo: tipoClase.getArticulosNecesariosParaProfesor())
@@ -82,6 +84,7 @@ public class Clase {
             articulo.reservarEnAgenda(this);
         }
 
+        emp.reservarEnAgenda(this);
         this.alumnosInscriptosPresencial = new ArrayList<Cliente>();
         this.alumnosInscriptosOnline = new ArrayList<Cliente>();
         this.estadoClase = EstadoClase.Agendada;

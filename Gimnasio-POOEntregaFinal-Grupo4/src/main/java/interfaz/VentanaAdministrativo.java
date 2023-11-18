@@ -5,7 +5,16 @@
 package interfaz;
 
 import Aplication.Gimnasio;
+import Negocio.articulos.Articulo;
+import Negocio.articulos.TipoArticulo;
+import Negocio.clases.Clase;
+import Negocio.clases.TipoClase;
+import Negocio.enums.EstadoClase;
+import Negocio.enums.Nivel;
+import Negocio.inmuebles.Emplazamiento;
+import Negocio.inmuebles.Sede;
 import Negocio.usuarios.Administrativo;
+import Negocio.usuarios.Cliente;
 
 /**
  *
@@ -14,15 +23,15 @@ import Negocio.usuarios.Administrativo;
 public class VentanaAdministrativo extends javax.swing.JFrame {
 
     private Gimnasio controller;
-    private Administrativo administrativo;
+    private Administrativo administrativoIniciado;
     
     /**
      * Creates new form Administrativo
      */
     public VentanaAdministrativo(Gimnasio controller, Administrativo administrativo) {
-        initComponents();
         this.controller = controller;
-        this.administrativo = administrativo;
+        this.administrativoIniciado = administrativo;
+        initComponents();        
     }
 
     /**
@@ -34,21 +43,1002 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        opcionesAdministrativo = new javax.swing.JTabbedPane();
+        panelAdministrarClases = new javax.swing.JPanel();
+        opcionesAdministrarClases = new javax.swing.JTabbedPane();
+        panelAgendarClase = new javax.swing.JPanel();
+        labelTituloAgendarClase = new javax.swing.JLabel();
+        labelProfesorAgendar = new javax.swing.JLabel();
+        txtProfesorAgendar = new javax.swing.JTextField();
+        labelTipoClaseAgendar = new javax.swing.JLabel();
+        txtTipoClaseAgendar = new javax.swing.JTextField();
+        labelSedeAgendar = new javax.swing.JLabel();
+        selectSedeAgendar = new javax.swing.JComboBox<>();
+        labelEmplazamientoAgendar = new javax.swing.JLabel();
+        selectEmplazamientoAgendar = new javax.swing.JComboBox<>();
+        labelFechaHoraAgendar = new javax.swing.JLabel();
+        labelMesAgendar = new javax.swing.JLabel();
+        spinnerDiaAgendar = new javax.swing.JSpinner();
+        spinnerMesAgendar = new javax.swing.JSpinner();
+        labelDiaAgendar = new javax.swing.JLabel();
+        spinnerAñoAgendar = new javax.swing.JSpinner();
+        labelAñoAgendar = new javax.swing.JLabel();
+        spinnerHoraAgendar = new javax.swing.JSpinner();
+        labelHoraAgendar = new javax.swing.JLabel();
+        spinnerMinutoAgendar = new javax.swing.JSpinner();
+        labelMinutoAgendar = new javax.swing.JLabel();
+        labelDuracionAgendar = new javax.swing.JLabel();
+        spinnerDuracionMinutosAgendar = new javax.swing.JSpinner();
+        labelDuracionMinutosAgendar = new javax.swing.JLabel();
+        spinnerDuracionHorasAgendar = new javax.swing.JSpinner();
+        labelDuracionHorasAgendar = new javax.swing.JLabel();
+        btnAgendarClase = new javax.swing.JButton();
+        panelModificarClase = new javax.swing.JPanel();
+        labelTituloModificarClase = new javax.swing.JLabel();
+        labelClaseModificar = new javax.swing.JLabel();
+        selectSedeModificar = new javax.swing.JComboBox<>();
+        labelSedeModificar = new javax.swing.JLabel();
+        selectEstadoClaseModificar = new javax.swing.JComboBox<>();
+        labelEstadoClaseModificar = new javax.swing.JLabel();
+        selectClaseModificar = new javax.swing.JComboBox<>();
+        labelNuevoEstadoClaseModificar = new javax.swing.JLabel();
+        selectNuevoEstadoClaseModificar = new javax.swing.JComboBox<>();
+        btnModificarClase = new javax.swing.JButton();
+        panelSistemaStreaming = new javax.swing.JPanel();
+        labelTituloClasesGrabadas = new javax.swing.JLabel();
+        labelTipoClaseGrabaciones = new javax.swing.JLabel();
+        selectSedeGrabaciones = new javax.swing.JComboBox<>();
+        labelSedeGrabaciones = new javax.swing.JLabel();
+        btnListarClasesGrabadas = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listClasesEncontradas = new javax.swing.JList<>();
+        labelClasesEncontradas = new javax.swing.JLabel();
+        selectTipoClaseGrabaciones = new javax.swing.JComboBox<>();
+        panelAdministrarClientes = new javax.swing.JPanel();
+        opcionesAdministrarClientes = new javax.swing.JTabbedPane();
+        panelAltaCliente = new javax.swing.JPanel();
+        labelTituloAltaCliente = new javax.swing.JLabel();
+        labelNombreClienteAlta = new javax.swing.JLabel();
+        txtNombreClienteAlta = new javax.swing.JTextField();
+        labelDNIClienteAlta = new javax.swing.JLabel();
+        txtDNIClienteAlta = new javax.swing.JTextField();
+        labelNivelClienteAlta = new javax.swing.JLabel();
+        selectNivelClienteAlta = new javax.swing.JComboBox<>();
+        btnDarAltaCliente = new javax.swing.JButton();
+        panelBajaCliente = new javax.swing.JPanel();
+        labelTituloDarBajaCliente = new javax.swing.JLabel();
+        txtFiltroNombreClienteBaja = new javax.swing.JTextField();
+        selectClienteBaja = new javax.swing.JComboBox<>();
+        labelClienteBaja = new javax.swing.JLabel();
+        labelFiltroNombreClienteBaja = new javax.swing.JLabel();
+        btnDarBajaCliente = new javax.swing.JButton();
+        panelModificarCliente = new javax.swing.JPanel();
+        labelTituloModificarCliente = new javax.swing.JLabel();
+        selectClienteModificar = new javax.swing.JComboBox<>();
+        labelClienteModificar = new javax.swing.JLabel();
+        txtFiltroNombreClienteModificar = new javax.swing.JTextField();
+        labelFiltroNombreClienteModificar = new javax.swing.JLabel();
+        selectNuevoNivelClienteModificar = new javax.swing.JComboBox<>();
+        labelNuevoNivelClienteModificar = new javax.swing.JLabel();
+        btnModificarCliente = new javax.swing.JButton();
+        panelAdministrarArticulos = new javax.swing.JPanel();
+        opcionesAdministrarArticulos = new javax.swing.JTabbedPane();
+        panelVerArtDisponibleEnFecha = new javax.swing.JPanel();
+        selectSedeArticulosDisponibles = new javax.swing.JComboBox<>();
+        labelSedeArticulosDisponibles = new javax.swing.JLabel();
+        labelTituloVerArticulosDisponiblesEnFecha = new javax.swing.JLabel();
+        spinnerDuracionMinutosArticulosDisponibles = new javax.swing.JSpinner();
+        spinnerDuracionHorasArticulosDisponibles = new javax.swing.JSpinner();
+        labelDuracionHorasArticulosDisponibles = new javax.swing.JLabel();
+        labelDuracionMinutosArticulosDisponibles = new javax.swing.JLabel();
+        labelDuracionArticulosDisponibles = new javax.swing.JLabel();
+        spinnerDiaArticulosDisponibles = new javax.swing.JSpinner();
+        labelDiaArticulosDisponibles = new javax.swing.JLabel();
+        labelFechaHoraArticulosDisponibles = new javax.swing.JLabel();
+        spinnerMesArticulosDisponibles = new javax.swing.JSpinner();
+        labelMesArticulosDisponibles = new javax.swing.JLabel();
+        spinnerAñoArticulosDisponibles = new javax.swing.JSpinner();
+        labelAñoArticulosDisponibles = new javax.swing.JLabel();
+        spinnerHoraArticulosDisponibles = new javax.swing.JSpinner();
+        labelHoraArticulosDisponibles = new javax.swing.JLabel();
+        spinnerMinutoArticulosDisponibles = new javax.swing.JSpinner();
+        labelMinutoArticulosDisponibles = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listArticulosDisponiblesEncontrados = new javax.swing.JList<>();
+        btnBuscarArticulosDisponibles = new javax.swing.JButton();
+        labelArticulosDisponiblesEncontrados = new javax.swing.JLabel();
+        panelVerDesgasteArticulos = new javax.swing.JPanel();
+        labelTituloDesgasteArticulosYBaja = new javax.swing.JLabel();
+        selectSedeVerDesgasteBajaArticulos = new javax.swing.JComboBox<>();
+        labelSedeVerDesgasteBajaArticulos = new javax.swing.JLabel();
+        selectVerDesgasteBajaArticulo = new javax.swing.JComboBox<>();
+        labelVerDesgasteBajaArticulo = new javax.swing.JLabel();
+        btnDarBajaArticulo = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        labelTituloDarAltaArticulo = new javax.swing.JLabel();
+        labelTipoArticuloAltaArticulo = new javax.swing.JLabel();
+        selectSedeAltaArticulo = new javax.swing.JComboBox<>();
+        labelSedeAltaArticulo = new javax.swing.JLabel();
+        selectTipoArticuloAltaArticulo = new javax.swing.JComboBox<>();
+        spinnerMesFechaFabricacionAltaArticulo = new javax.swing.JSpinner();
+        spinnerAñoFechaFabricacionAltaArticulo = new javax.swing.JSpinner();
+        labelAñoFechaFabricacionAltaArticulo = new javax.swing.JLabel();
+        labelMesFechaFabricacionAltaArticulo = new javax.swing.JLabel();
+        labelDiaFechaFabricacionAltaArticulo = new javax.swing.JLabel();
+        spinnerDiaFechaFabricacionAltaArticulo = new javax.swing.JSpinner();
+        labelFechaFabricacionAltaArticulo = new javax.swing.JLabel();
+        btnDarAltaArticulo = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Administrativo");
+
+        labelTituloAgendarClase.setText("AGENDAR CLASE");
+
+        labelProfesorAgendar.setText("Profesor:");
+
+        txtProfesorAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProfesorAgendarActionPerformed(evt);
+            }
+        });
+
+        labelTipoClaseAgendar.setText("Tipo de Clase:");
+
+        txtTipoClaseAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoClaseAgendarActionPerformed(evt);
+            }
+        });
+
+        labelSedeAgendar.setText("Sede:");
+
+        labelEmplazamientoAgendar.setText("Emplazamiento:");
+
+        labelFechaHoraAgendar.setText("Fecha y Hora:");
+
+        labelMesAgendar.setText("Mes:");
+
+        labelDiaAgendar.setText("Dia:");
+
+        labelAñoAgendar.setText("Año:");
+
+        labelHoraAgendar.setText("Hora:");
+
+        labelMinutoAgendar.setText("Minuto:");
+
+        labelDuracionAgendar.setText("Duracion:");
+
+        labelDuracionMinutosAgendar.setText("Minutos:");
+
+        labelDuracionHorasAgendar.setText("Horas:");
+
+        btnAgendarClase.setText("Agendar Clase");
+
+        javax.swing.GroupLayout panelAgendarClaseLayout = new javax.swing.GroupLayout(panelAgendarClase);
+        panelAgendarClase.setLayout(panelAgendarClaseLayout);
+        panelAgendarClaseLayout.setHorizontalGroup(
+            panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFechaHoraAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelDuracionAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(selectEmplazamientoAgendar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelDuracionHorasAgendar)
+                                        .addComponent(spinnerDuracionHorasAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(spinnerDuracionMinutosAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelDuracionMinutosAgendar)))
+                                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelEmplazamientoAgendar)
+                                    .addComponent(labelProfesorAgendar)
+                                    .addComponent(txtProfesorAgendar)
+                                    .addComponent(txtTipoClaseAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                                    .addComponent(labelTipoClaseAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelSedeAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(selectSedeAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelDiaAgendar)
+                                            .addComponent(spinnerDiaAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelMesAgendar)
+                                            .addComponent(spinnerMesAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                                                .addComponent(labelAñoAgendar)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(spinnerAñoAgendar))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelHoraAgendar)
+                                            .addComponent(spinnerHoraAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelMinutoAgendar)
+                                            .addComponent(spinnerMinutoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(31, 31, 31)))))
+                        .addGap(0, 21, Short.MAX_VALUE)))
+                .addGap(56, 56, 56))
+            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloAgendarClase)
+                    .addComponent(btnAgendarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelAgendarClaseLayout.setVerticalGroup(
+            panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(labelTituloAgendarClase)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelProfesorAgendar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtProfesorAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelTipoClaseAgendar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTipoClaseAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSedeAgendar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectSedeAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                        .addComponent(labelEmplazamientoAgendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectEmplazamientoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelFechaHoraAgendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                                .addComponent(labelDiaAgendar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spinnerDiaAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgendarClaseLayout.createSequentialGroup()
+                                .addComponent(labelAñoAgendar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spinnerAñoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgendarClaseLayout.createSequentialGroup()
+                                .addComponent(labelMesAgendar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spinnerMesAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                        .addComponent(labelHoraAgendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerHoraAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                        .addComponent(labelMinutoAgendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerMinutoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addComponent(labelDuracionAgendar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                        .addComponent(labelDuracionHorasAgendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerDuracionHorasAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                        .addComponent(labelDuracionMinutosAgendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerDuracionMinutosAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(btnAgendarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarClases.addTab("AgendarClase", panelAgendarClase);
+
+        labelTituloModificarClase.setText("MODIFICAR CLASE");
+
+        labelClaseModificar.setText("Clase:");
+
+        labelSedeModificar.setText("Sede:");
+
+        labelEstadoClaseModificar.setText("Estado clase:");
+
+        labelNuevoEstadoClaseModificar.setText("Nuevo estado de la Clase:");
+
+        btnModificarClase.setText("Modificar Clase");
+
+        javax.swing.GroupLayout panelModificarClaseLayout = new javax.swing.GroupLayout(panelModificarClase);
+        panelModificarClase.setLayout(panelModificarClaseLayout);
+        panelModificarClaseLayout.setHorizontalGroup(
+            panelModificarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModificarClaseLayout.createSequentialGroup()
+                .addGroup(panelModificarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelModificarClaseLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(labelTituloModificarClase))
+                    .addGroup(panelModificarClaseLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(panelModificarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelEstadoClaseModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectEstadoClaseModificar, 0, 371, Short.MAX_VALUE)
+                            .addComponent(labelClaseModificar)
+                            .addComponent(labelSedeModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectSedeModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectClaseModificar, 0, 371, Short.MAX_VALUE)
+                            .addComponent(labelNuevoEstadoClaseModificar)
+                            .addComponent(selectNuevoEstadoClaseModificar, 0, 371, Short.MAX_VALUE)
+                            .addComponent(btnModificarClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+        panelModificarClaseLayout.setVerticalGroup(
+            panelModificarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModificarClaseLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(labelTituloModificarClase)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSedeModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectSedeModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelEstadoClaseModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectEstadoClaseModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelClaseModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectClaseModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(labelNuevoEstadoClaseModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectNuevoEstadoClaseModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnModificarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarClases.addTab("ModificarClase", panelModificarClase);
+
+        labelTituloClasesGrabadas.setText("VER CLASES GRABADAS");
+
+        labelTipoClaseGrabaciones.setText("Tipo de Clase:");
+
+        labelSedeGrabaciones.setText("Sede:");
+
+        btnListarClasesGrabadas.setText("Listar Clases Grabadas");
+        btnListarClasesGrabadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarClasesGrabadasActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(listClasesEncontradas);
+
+        labelClasesEncontradas.setText("Clases Encontradas:");
+
+        javax.swing.GroupLayout panelSistemaStreamingLayout = new javax.swing.GroupLayout(panelSistemaStreaming);
+        panelSistemaStreaming.setLayout(panelSistemaStreamingLayout);
+        panelSistemaStreamingLayout.setHorizontalGroup(
+            panelSistemaStreamingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSistemaStreamingLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(panelSistemaStreamingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloClasesGrabadas)
+                    .addGroup(panelSistemaStreamingLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(panelSistemaStreamingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelClasesEncontradas)
+                            .addGroup(panelSistemaStreamingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane1)
+                                .addComponent(labelTipoClaseGrabaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelSedeGrabaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selectSedeGrabaciones, 0, 370, Short.MAX_VALUE)
+                                .addComponent(btnListarClasesGrabadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selectTipoClaseGrabaciones, 0, 370, Short.MAX_VALUE)))))
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+        panelSistemaStreamingLayout.setVerticalGroup(
+            panelSistemaStreamingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSistemaStreamingLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(labelTituloClasesGrabadas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelTipoClaseGrabaciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectTipoClaseGrabaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(labelSedeGrabaciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectSedeGrabaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnListarClasesGrabadas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(labelClasesEncontradas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarClases.addTab("SistemaStreaming", panelSistemaStreaming);
+
+        javax.swing.GroupLayout panelAdministrarClasesLayout = new javax.swing.GroupLayout(panelAdministrarClases);
+        panelAdministrarClases.setLayout(panelAdministrarClasesLayout);
+        panelAdministrarClasesLayout.setHorizontalGroup(
+            panelAdministrarClasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(opcionesAdministrarClases)
+        );
+        panelAdministrarClasesLayout.setVerticalGroup(
+            panelAdministrarClasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(opcionesAdministrarClases)
+        );
+
+        opcionesAdministrativo.addTab("AdministrarClases", panelAdministrarClases);
+
+        labelTituloAltaCliente.setText("DAR ALTA CLIENTE");
+
+        labelNombreClienteAlta.setText("Nombre:");
+
+        labelDNIClienteAlta.setText("DNI:");
+
+        labelNivelClienteAlta.setText("Nivel:");
+
+        btnDarAltaCliente.setText("Dar de Alta Cliente");
+
+        javax.swing.GroupLayout panelAltaClienteLayout = new javax.swing.GroupLayout(panelAltaCliente);
+        panelAltaCliente.setLayout(panelAltaClienteLayout);
+        panelAltaClienteLayout.setHorizontalGroup(
+            panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAltaClienteLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloAltaCliente)
+                    .addGroup(panelAltaClienteLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelNivelClienteAlta)
+                            .addComponent(labelNombreClienteAlta)
+                            .addComponent(txtNombreClienteAlta)
+                            .addComponent(labelDNIClienteAlta)
+                            .addComponent(txtDNIClienteAlta)
+                            .addComponent(selectNivelClienteAlta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDarAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE))))
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+        panelAltaClienteLayout.setVerticalGroup(
+            panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAltaClienteLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(labelTituloAltaCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelNombreClienteAlta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelDNIClienteAlta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDNIClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNivelClienteAlta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectNivelClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDarAltaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarClientes.addTab("DarAltaCliente", panelAltaCliente);
+
+        labelTituloDarBajaCliente.setText("DAR BAJA CLIENTE");
+
+        txtFiltroNombreClienteBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroNombreClienteBajaActionPerformed(evt);
+            }
+        });
+
+        labelClienteBaja.setText("Cliente");
+
+        labelFiltroNombreClienteBaja.setText("Filtro Nombre Cliente:");
+
+        btnDarBajaCliente.setText("Dar de Baja Cliente");
+        btnDarBajaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarBajaClienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBajaClienteLayout = new javax.swing.GroupLayout(panelBajaCliente);
+        panelBajaCliente.setLayout(panelBajaClienteLayout);
+        panelBajaClienteLayout.setHorizontalGroup(
+            panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBajaClienteLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloDarBajaCliente)
+                    .addGroup(panelBajaClienteLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDarBajaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                            .addComponent(labelFiltroNombreClienteBaja)
+                            .addComponent(labelClienteBaja)
+                            .addComponent(selectClienteBaja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtFiltroNombreClienteBaja))))
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+        panelBajaClienteLayout.setVerticalGroup(
+            panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBajaClienteLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(labelTituloDarBajaCliente)
+                .addGap(18, 18, 18)
+                .addComponent(labelFiltroNombreClienteBaja)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFiltroNombreClienteBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelClienteBaja)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectClienteBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(btnDarBajaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(265, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarClientes.addTab("DarBajaCliente", panelBajaCliente);
+
+        labelTituloModificarCliente.setText("MODIFICAR CLIENTE");
+
+        selectClienteModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectClienteModificarActionPerformed(evt);
+            }
+        });
+
+        labelClienteModificar.setText("Cliente:");
+
+        txtFiltroNombreClienteModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroNombreClienteModificarActionPerformed(evt);
+            }
+        });
+
+        labelFiltroNombreClienteModificar.setText("Filtro Nombre Cliente:");
+
+        labelNuevoNivelClienteModificar.setText("Nuevo Nivel:");
+
+        btnModificarCliente.setText("Modificar Cliente");
+
+        javax.swing.GroupLayout panelModificarClienteLayout = new javax.swing.GroupLayout(panelModificarCliente);
+        panelModificarCliente.setLayout(panelModificarClienteLayout);
+        panelModificarClienteLayout.setHorizontalGroup(
+            panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModificarClienteLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloModificarCliente)
+                    .addGroup(panelModificarClienteLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelFiltroNombreClienteModificar)
+                            .addComponent(labelClienteModificar)
+                            .addComponent(selectClienteModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtFiltroNombreClienteModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                            .addComponent(selectNuevoNivelClienteModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelNuevoNivelClienteModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+        panelModificarClienteLayout.setVerticalGroup(
+            panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModificarClienteLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(labelTituloModificarCliente)
+                .addGap(18, 18, 18)
+                .addComponent(labelFiltroNombreClienteModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFiltroNombreClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(labelClienteModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNuevoNivelClienteModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectNuevoNivelClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarClientes.addTab("ModificarCliente", panelModificarCliente);
+
+        javax.swing.GroupLayout panelAdministrarClientesLayout = new javax.swing.GroupLayout(panelAdministrarClientes);
+        panelAdministrarClientes.setLayout(panelAdministrarClientesLayout);
+        panelAdministrarClientesLayout.setHorizontalGroup(
+            panelAdministrarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(opcionesAdministrarClientes)
+        );
+        panelAdministrarClientesLayout.setVerticalGroup(
+            panelAdministrarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(opcionesAdministrarClientes)
+        );
+
+        opcionesAdministrativo.addTab("AdministrarClientes", panelAdministrarClientes);
+
+        labelSedeArticulosDisponibles.setText("Sede:");
+
+        labelTituloVerArticulosDisponiblesEnFecha.setText("VER ARTICULOS DISPONIBLES EN FECHA");
+
+        labelDuracionHorasArticulosDisponibles.setText("Horas:");
+
+        labelDuracionMinutosArticulosDisponibles.setText("Minutos:");
+
+        labelDuracionArticulosDisponibles.setText("Duracion:");
+
+        labelDiaArticulosDisponibles.setText("Dia:");
+
+        labelFechaHoraArticulosDisponibles.setText("Fecha y Hora:");
+
+        labelMesArticulosDisponibles.setText("Mes:");
+
+        labelAñoArticulosDisponibles.setText("Año:");
+
+        labelHoraArticulosDisponibles.setText("Hora:");
+
+        labelMinutoArticulosDisponibles.setText("Minuto:");
+
+        jScrollPane2.setViewportView(listArticulosDisponiblesEncontrados);
+
+        btnBuscarArticulosDisponibles.setText("Buscar Articulos");
+        btnBuscarArticulosDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarArticulosDisponiblesActionPerformed(evt);
+            }
+        });
+
+        labelArticulosDisponiblesEncontrados.setText("Articulos Disponibles Encontrados:");
+
+        javax.swing.GroupLayout panelVerArtDisponibleEnFechaLayout = new javax.swing.GroupLayout(panelVerArtDisponibleEnFecha);
+        panelVerArtDisponibleEnFecha.setLayout(panelVerArtDisponibleEnFechaLayout);
+        panelVerArtDisponibleEnFechaLayout.setHorizontalGroup(
+            panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(labelTituloVerArticulosDisponiblesEnFecha))
+                    .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelArticulosDisponiblesEncontrados)
+                            .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(labelSedeArticulosDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(labelFechaHoraArticulosDisponibles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(labelDuracionArticulosDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(labelDuracionHorasArticulosDisponibles)
+                                                        .addComponent(spinnerDuracionHorasArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(spinnerDuracionMinutosArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(labelDuracionMinutosArticulosDisponibles)))
+                                                .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(labelDiaArticulosDisponibles)
+                                                        .addComponent(spinnerDiaArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(labelMesArticulosDisponibles)
+                                                        .addComponent(spinnerMesArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(labelAñoArticulosDisponibles)
+                                                        .addComponent(spinnerAñoArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(labelHoraArticulosDisponibles)
+                                                        .addComponent(spinnerHoraArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(labelMinutoArticulosDisponibles)
+                                                        .addComponent(spinnerMinutoArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(selectSedeArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane2)
+                                .addComponent(btnBuscarArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+        panelVerArtDisponibleEnFechaLayout.setVerticalGroup(
+            panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(labelTituloVerArticulosDisponiblesEnFecha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSedeArticulosDisponibles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectSedeArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                        .addComponent(labelFechaHoraArticulosDisponibles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                    .addComponent(labelDiaArticulosDisponibles)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(spinnerDiaArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                    .addComponent(labelAñoArticulosDisponibles)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(spinnerAñoArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                    .addComponent(labelMesArticulosDisponibles)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(spinnerMesArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                                .addComponent(labelMinutoArticulosDisponibles)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spinnerMinutoArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                        .addComponent(labelHoraArticulosDisponibles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerHoraArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addComponent(labelDuracionArticulosDisponibles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelVerArtDisponibleEnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                        .addComponent(labelDuracionHorasArticulosDisponibles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerDuracionHorasArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVerArtDisponibleEnFechaLayout.createSequentialGroup()
+                        .addComponent(labelDuracionMinutosArticulosDisponibles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerDuracionMinutosArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscarArticulosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelArticulosDisponiblesEncontrados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
+        );
+
+        opcionesAdministrarArticulos.addTab("VerArticulosDisponibleEnFecha", panelVerArtDisponibleEnFecha);
+
+        labelTituloDesgasteArticulosYBaja.setText("VER DESGASTE ARTICULOS Y DAR DE BAJA");
+
+        labelSedeVerDesgasteBajaArticulos.setText("Sede:");
+
+        selectVerDesgasteBajaArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectVerDesgasteBajaArticuloActionPerformed(evt);
+            }
+        });
+
+        labelVerDesgasteBajaArticulo.setText("Articulo:");
+
+        btnDarBajaArticulo.setText("Dar de Baja Articulo");
+        btnDarBajaArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarBajaArticuloActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelVerDesgasteArticulosLayout = new javax.swing.GroupLayout(panelVerDesgasteArticulos);
+        panelVerDesgasteArticulos.setLayout(panelVerDesgasteArticulosLayout);
+        panelVerDesgasteArticulosLayout.setHorizontalGroup(
+            panelVerDesgasteArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerDesgasteArticulosLayout.createSequentialGroup()
+                .addGroup(panelVerDesgasteArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelVerDesgasteArticulosLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(labelTituloDesgasteArticulosYBaja))
+                    .addGroup(panelVerDesgasteArticulosLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(panelVerDesgasteArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelSedeVerDesgasteBajaArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectSedeVerDesgasteBajaArticulos, 0, 385, Short.MAX_VALUE)
+                            .addComponent(labelVerDesgasteBajaArticulo)
+                            .addComponent(selectVerDesgasteBajaArticulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDarBajaArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelVerDesgasteArticulosLayout.setVerticalGroup(
+            panelVerDesgasteArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerDesgasteArticulosLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(labelTituloDesgasteArticulosYBaja)
+                .addGap(18, 18, 18)
+                .addComponent(labelSedeVerDesgasteBajaArticulos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectSedeVerDesgasteBajaArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelVerDesgasteBajaArticulo)
+                .addGap(9, 9, 9)
+                .addComponent(selectVerDesgasteBajaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDarBajaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarArticulos.addTab("VerDesgasteArticulosYBaja", panelVerDesgasteArticulos);
+
+        labelTituloDarAltaArticulo.setText("DAR ALTA ARTICULO");
+
+        labelTipoArticuloAltaArticulo.setText("Tipo de Articulo:");
+
+        labelSedeAltaArticulo.setText("Sede:");
+
+        labelAñoFechaFabricacionAltaArticulo.setText("Año:");
+
+        labelMesFechaFabricacionAltaArticulo.setText("Mes:");
+
+        labelDiaFechaFabricacionAltaArticulo.setText("Dia:");
+
+        labelFechaFabricacionAltaArticulo.setText("Fecha de Fabricación:");
+
+        btnDarAltaArticulo.setText("Dar Alta Articulo");
+        btnDarAltaArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarAltaArticuloActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDarAltaArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTituloDarAltaArticulo)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelFechaFabricacionAltaArticulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelDiaFechaFabricacionAltaArticulo)
+                                        .addComponent(spinnerDiaFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelMesFechaFabricacionAltaArticulo)
+                                        .addComponent(spinnerMesFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelAñoFechaFabricacionAltaArticulo)
+                                        .addComponent(spinnerAñoFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(110, 110, 110)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelTipoArticuloAltaArticulo)
+                                .addComponent(labelSedeAltaArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selectSedeAltaArticulo, 0, 385, Short.MAX_VALUE)
+                                .addComponent(selectTipoArticuloAltaArticulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelTituloDarAltaArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSedeAltaArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectSedeAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelTipoArticuloAltaArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectTipoArticuloAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelFechaFabricacionAltaArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelDiaFechaFabricacionAltaArticulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerDiaFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelAñoFechaFabricacionAltaArticulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerAñoFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelMesFechaFabricacionAltaArticulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerMesFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDarAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(220, Short.MAX_VALUE))
+        );
+
+        opcionesAdministrarArticulos.addTab("DarAltaArticulo", jPanel1);
+
+        javax.swing.GroupLayout panelAdministrarArticulosLayout = new javax.swing.GroupLayout(panelAdministrarArticulos);
+        panelAdministrarArticulos.setLayout(panelAdministrarArticulosLayout);
+        panelAdministrarArticulosLayout.setHorizontalGroup(
+            panelAdministrarArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(opcionesAdministrarArticulos)
+        );
+        panelAdministrarArticulosLayout.setVerticalGroup(
+            panelAdministrarArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(opcionesAdministrarArticulos)
+        );
+
+        opcionesAdministrativo.addTab("AdministrarArticulos", panelAdministrarArticulos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(opcionesAdministrativo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(opcionesAdministrativo)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtProfesorAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfesorAgendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProfesorAgendarActionPerformed
+
+    private void txtTipoClaseAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoClaseAgendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoClaseAgendarActionPerformed
+
+    private void btnListarClasesGrabadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarClasesGrabadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarClasesGrabadasActionPerformed
+
+    private void txtFiltroNombreClienteBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreClienteBajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroNombreClienteBajaActionPerformed
+
+    private void btnDarBajaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarBajaClienteActionPerformed
+
+    private void txtFiltroNombreClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreClienteModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroNombreClienteModificarActionPerformed
+
+    private void selectClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectClienteModificarActionPerformed
+
+    private void btnBuscarArticulosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarArticulosDisponiblesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarArticulosDisponiblesActionPerformed
+
+    private void selectVerDesgasteBajaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectVerDesgasteBajaArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectVerDesgasteBajaArticuloActionPerformed
+
+    private void btnDarBajaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarBajaArticuloActionPerformed
+
+    private void btnDarAltaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarAltaArticuloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -56,5 +1046,130 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgendarClase;
+    private javax.swing.JButton btnBuscarArticulosDisponibles;
+    private javax.swing.JButton btnDarAltaArticulo;
+    private javax.swing.JButton btnDarAltaCliente;
+    private javax.swing.JButton btnDarBajaArticulo;
+    private javax.swing.JButton btnDarBajaCliente;
+    private javax.swing.JButton btnListarClasesGrabadas;
+    private javax.swing.JButton btnModificarClase;
+    private javax.swing.JButton btnModificarCliente;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelArticulosDisponiblesEncontrados;
+    private javax.swing.JLabel labelAñoAgendar;
+    private javax.swing.JLabel labelAñoArticulosDisponibles;
+    private javax.swing.JLabel labelAñoFechaFabricacionAltaArticulo;
+    private javax.swing.JLabel labelClaseModificar;
+    private javax.swing.JLabel labelClasesEncontradas;
+    private javax.swing.JLabel labelClienteBaja;
+    private javax.swing.JLabel labelClienteModificar;
+    private javax.swing.JLabel labelDNIClienteAlta;
+    private javax.swing.JLabel labelDiaAgendar;
+    private javax.swing.JLabel labelDiaArticulosDisponibles;
+    private javax.swing.JLabel labelDiaFechaFabricacionAltaArticulo;
+    private javax.swing.JLabel labelDuracionAgendar;
+    private javax.swing.JLabel labelDuracionArticulosDisponibles;
+    private javax.swing.JLabel labelDuracionHorasAgendar;
+    private javax.swing.JLabel labelDuracionHorasArticulosDisponibles;
+    private javax.swing.JLabel labelDuracionMinutosAgendar;
+    private javax.swing.JLabel labelDuracionMinutosArticulosDisponibles;
+    private javax.swing.JLabel labelEmplazamientoAgendar;
+    private javax.swing.JLabel labelEstadoClaseModificar;
+    private javax.swing.JLabel labelFechaFabricacionAltaArticulo;
+    private javax.swing.JLabel labelFechaHoraAgendar;
+    private javax.swing.JLabel labelFechaHoraArticulosDisponibles;
+    private javax.swing.JLabel labelFiltroNombreClienteBaja;
+    private javax.swing.JLabel labelFiltroNombreClienteModificar;
+    private javax.swing.JLabel labelHoraAgendar;
+    private javax.swing.JLabel labelHoraArticulosDisponibles;
+    private javax.swing.JLabel labelMesAgendar;
+    private javax.swing.JLabel labelMesArticulosDisponibles;
+    private javax.swing.JLabel labelMesFechaFabricacionAltaArticulo;
+    private javax.swing.JLabel labelMinutoAgendar;
+    private javax.swing.JLabel labelMinutoArticulosDisponibles;
+    private javax.swing.JLabel labelNivelClienteAlta;
+    private javax.swing.JLabel labelNombreClienteAlta;
+    private javax.swing.JLabel labelNuevoEstadoClaseModificar;
+    private javax.swing.JLabel labelNuevoNivelClienteModificar;
+    private javax.swing.JLabel labelProfesorAgendar;
+    private javax.swing.JLabel labelSedeAgendar;
+    private javax.swing.JLabel labelSedeAltaArticulo;
+    private javax.swing.JLabel labelSedeArticulosDisponibles;
+    private javax.swing.JLabel labelSedeGrabaciones;
+    private javax.swing.JLabel labelSedeModificar;
+    private javax.swing.JLabel labelSedeVerDesgasteBajaArticulos;
+    private javax.swing.JLabel labelTipoArticuloAltaArticulo;
+    private javax.swing.JLabel labelTipoClaseAgendar;
+    private javax.swing.JLabel labelTipoClaseGrabaciones;
+    private javax.swing.JLabel labelTituloAgendarClase;
+    private javax.swing.JLabel labelTituloAltaCliente;
+    private javax.swing.JLabel labelTituloClasesGrabadas;
+    private javax.swing.JLabel labelTituloDarAltaArticulo;
+    private javax.swing.JLabel labelTituloDarBajaCliente;
+    private javax.swing.JLabel labelTituloDesgasteArticulosYBaja;
+    private javax.swing.JLabel labelTituloModificarClase;
+    private javax.swing.JLabel labelTituloModificarCliente;
+    private javax.swing.JLabel labelTituloVerArticulosDisponiblesEnFecha;
+    private javax.swing.JLabel labelVerDesgasteBajaArticulo;
+    private javax.swing.JList<Articulo> listArticulosDisponiblesEncontrados;
+    private javax.swing.JList<Clase> listClasesEncontradas;
+    private javax.swing.JTabbedPane opcionesAdministrarArticulos;
+    private javax.swing.JTabbedPane opcionesAdministrarClases;
+    private javax.swing.JTabbedPane opcionesAdministrarClientes;
+    private javax.swing.JTabbedPane opcionesAdministrativo;
+    private javax.swing.JPanel panelAdministrarArticulos;
+    private javax.swing.JPanel panelAdministrarClases;
+    private javax.swing.JPanel panelAdministrarClientes;
+    private javax.swing.JPanel panelAgendarClase;
+    private javax.swing.JPanel panelAltaCliente;
+    private javax.swing.JPanel panelBajaCliente;
+    private javax.swing.JPanel panelModificarClase;
+    private javax.swing.JPanel panelModificarCliente;
+    private javax.swing.JPanel panelSistemaStreaming;
+    private javax.swing.JPanel panelVerArtDisponibleEnFecha;
+    private javax.swing.JPanel panelVerDesgasteArticulos;
+    private javax.swing.JComboBox<Clase> selectClaseModificar;
+    private javax.swing.JComboBox<Sede> selectClienteBaja;
+    private javax.swing.JComboBox<Cliente> selectClienteModificar;
+    private javax.swing.JComboBox<Emplazamiento> selectEmplazamientoAgendar;
+    private javax.swing.JComboBox<EstadoClase> selectEstadoClaseModificar;
+    private javax.swing.JComboBox<Nivel> selectNivelClienteAlta;
+    private javax.swing.JComboBox<EstadoClase> selectNuevoEstadoClaseModificar;
+    private javax.swing.JComboBox<Nivel> selectNuevoNivelClienteModificar;
+    private javax.swing.JComboBox<Sede> selectSedeAgendar;
+    private javax.swing.JComboBox<Sede> selectSedeAltaArticulo;
+    private javax.swing.JComboBox<Sede> selectSedeArticulosDisponibles;
+    private javax.swing.JComboBox<Sede> selectSedeGrabaciones;
+    private javax.swing.JComboBox<Sede> selectSedeModificar;
+    private javax.swing.JComboBox<Sede> selectSedeVerDesgasteBajaArticulos;
+    private javax.swing.JComboBox<TipoArticulo> selectTipoArticuloAltaArticulo;
+    private javax.swing.JComboBox<TipoClase> selectTipoClaseGrabaciones;
+    private javax.swing.JComboBox<Articulo> selectVerDesgasteBajaArticulo;
+    private javax.swing.JSpinner spinnerAñoAgendar;
+    private javax.swing.JSpinner spinnerAñoArticulosDisponibles;
+    private javax.swing.JSpinner spinnerAñoFechaFabricacionAltaArticulo;
+    private javax.swing.JSpinner spinnerDiaAgendar;
+    private javax.swing.JSpinner spinnerDiaArticulosDisponibles;
+    private javax.swing.JSpinner spinnerDiaFechaFabricacionAltaArticulo;
+    private javax.swing.JSpinner spinnerDuracionHorasAgendar;
+    private javax.swing.JSpinner spinnerDuracionHorasArticulosDisponibles;
+    private javax.swing.JSpinner spinnerDuracionMinutosAgendar;
+    private javax.swing.JSpinner spinnerDuracionMinutosArticulosDisponibles;
+    private javax.swing.JSpinner spinnerHoraAgendar;
+    private javax.swing.JSpinner spinnerHoraArticulosDisponibles;
+    private javax.swing.JSpinner spinnerMesAgendar;
+    private javax.swing.JSpinner spinnerMesArticulosDisponibles;
+    private javax.swing.JSpinner spinnerMesFechaFabricacionAltaArticulo;
+    private javax.swing.JSpinner spinnerMinutoAgendar;
+    private javax.swing.JSpinner spinnerMinutoArticulosDisponibles;
+    private javax.swing.JTextField txtDNIClienteAlta;
+    private javax.swing.JTextField txtFiltroNombreClienteBaja;
+    private javax.swing.JTextField txtFiltroNombreClienteModificar;
+    private javax.swing.JTextField txtNombreClienteAlta;
+    private javax.swing.JTextField txtProfesorAgendar;
+    private javax.swing.JTextField txtTipoClaseAgendar;
     // End of variables declaration//GEN-END:variables
 }

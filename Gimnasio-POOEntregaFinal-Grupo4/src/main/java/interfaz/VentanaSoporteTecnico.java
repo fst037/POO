@@ -5,6 +5,13 @@
 package interfaz;
 
 import Aplication.Gimnasio;
+import Negocio.articulos.TipoArticulo;
+import Negocio.enums.Amortizacion;
+import Negocio.enums.Nivel;
+import Negocio.enums.TipoUsoPesa;
+import Negocio.inmuebles.Sede;
+import Negocio.usuarios.Administrativo;
+import Negocio.usuarios.Cliente;
 
 /**
  *
@@ -18,8 +25,8 @@ public class VentanaSoporteTecnico extends javax.swing.JFrame {
      * @param controller
      */
     public VentanaSoporteTecnico(Gimnasio controller) {
-        initComponents();
         this.controller = controller;
+        initComponents();        
     }
 
     /**
@@ -31,106 +38,1095 @@ public class VentanaSoporteTecnico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCrearNuevaSede = new javax.swing.JButton();
-        btnAdministrarUsuarios = new javax.swing.JButton();
-        btnCrearTipoClase = new javax.swing.JButton();
-        btnCrearTipoArticulo = new javax.swing.JButton();
+        panelElegirAccionSoporteTecnico = new javax.swing.JTabbedPane();
+        tabCrearSede = new javax.swing.JPanel();
+        btnCrearSede = new javax.swing.JButton();
+        txtAlquiler = new javax.swing.JTextField();
+        labelAlquiler = new javax.swing.JLabel();
+        txtBarrio = new javax.swing.JTextField();
+        labelBarrio = new javax.swing.JLabel();
+        javax.swing.JComboBox<Nivel> selectNivelMinimo = new javax.swing.JComboBox<>();
+        labelNivel = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        labelNombre = new javax.swing.JLabel();
+        tabAdministrarUsuarios = new javax.swing.JPanel();
+        panelOpcionesAdministrarUsuarios = new javax.swing.JTabbedPane();
+        tabCrearProfesor = new javax.swing.JPanel();
+        txtDNIProfesor = new javax.swing.JTextField();
+        labelDNIProfesor = new javax.swing.JLabel();
+        txtNombreProfesor = new javax.swing.JTextField();
+        labelNombreProfesor = new javax.swing.JLabel();
+        btnCrearProfesor = new javax.swing.JButton();
+        tituloCrearProfesor = new javax.swing.JLabel();
+        txtSalarioProfesor = new javax.swing.JTextField();
+        labelSalarioProfesor = new javax.swing.JLabel();
+        tabCrearAdministrativo = new javax.swing.JPanel();
+        btnCrearAdministrativo = new javax.swing.JButton();
+        txtDNIAdministrativo = new javax.swing.JTextField();
+        labelDNIAdministrativo = new javax.swing.JLabel();
+        txtNombreAdministrativo = new javax.swing.JTextField();
+        labelNombreAdministrativo = new javax.swing.JLabel();
+        tituloCrearAdministrativo = new javax.swing.JLabel();
+        tabAgregarSedeAdministrativo = new javax.swing.JPanel();
+        tituloAgregarSedeAdministrativo = new javax.swing.JLabel();
+        btnAgregarSedeAdministrativo = new javax.swing.JButton();
+        txtFiltroNombreAdministrativo = new javax.swing.JTextField();
+        labelFiltroNombreAdministrativo = new javax.swing.JLabel();
+        txtFiltroNombreSede = new javax.swing.JTextField();
+        labelFiltroNombreSede = new javax.swing.JLabel();
+        labelAdministrativo = new javax.swing.JLabel();
+        selectAdministrativo = new javax.swing.JComboBox<>();
+        selectSede = new javax.swing.JComboBox<>();
+        labelSede = new javax.swing.JLabel();
+        tabCrearTipoClase = new javax.swing.JPanel();
+        labelTituloCrearNuevoTipoClase = new javax.swing.JLabel();
+        labelNombreTipoClase = new javax.swing.JLabel();
+        txtNombreTipoClase = new javax.swing.JTextField();
+        labelArtProfesor = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listArtProfesor = new javax.swing.JList<>();
+        labelAgregarArtProfesor = new javax.swing.JLabel();
+        selectAgregarArtProfesor = new javax.swing.JComboBox<>();
+        btnAgregarArtProfesor = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listArtCliente = new javax.swing.JList<>();
+        labelArtCliente = new javax.swing.JLabel();
+        labelAgregarArtCliente = new javax.swing.JLabel();
+        selectAgregarArtCliente = new javax.swing.JComboBox<>();
+        btnAgregarArtCliente = new javax.swing.JButton();
+        labelGrabacionesMax = new javax.swing.JLabel();
+        countGrabacionesMax = new javax.swing.JSpinner();
+        btnCrearNuevoTipoClase = new javax.swing.JButton();
+        tabCrearTipoArticulo = new javax.swing.JPanel();
+        opcionesEspecificasTipoArticulo = new javax.swing.JTabbedPane();
+        panelCrearTipoPesa = new javax.swing.JPanel();
+        labelPesoPesa = new javax.swing.JLabel();
+        txtPesoPesa = new javax.swing.JTextField();
+        labelTipoDeUsoPesa = new javax.swing.JLabel();
+        selectTipoDeUsoPesa = new javax.swing.JComboBox<>();
+        btnCrearTipoPesa = new javax.swing.JButton();
+        panelCrearTipoColchoneta = new javax.swing.JPanel();
+        txtAnchoColchoneta = new javax.swing.JTextField();
+        labelAnchoColchoneta = new javax.swing.JLabel();
+        txtLargoColchoneta = new javax.swing.JTextField();
+        labelLargoColchoneta = new javax.swing.JLabel();
+        btnCrearTipoColchoneta = new javax.swing.JButton();
+        panelCrearTipoAccesorio = new javax.swing.JPanel();
+        txtDescripcionAccesorio = new javax.swing.JTextField();
+        labelDescripcionAccesorio = new javax.swing.JLabel();
+        btnCrearTipoAccesorio = new javax.swing.JButton();
+        labelCrearNuevoTipoArticulo = new javax.swing.JLabel();
+        labelCaracteristicasGenerales = new javax.swing.JLabel();
+        labelNombreArticulo = new javax.swing.JLabel();
+        txtNombreArticulo = new javax.swing.JTextField();
+        txtMarcaArticulo = new javax.swing.JTextField();
+        labelMarcaArticulo = new javax.swing.JLabel();
+        txtCostoArticulo = new javax.swing.JTextField();
+        labelCostoArticulo = new javax.swing.JLabel();
+        labelTipoDesgaste = new javax.swing.JLabel();
+        selectTipoDesgaste = new javax.swing.JComboBox<>();
+        spinnerDesgasteMaximo = new javax.swing.JSpinner();
+        labelDesgastoMaximo = new javax.swing.JLabel();
+        labelCaracteristicasEspecificas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SoporteTecnico");
 
-        btnCrearNuevaSede.setText("Crear Nueva Sede");
-        btnCrearNuevaSede.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearSede.setText("Crear Sede");
+        btnCrearSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearNuevaSedeActionPerformed(evt);
+                btnCrearSedeActionPerformed(evt);
             }
         });
 
-        btnAdministrarUsuarios.setText("Administrar Usuarios");
-        btnAdministrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        txtAlquiler.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAlquilerFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAlquilerFocusLost(evt);
+            }
+        });
+        txtAlquiler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdministrarUsuariosActionPerformed(evt);
+                txtAlquilerActionPerformed(evt);
             }
         });
 
-        btnCrearTipoClase.setText("Crear Tipo de Clase");
-        btnCrearTipoClase.addActionListener(new java.awt.event.ActionListener() {
+        labelAlquiler.setText("Alquiler:");
+
+        txtBarrio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBarrioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBarrioFocusLost(evt);
+            }
+        });
+        txtBarrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearTipoClaseActionPerformed(evt);
+                txtBarrioActionPerformed(evt);
             }
         });
 
-        btnCrearTipoArticulo.setText("Crear Tipo de Articulo");
-        btnCrearTipoArticulo.addActionListener(new java.awt.event.ActionListener() {
+        labelBarrio.setText("Barrio:");
+
+        for (Nivel nivel : Nivel.values()){
+            selectNivelMinimo.addItem(nivel);
+        }
+        selectNivelMinimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearTipoArticuloActionPerformed(evt);
+                selectNivelMinimoActionPerformed(evt);
             }
         });
+
+        labelNivel.setText("Nivel Minimo:");
+
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        labelNombre.setText("Nombre:");
+
+        javax.swing.GroupLayout tabCrearSedeLayout = new javax.swing.GroupLayout(tabCrearSede);
+        tabCrearSede.setLayout(tabCrearSedeLayout);
+        tabCrearSedeLayout.setHorizontalGroup(
+            tabCrearSedeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearSedeLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(tabCrearSedeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCrearSede, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAlquiler, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(labelAlquiler)
+                    .addComponent(txtBarrio, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(labelBarrio)
+                    .addComponent(selectNivelMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNivel)
+                    .addComponent(labelNombre)
+                    .addComponent(txtNombre))
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
+        tabCrearSedeLayout.setVerticalGroup(
+            tabCrearSedeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearSedeLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(labelNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNivel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectNivelMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelBarrio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelAlquiler)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCrearSede, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelElegirAccionSoporteTecnico.addTab("CrearSede", tabCrearSede);
+
+        txtDNIProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNIProfesorActionPerformed(evt);
+            }
+        });
+
+        labelDNIProfesor.setText("DNI:");
+
+        txtNombreProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProfesorActionPerformed(evt);
+            }
+        });
+
+        labelNombreProfesor.setText("Nombre:");
+
+        btnCrearProfesor.setText("Crear Profesor");
+        btnCrearProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearProfesor(evt);
+            }
+        });
+
+        tituloCrearProfesor.setText("CREAR PROFESOR");
+
+        txtSalarioProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioProfesorActionPerformed(evt);
+            }
+        });
+
+        labelSalarioProfesor.setText("Salario:");
+
+        javax.swing.GroupLayout tabCrearProfesorLayout = new javax.swing.GroupLayout(tabCrearProfesor);
+        tabCrearProfesor.setLayout(tabCrearProfesorLayout);
+        tabCrearProfesorLayout.setHorizontalGroup(
+            tabCrearProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearProfesorLayout.createSequentialGroup()
+                .addGroup(tabCrearProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCrearProfesorLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(tituloCrearProfesor))
+                    .addGroup(tabCrearProfesorLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(tabCrearProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCrearProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tabCrearProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelSalarioProfesor)
+                                .addComponent(labelNombreProfesor)
+                                .addComponent(txtNombreProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                                .addComponent(txtDNIProfesor)
+                                .addComponent(labelDNIProfesor)
+                                .addComponent(txtSalarioProfesor)))))
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        tabCrearProfesorLayout.setVerticalGroup(
+            tabCrearProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearProfesorLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(tituloCrearProfesor)
+                .addGap(18, 18, 18)
+                .addComponent(labelNombreProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(labelDNIProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDNIProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSalarioProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSalarioProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCrearProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(301, Short.MAX_VALUE))
+        );
+
+        panelOpcionesAdministrarUsuarios.addTab("CrearProfesor", tabCrearProfesor);
+
+        btnCrearAdministrativo.setText("Crear Profesor");
+        btnCrearAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearAdministrativo(evt);
+            }
+        });
+
+        txtDNIAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNIAdministrativoActionPerformed(evt);
+            }
+        });
+
+        labelDNIAdministrativo.setText("DNI:");
+
+        txtNombreAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreAdministrativoActionPerformed(evt);
+            }
+        });
+
+        labelNombreAdministrativo.setText("Nombre:");
+
+        tituloCrearAdministrativo.setText("CREAR ADMINISTRATIVO");
+
+        javax.swing.GroupLayout tabCrearAdministrativoLayout = new javax.swing.GroupLayout(tabCrearAdministrativo);
+        tabCrearAdministrativo.setLayout(tabCrearAdministrativoLayout);
+        tabCrearAdministrativoLayout.setHorizontalGroup(
+            tabCrearAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearAdministrativoLayout.createSequentialGroup()
+                .addGroup(tabCrearAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCrearAdministrativoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(tituloCrearAdministrativo))
+                    .addGroup(tabCrearAdministrativoLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(tabCrearAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCrearAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tabCrearAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelNombreAdministrativo)
+                                .addComponent(txtNombreAdministrativo, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                                .addComponent(txtDNIAdministrativo)
+                                .addComponent(labelDNIAdministrativo)))))
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        tabCrearAdministrativoLayout.setVerticalGroup(
+            tabCrearAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearAdministrativoLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(tituloCrearAdministrativo)
+                .addGap(18, 18, 18)
+                .addComponent(labelNombreAdministrativo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(labelDNIAdministrativo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDNIAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnCrearAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(346, Short.MAX_VALUE))
+        );
+
+        panelOpcionesAdministrarUsuarios.addTab("CrearAdministrativo", tabCrearAdministrativo);
+
+        tituloAgregarSedeAdministrativo.setText("AGREGAR SEDE A ADMINISTRATIVO");
+
+        btnAgregarSedeAdministrativo.setText("Agregar Sede");
+        btnAgregarSedeAdministrativo.setToolTipText("");
+        btnAgregarSedeAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarSedeAdministrativo(evt);
+            }
+        });
+
+        txtFiltroNombreAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroNombreAdministrativoActionPerformed(evt);
+            }
+        });
+
+        labelFiltroNombreAdministrativo.setText("Filtro Nombre Administrativo:");
+
+        txtFiltroNombreSede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroNombreSedeActionPerformed(evt);
+            }
+        });
+
+        labelFiltroNombreSede.setText("Filtro Nombre Sede:");
+
+        labelAdministrativo.setText("Administrativo:");
+
+        labelSede.setText("Sede");
+
+        javax.swing.GroupLayout tabAgregarSedeAdministrativoLayout = new javax.swing.GroupLayout(tabAgregarSedeAdministrativo);
+        tabAgregarSedeAdministrativo.setLayout(tabAgregarSedeAdministrativoLayout);
+        tabAgregarSedeAdministrativoLayout.setHorizontalGroup(
+            tabAgregarSedeAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabAgregarSedeAdministrativoLayout.createSequentialGroup()
+                .addGroup(tabAgregarSedeAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(tabAgregarSedeAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelFiltroNombreAdministrativo)
+                        .addComponent(txtFiltroNombreAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelAdministrativo))
+                    .addGroup(tabAgregarSedeAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tabAgregarSedeAdministrativoLayout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addComponent(tituloAgregarSedeAdministrativo))
+                        .addGroup(tabAgregarSedeAdministrativoLayout.createSequentialGroup()
+                            .addGap(64, 64, 64)
+                            .addGroup(tabAgregarSedeAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelFiltroNombreSede)
+                                .addComponent(txtFiltroNombreSede, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregarSedeAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(selectAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(selectSede, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelSede)))))
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        tabAgregarSedeAdministrativoLayout.setVerticalGroup(
+            tabAgregarSedeAdministrativoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabAgregarSedeAdministrativoLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(tituloAgregarSedeAdministrativo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelFiltroNombreAdministrativo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFiltroNombreAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelAdministrativo)
+                .addGap(12, 12, 12)
+                .addComponent(selectAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelFiltroNombreSede)
+                .addGap(12, 12, 12)
+                .addComponent(txtFiltroNombreSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelSede)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnAgregarSedeAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(231, Short.MAX_VALUE))
+        );
+
+        panelOpcionesAdministrarUsuarios.addTab("AgregarSedeAdministrativo", tabAgregarSedeAdministrativo);
+
+        javax.swing.GroupLayout tabAdministrarUsuariosLayout = new javax.swing.GroupLayout(tabAdministrarUsuarios);
+        tabAdministrarUsuarios.setLayout(tabAdministrarUsuariosLayout);
+        tabAdministrarUsuariosLayout.setHorizontalGroup(
+            tabAdministrarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelOpcionesAdministrarUsuarios)
+        );
+        tabAdministrarUsuariosLayout.setVerticalGroup(
+            tabAdministrarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelOpcionesAdministrarUsuarios)
+        );
+
+        panelElegirAccionSoporteTecnico.addTab("AdministrarUsuarios", tabAdministrarUsuarios);
+
+        labelTituloCrearNuevoTipoClase.setText("CREAR NUEVO TIPO CLASE");
+
+        labelNombreTipoClase.setText("Nombre:");
+
+        txtNombreTipoClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreTipoClaseActionPerformed(evt);
+            }
+        });
+
+        labelArtProfesor.setText("Articulos necesarios para el Profesor:");
+
+        jScrollPane1.setViewportView(listArtProfesor);
+
+        labelAgregarArtProfesor.setText("Agregar articulo necesario para Profesor:");
+
+        selectAgregarArtProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAgregarArtProfesorActionPerformed(evt);
+            }
+        });
+
+        btnAgregarArtProfesor.setText("Agregar Articulo");
+
+        jScrollPane2.setViewportView(listArtCliente);
+
+        labelArtCliente.setText("Articulos necesarios por Cliente:");
+
+        labelAgregarArtCliente.setText("Agregar articulo necesario por Cliente:");
+
+        selectAgregarArtCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAgregarArtClienteActionPerformed(evt);
+            }
+        });
+
+        btnAgregarArtCliente.setText("Agregar Articulo");
+
+        labelGrabacionesMax.setText("Grabaciones Maximas (0 para Offline):");
+
+        btnCrearNuevoTipoClase.setText("Crear Nuevo Tipo de Clase");
+        btnCrearNuevoTipoClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearNuevoTipoClaseActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tabCrearTipoClaseLayout = new javax.swing.GroupLayout(tabCrearTipoClase);
+        tabCrearTipoClase.setLayout(tabCrearTipoClaseLayout);
+        tabCrearTipoClaseLayout.setHorizontalGroup(
+            tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearTipoClaseLayout.createSequentialGroup()
+                .addGroup(tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCrearTipoClaseLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(labelTituloCrearNuevoTipoClase))
+                    .addGroup(tabCrearTipoClaseLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelAgregarArtCliente)
+                                .addComponent(labelArtCliente)
+                                .addComponent(jScrollPane2)
+                                .addComponent(selectAgregarArtCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAgregarArtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelAgregarArtProfesor)
+                                .addComponent(labelNombreTipoClase)
+                                .addComponent(txtNombreTipoClase)
+                                .addComponent(labelArtProfesor)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                .addComponent(selectAgregarArtProfesor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAgregarArtProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnCrearNuevoTipoClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelGrabacionesMax)
+                                .addComponent(countGrabacionesMax, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        tabCrearTipoClaseLayout.setVerticalGroup(
+            tabCrearTipoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearTipoClaseLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(labelTituloCrearNuevoTipoClase)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelNombreTipoClase)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreTipoClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelArtProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelAgregarArtProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectAgregarArtProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarArtProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelArtCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelAgregarArtCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectAgregarArtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarArtCliente)
+                .addGap(18, 18, 18)
+                .addComponent(labelGrabacionesMax)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(countGrabacionesMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCrearNuevoTipoClase, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        panelElegirAccionSoporteTecnico.addTab("CrearTipoClase", tabCrearTipoClase);
+
+        labelPesoPesa.setText("Peso:");
+
+        txtPesoPesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesoPesaActionPerformed(evt);
+            }
+        });
+
+        labelTipoDeUsoPesa.setText("Tipo de Uso:");
+
+        selectTipoDeUsoPesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTipoDeUsoPesaActionPerformed(evt);
+            }
+        });
+
+        btnCrearTipoPesa.setText("Crear Tipo Pesa");
+        btnCrearTipoPesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearTipoPesaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCrearTipoPesaLayout = new javax.swing.GroupLayout(panelCrearTipoPesa);
+        panelCrearTipoPesa.setLayout(panelCrearTipoPesaLayout);
+        panelCrearTipoPesaLayout.setHorizontalGroup(
+            panelCrearTipoPesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearTipoPesaLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(panelCrearTipoPesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCrearTipoPesa, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                    .addGroup(panelCrearTipoPesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labelTipoDeUsoPesa)
+                        .addComponent(txtPesoPesa, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                        .addComponent(labelPesoPesa)
+                        .addComponent(selectTipoDeUsoPesa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        panelCrearTipoPesaLayout.setVerticalGroup(
+            panelCrearTipoPesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearTipoPesaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(labelPesoPesa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPesoPesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelTipoDeUsoPesa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectTipoDeUsoPesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCrearTipoPesa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+
+        opcionesEspecificasTipoArticulo.addTab("CrearTipoPesa", panelCrearTipoPesa);
+
+        txtAnchoColchoneta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnchoColchonetaActionPerformed(evt);
+            }
+        });
+
+        labelAnchoColchoneta.setText("Ancho:");
+
+        txtLargoColchoneta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLargoColchonetaActionPerformed(evt);
+            }
+        });
+
+        labelLargoColchoneta.setText("Largo:");
+
+        btnCrearTipoColchoneta.setText("Crear Tipo Colchoneta");
+        btnCrearTipoColchoneta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearTipoColchonetaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCrearTipoColchonetaLayout = new javax.swing.GroupLayout(panelCrearTipoColchoneta);
+        panelCrearTipoColchoneta.setLayout(panelCrearTipoColchonetaLayout);
+        panelCrearTipoColchonetaLayout.setHorizontalGroup(
+            panelCrearTipoColchonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearTipoColchonetaLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(panelCrearTipoColchonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCrearTipoColchonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtLargoColchoneta, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                        .addComponent(labelLargoColchoneta)
+                        .addComponent(btnCrearTipoColchoneta, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                    .addGroup(panelCrearTipoColchonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtAnchoColchoneta, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                        .addComponent(labelAnchoColchoneta)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        panelCrearTipoColchonetaLayout.setVerticalGroup(
+            panelCrearTipoColchonetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearTipoColchonetaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(labelAnchoColchoneta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAnchoColchoneta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelLargoColchoneta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLargoColchoneta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCrearTipoColchoneta, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        opcionesEspecificasTipoArticulo.addTab("CrearTipoColchoneta", panelCrearTipoColchoneta);
+
+        txtDescripcionAccesorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionAccesorioActionPerformed(evt);
+            }
+        });
+
+        labelDescripcionAccesorio.setText("Descripcion:");
+
+        btnCrearTipoAccesorio.setText("Crear Tipo Accesorio");
+        btnCrearTipoAccesorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearTipoAccesorioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCrearTipoAccesorioLayout = new javax.swing.GroupLayout(panelCrearTipoAccesorio);
+        panelCrearTipoAccesorio.setLayout(panelCrearTipoAccesorioLayout);
+        panelCrearTipoAccesorioLayout.setHorizontalGroup(
+            panelCrearTipoAccesorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearTipoAccesorioLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(panelCrearTipoAccesorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCrearTipoAccesorio, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                    .addGroup(panelCrearTipoAccesorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtDescripcionAccesorio, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                        .addComponent(labelDescripcionAccesorio)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        panelCrearTipoAccesorioLayout.setVerticalGroup(
+            panelCrearTipoAccesorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearTipoAccesorioLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(labelDescripcionAccesorio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDescripcionAccesorio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(btnCrearTipoAccesorio, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+
+        opcionesEspecificasTipoArticulo.addTab("CrearTipoAccesorio", panelCrearTipoAccesorio);
+
+        labelCrearNuevoTipoArticulo.setText("CREAR NUEVO TIPO ARTICULO");
+
+        labelCaracteristicasGenerales.setText("Caracteristicas Generales:");
+
+        labelNombreArticulo.setText("Nombre:");
+
+        txtNombreArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreArticuloActionPerformed(evt);
+            }
+        });
+
+        txtMarcaArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMarcaArticuloActionPerformed(evt);
+            }
+        });
+
+        labelMarcaArticulo.setText("Marca:");
+
+        txtCostoArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCostoArticuloActionPerformed(evt);
+            }
+        });
+
+        labelCostoArticulo.setText("Costo:");
+
+        labelTipoDesgaste.setText("Tipo Desgaste:");
+
+        selectTipoDesgaste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTipoDesgasteActionPerformed(evt);
+            }
+        });
+
+        labelDesgastoMaximo.setText("Desgaste Maximo:");
+
+        labelCaracteristicasEspecificas.setText("Caracteristicas Especificas:");
+
+        javax.swing.GroupLayout tabCrearTipoArticuloLayout = new javax.swing.GroupLayout(tabCrearTipoArticulo);
+        tabCrearTipoArticulo.setLayout(tabCrearTipoArticuloLayout);
+        tabCrearTipoArticuloLayout.setHorizontalGroup(
+            tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCrearTipoArticuloLayout.createSequentialGroup()
+                .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCrearTipoArticuloLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelCaracteristicasGenerales)
+                            .addComponent(labelCrearNuevoTipoArticulo)
+                            .addComponent(labelCaracteristicasEspecificas)
+                            .addComponent(opcionesEspecificasTipoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(tabCrearTipoArticuloLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreArticulo)
+                            .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelMarcaArticulo)
+                                .addComponent(txtMarcaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(tabCrearTipoArticuloLayout.createSequentialGroup()
+                                    .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelTipoDesgaste)
+                                        .addComponent(selectTipoDesgaste, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(spinnerDesgasteMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelDesgastoMaximo)))
+                                .addComponent(labelCostoArticulo)
+                                .addComponent(txtCostoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        tabCrearTipoArticuloLayout.setVerticalGroup(
+            tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCrearTipoArticuloLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(labelCrearNuevoTipoArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelCaracteristicasGenerales)
+                .addGap(18, 18, 18)
+                .addComponent(labelNombreArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(labelMarcaArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMarcaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelCostoArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCostoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTipoDesgaste)
+                    .addComponent(labelDesgastoMaximo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabCrearTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectTipoDesgaste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinnerDesgasteMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(labelCaracteristicasEspecificas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(opcionesEspecificasTipoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
+        panelElegirAccionSoporteTecnico.addTab("CrearTipoArticulo", tabCrearTipoArticulo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCrearTipoArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnCrearTipoClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCrearNuevaSede, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+            .addComponent(panelElegirAccionSoporteTecnico)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(btnCrearNuevaSede, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCrearTipoClase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCrearTipoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addComponent(panelElegirAccionSoporteTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearNuevaSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearNuevaSedeActionPerformed
-        CrearSede ventanaCrearSede = new CrearSede(this.controller);
-        ventanaCrearSede.setLocationRelativeTo(null);
-        ventanaCrearSede.setVisible(true);
-        
-    }//GEN-LAST:event_btnCrearNuevaSedeActionPerformed
+    private void btnCrearSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearSedeActionPerformed
 
-    private void btnCrearTipoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTipoArticuloActionPerformed
-        CrearTipoClase ventanaCrearTipoClase = new CrearTipoClase(this.controller);
-        ventanaCrearTipoClase.setLocationRelativeTo(null);
-        ventanaCrearTipoClase.setVisible(true);
-    }//GEN-LAST:event_btnCrearTipoArticuloActionPerformed
+    }//GEN-LAST:event_btnCrearSedeActionPerformed
 
-    private void btnAdministrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarUsuariosActionPerformed
-        AdministrarUsuarios ventanaAdministrarUsuarios = new AdministrarUsuarios(this.controller);
-        ventanaAdministrarUsuarios.setLocationRelativeTo(null);
-        ventanaAdministrarUsuarios.setVisible(true);
-    }//GEN-LAST:event_btnAdministrarUsuariosActionPerformed
+    private void txtAlquilerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAlquilerFocusGained
 
-    private void btnCrearTipoClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTipoClaseActionPerformed
-        CrearTipoArticulo ventanaCrearTipoArticulo = new CrearTipoArticulo(this.controller);
-        ventanaCrearTipoArticulo.setLocationRelativeTo(null);
-        ventanaCrearTipoArticulo.setVisible(true);
-    }//GEN-LAST:event_btnCrearTipoClaseActionPerformed
+    }//GEN-LAST:event_txtAlquilerFocusGained
+
+    private void txtAlquilerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAlquilerFocusLost
+
+    }//GEN-LAST:event_txtAlquilerFocusLost
+
+    private void txtAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlquilerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlquilerActionPerformed
+
+    private void txtBarrioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBarrioFocusGained
+
+    }//GEN-LAST:event_txtBarrioFocusGained
+
+    private void txtBarrioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBarrioFocusLost
+
+    }//GEN-LAST:event_txtBarrioFocusLost
+
+    private void txtBarrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarrioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarrioActionPerformed
+
+    private void selectNivelMinimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectNivelMinimoActionPerformed
+        // TODO hacer esto
+    }//GEN-LAST:event_selectNivelMinimoActionPerformed
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtSalarioProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioProfesorActionPerformed
+
+    private void btnCrearProfesor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProfesor
+        // TODO corregir por el cliente elegido correcto (Hay que buscarlo en la lista del controller)
+        Cliente cliente = new Cliente("Cliente1", 1, Nivel.Platinum);
+
+        VentanaCliente ventanaCliente = new VentanaCliente(this.controller, cliente);
+        ventanaCliente.setLocationRelativeTo(null);
+        ventanaCliente.setVisible(true);
+    }//GEN-LAST:event_btnCrearProfesor
+
+    private void txtNombreProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProfesorActionPerformed
+
+    private void txtDNIProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIProfesorActionPerformed
+
+    private void btnCrearAdministrativo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAdministrativo
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearAdministrativo
+
+    private void txtDNIAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIAdministrativoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIAdministrativoActionPerformed
+
+    private void txtNombreAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreAdministrativoActionPerformed
+
+    private void btnAgregarSedeAdministrativo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSedeAdministrativo
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarSedeAdministrativo
+
+    private void txtFiltroNombreAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreAdministrativoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroNombreAdministrativoActionPerformed
+
+    private void txtFiltroNombreSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreSedeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroNombreSedeActionPerformed
+
+    private void txtNombreTipoClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTipoClaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreTipoClaseActionPerformed
+
+    private void selectAgregarArtProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAgregarArtProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectAgregarArtProfesorActionPerformed
+
+    private void selectAgregarArtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAgregarArtClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectAgregarArtClienteActionPerformed
+
+    private void btnCrearNuevoTipoClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearNuevoTipoClaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearNuevoTipoClaseActionPerformed
+
+    private void txtNombreArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreArticuloActionPerformed
+
+    private void txtMarcaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMarcaArticuloActionPerformed
+
+    private void txtCostoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCostoArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCostoArticuloActionPerformed
+
+    private void selectTipoDesgasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTipoDesgasteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectTipoDesgasteActionPerformed
+
+    private void txtPesoPesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoPesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesoPesaActionPerformed
+
+    private void selectTipoDeUsoPesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTipoDeUsoPesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectTipoDeUsoPesaActionPerformed
+
+    private void btnCrearTipoPesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTipoPesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearTipoPesaActionPerformed
+
+    private void txtAnchoColchonetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnchoColchonetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnchoColchonetaActionPerformed
+
+    private void txtLargoColchonetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLargoColchonetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLargoColchonetaActionPerformed
+
+    private void btnCrearTipoColchonetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTipoColchonetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearTipoColchonetaActionPerformed
+
+    private void txtDescripcionAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionAccesorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionAccesorioActionPerformed
+
+    private void btnCrearTipoAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTipoAccesorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearTipoAccesorioActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdministrarUsuarios;
-    private javax.swing.JButton btnCrearNuevaSede;
-    private javax.swing.JButton btnCrearTipoArticulo;
-    private javax.swing.JButton btnCrearTipoClase;
+    private javax.swing.JButton btnAgregarArtCliente;
+    private javax.swing.JButton btnAgregarArtProfesor;
+    private javax.swing.JButton btnAgregarSedeAdministrativo;
+    private javax.swing.JButton btnCrearAdministrativo;
+    private javax.swing.JButton btnCrearNuevoTipoClase;
+    private javax.swing.JButton btnCrearProfesor;
+    private javax.swing.JButton btnCrearSede;
+    private javax.swing.JButton btnCrearTipoAccesorio;
+    private javax.swing.JButton btnCrearTipoColchoneta;
+    private javax.swing.JButton btnCrearTipoPesa;
+    private javax.swing.JSpinner countGrabacionesMax;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelAdministrativo;
+    private javax.swing.JLabel labelAgregarArtCliente;
+    private javax.swing.JLabel labelAgregarArtProfesor;
+    private javax.swing.JLabel labelAlquiler;
+    private javax.swing.JLabel labelAnchoColchoneta;
+    private javax.swing.JLabel labelArtCliente;
+    private javax.swing.JLabel labelArtProfesor;
+    private javax.swing.JLabel labelBarrio;
+    private javax.swing.JLabel labelCaracteristicasEspecificas;
+    private javax.swing.JLabel labelCaracteristicasGenerales;
+    private javax.swing.JLabel labelCostoArticulo;
+    private javax.swing.JLabel labelCrearNuevoTipoArticulo;
+    private javax.swing.JLabel labelDNIAdministrativo;
+    private javax.swing.JLabel labelDNIProfesor;
+    private javax.swing.JLabel labelDescripcionAccesorio;
+    private javax.swing.JLabel labelDesgastoMaximo;
+    private javax.swing.JLabel labelFiltroNombreAdministrativo;
+    private javax.swing.JLabel labelFiltroNombreSede;
+    private javax.swing.JLabel labelGrabacionesMax;
+    private javax.swing.JLabel labelLargoColchoneta;
+    private javax.swing.JLabel labelMarcaArticulo;
+    private javax.swing.JLabel labelNivel;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel labelNombreAdministrativo;
+    private javax.swing.JLabel labelNombreArticulo;
+    private javax.swing.JLabel labelNombreProfesor;
+    private javax.swing.JLabel labelNombreTipoClase;
+    private javax.swing.JLabel labelPesoPesa;
+    private javax.swing.JLabel labelSalarioProfesor;
+    private javax.swing.JLabel labelSede;
+    private javax.swing.JLabel labelTipoDeUsoPesa;
+    private javax.swing.JLabel labelTipoDesgaste;
+    private javax.swing.JLabel labelTituloCrearNuevoTipoClase;
+    private javax.swing.JList<TipoArticulo> listArtCliente;
+    private javax.swing.JList<TipoArticulo> listArtProfesor;
+    private javax.swing.JTabbedPane opcionesEspecificasTipoArticulo;
+    private javax.swing.JPanel panelCrearTipoAccesorio;
+    private javax.swing.JPanel panelCrearTipoColchoneta;
+    private javax.swing.JPanel panelCrearTipoPesa;
+    private javax.swing.JTabbedPane panelElegirAccionSoporteTecnico;
+    private javax.swing.JTabbedPane panelOpcionesAdministrarUsuarios;
+    private javax.swing.JComboBox<Administrativo> selectAdministrativo;
+    private javax.swing.JComboBox<TipoArticulo> selectAgregarArtCliente;
+    private javax.swing.JComboBox<TipoArticulo> selectAgregarArtProfesor;
+    private javax.swing.JComboBox<Sede> selectSede;
+    private javax.swing.JComboBox<TipoUsoPesa> selectTipoDeUsoPesa;
+    private javax.swing.JComboBox<Amortizacion> selectTipoDesgaste;
+    private javax.swing.JSpinner spinnerDesgasteMaximo;
+    private javax.swing.JPanel tabAdministrarUsuarios;
+    private javax.swing.JPanel tabAgregarSedeAdministrativo;
+    private javax.swing.JPanel tabCrearAdministrativo;
+    private javax.swing.JPanel tabCrearProfesor;
+    private javax.swing.JPanel tabCrearSede;
+    private javax.swing.JPanel tabCrearTipoArticulo;
+    private javax.swing.JPanel tabCrearTipoClase;
+    private javax.swing.JLabel tituloAgregarSedeAdministrativo;
+    private javax.swing.JLabel tituloCrearAdministrativo;
+    private javax.swing.JLabel tituloCrearProfesor;
+    private javax.swing.JTextField txtAlquiler;
+    private javax.swing.JTextField txtAnchoColchoneta;
+    private javax.swing.JTextField txtBarrio;
+    private javax.swing.JTextField txtCostoArticulo;
+    private javax.swing.JTextField txtDNIAdministrativo;
+    private javax.swing.JTextField txtDNIProfesor;
+    private javax.swing.JTextField txtDescripcionAccesorio;
+    private javax.swing.JTextField txtFiltroNombreAdministrativo;
+    private javax.swing.JTextField txtFiltroNombreSede;
+    private javax.swing.JTextField txtLargoColchoneta;
+    private javax.swing.JTextField txtMarcaArticulo;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreAdministrativo;
+    private javax.swing.JTextField txtNombreArticulo;
+    private javax.swing.JTextField txtNombreProfesor;
+    private javax.swing.JTextField txtNombreTipoClase;
+    private javax.swing.JTextField txtPesoPesa;
+    private javax.swing.JTextField txtSalarioProfesor;
     // End of variables declaration//GEN-END:variables
 }
