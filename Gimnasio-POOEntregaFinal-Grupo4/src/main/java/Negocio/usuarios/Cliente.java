@@ -11,6 +11,11 @@ public class Cliente extends Usuario {
         this.nivel = nivel;
     }
 
+    @Override
+    public String toString(){
+        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
+    }
+
     public Nivel getNivel() {
         return nivel;
     }

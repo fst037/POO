@@ -1,6 +1,7 @@
 package Negocio.inmuebles;
 
 import Negocio.enums.Nivel;
+import Negocio.enums.TipoEmplazamiento;
 import Negocio.usuarios.Administrativo;
 import Negocio.clases.Clase;
 import Negocio.clases.StreamingClass;
@@ -34,6 +35,12 @@ public class Sede {
         this.articulos = new ArrayList<Articulo>();
         this.emplazamientos = new ArrayList<Emplazamiento>();
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+
 
     public String getNombre() {
         return this.nombre;
@@ -129,5 +136,8 @@ public class Sede {
 
     public void setEmplazamientos(List<Emplazamiento> emplazamientos) {
         this.emplazamientos = emplazamientos;
+    }
+    public void agregarEmplazamiento(Emplazamiento emplazamiento) {
+        this.emplazamientos.add(emplazamiento);
     }
 }

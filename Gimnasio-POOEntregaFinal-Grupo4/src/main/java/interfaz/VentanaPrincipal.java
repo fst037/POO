@@ -5,10 +5,17 @@
 package interfaz;
 
 import Aplication.Gimnasio;
+import Negocio.enums.Amortizacion;
 import Negocio.enums.Nivel;
+import Negocio.enums.TipoEmplazamiento;
+import Negocio.enums.TipoUsoPesa;
+import Negocio.inmuebles.Sede;
 import Negocio.usuarios.Administrativo;
 import Negocio.usuarios.Cliente;
+import Negocio.usuarios.SoporteTecnico;
+
 import java.awt.Component;
+import java.util.ArrayList;
 
 /**
  *
@@ -181,11 +188,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAdministrativoFocusGained
 
     private void btnAdministrativo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrativo
-        
-        // TODO corregir por el administrador elegido correcto
-        Administrativo admin = new Administrativo("Admin1", 1);        
-        
-        VentanaAdministrativo ventanaAdministrativo = new VentanaAdministrativo(this.controller, admin);
+        // Obtiene el administrativo seleccionado en el JComboBox
+        Administrativo adminSeleccionado = (Administrativo) selectAdministrativo.getSelectedItem();
+
+        VentanaAdministrativo ventanaAdministrativo = new VentanaAdministrativo(this.controller, adminSeleccionado);
         ventanaAdministrativo.setLocationRelativeTo(null);
         ventanaAdministrativo.setVisible(true);
     }//GEN-LAST:event_btnAdministrativo
@@ -240,18 +246,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gimnasio controller = new Gimnasio();
-                controller.crearAdministrativo("juan", 1);
-                controller.crearAdministrativo("juan2", 2);
-                controller.crearAdministrativo("juan3", 3);
-                controller.crearSede("sede1", Nivel.Platinum, "barrio1", (float) 10);
-                controller.agregarSedeAdministrativo(controller.listarAdministrativos().get(0), controller.listarSedes().get(0));
-                
+
+                //SOPORTE TECNICO
+                SoporteTecnico soporteTecnicoIniciado = controller.mostrarSoporteTecnico();
+                inicializarEntidades(controller, soporteTecnicoIniciado);
+
+                // Asignar sedes a los administrativos
+                asignarSedesAAdministrativos(controller, controller.listarAdministrativos().get(0));
+
+
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controller);
                 ventanaPrincipal.setLocationRelativeTo(null);
                 ventanaPrincipal.setVisible(true);
                 
             };
         });
+    }
+
+    private static void inicializarEntidades(Gimnasio controller, SoporteTecnico soporteTecnico) {
+        // Código para inicializar administrativos, sedes, etc.
+        // ADMINISTRATIVOS
+        controller.crearAdministrativo("Administrativo 1", 123);
+        controller.crearAdministrativo("Administrativo 2", 456);
+        controller.crearAdministrativo("Administrativo 3", 789);
+
+        // SEDES
+        controller.crearSede("Sede 1", Nivel.Platinum, "Barrio 1", 1000);
+        controller.crearSede("Sede 2", Nivel.Oro, "Barrio 2", 2000);
+        controller.crearSede("Sede 3", Nivel.Black, "Barrio 3", 3000);
+
+        // EMPLAZAMIENTOS
+        Sede sede1 = controller.listarSedes().get(0);
+        Sede sede2 = controller.listarSedes().get(1);
+        Sede sede3 = controller.listarSedes().get(2);
+
+        controller.agregarEmplazamiento(sede1, TipoEmplazamiento.AireLibre, 20);
+        controller.agregarEmplazamiento(sede2, TipoEmplazamiento.Pileta, 30);
+        controller.agregarEmplazamiento(sede3, TipoEmplazamiento.Salon, 4);
+
+        // TIPOS DE CLASE
+        controller.crearTipoClase("Yoga", new ArrayList<>(), new ArrayList<>(), 60);
+        controller.crearTipoClase("Pilates", new ArrayList<>(), new ArrayList<>(), 60);
+        controller.crearTipoClase("Spinning", new ArrayList<>(), new ArrayList<>(), 60);
+
+        // TIPOS DE ARTICULO
+        controller.crearTipoDePesa(soporteTecnico, 10, TipoUsoPesa.DeMano, Amortizacion.porUso, 100, "Marca Pesa", "Pesa 10kg", 500);
+        controller.crearTipoDeColchoneta(soporteTecnico, 1.2f, 2.0f, Amortizacion.porFecha, 100, "Marca Colchoneta", "Colchoneta Grande", 200);
+        controller.crearTipoDeAccesorio("Banda Elástica", Amortizacion.porUso, 100, "Marca Banda", "Banda Elástica", 50);
+
+        // CLIENTES
+        Administrativo adm1 = controller.listarAdministrativos().get(0);
+        Administrativo adm2 = controller.listarAdministrativos().get(1);
+        Administrativo adm3 = controller.listarAdministrativos().get(2);
+
+        controller.darAltaCliente(adm1, "Cliente 1", 111, Nivel.Oro);
+        controller.darAltaCliente(adm2, "Cliente 2", 222, Nivel.Platinum);
+        controller.darAltaCliente(adm3, "Cliente 3", 333, Nivel.Black);
+
+        // PROFESORES
+        controller.crearProfesor("Profesor 1", 1234, 3000);
+        controller.crearProfesor("Profesor 2", 5678, 3500);
+        controller.crearProfesor("Profesor 3", 9012, 4000);
+    }
+
+    private static void asignarSedesAAdministrativos(Gimnasio controller, Administrativo administrativo) {
+        for (Sede sede: controller.listarSedes()) {
+            controller.agregarSedeAdministrativo(administrativo, sede);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,6 +17,11 @@ public class TipoClase {
         this.grabacionesMaximas = grabMax;
     }
 
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+
     public String getNombre() {
         return this.nombre;
     }

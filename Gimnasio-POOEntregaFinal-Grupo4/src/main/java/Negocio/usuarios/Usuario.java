@@ -10,6 +10,9 @@ public class Usuario {
         this.dni = dni;
     }
 
+    public String toString(){
+        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
+    }
     public String getNombre() {
         return nombre;
     }
