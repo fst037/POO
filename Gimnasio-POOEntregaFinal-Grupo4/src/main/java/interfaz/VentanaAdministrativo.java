@@ -15,6 +15,14 @@ import Negocio.inmuebles.Emplazamiento;
 import Negocio.inmuebles.Sede;
 import Negocio.usuarios.Administrativo;
 import Negocio.usuarios.Cliente;
+import Negocio.usuarios.Profesor;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 /**
  *
@@ -49,11 +57,17 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         panelAgendarClase = new javax.swing.JPanel();
         labelTituloAgendarClase = new javax.swing.JLabel();
         labelProfesorAgendar = new javax.swing.JLabel();
-        txtProfesorAgendar = new javax.swing.JTextField();
+        selectProfesorAgendar = new javax.swing.JComboBox<>();
         labelTipoClaseAgendar = new javax.swing.JLabel();
-        txtTipoClaseAgendar = new javax.swing.JTextField();
+        selectTipoClaseAgendar = new javax.swing.JComboBox<>();
         labelSedeAgendar = new javax.swing.JLabel();
-        selectSedeAgendar = new javax.swing.JComboBox<>();
+
+        JComboBox<Sede> selectSedeAgendar = new JComboBox<>();
+        List<Sede> sedes = controller.listarSedes();
+        for (Sede sede : sedes) {
+            selectSedeAgendar.addItem(sede);
+        }
+
         labelEmplazamientoAgendar = new javax.swing.JLabel();
         selectEmplazamientoAgendar = new javax.swing.JComboBox<>();
         labelFechaHoraAgendar = new javax.swing.JLabel();
@@ -176,23 +190,30 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelProfesorAgendar.setText("Profesor:");
 
-        txtProfesorAgendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProfesorAgendarActionPerformed(evt);
-            }
-        });
+        JComboBox<Profesor> selectProfesorAgendar = new JComboBox<>();
+        List<Profesor> profesores = controller.listarProfesores();
+        for (Profesor profesor : profesores) {
+            selectProfesorAgendar.addItem(profesor);
+        }
+
 
         labelTipoClaseAgendar.setText("Tipo de Clase:");
 
-        txtTipoClaseAgendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoClaseAgendarActionPerformed(evt);
-            }
-        });
+        JComboBox<TipoClase> selectTipoClaseAgendar = new JComboBox<>();
+        List<TipoClase> tiposDeClase = controller.listarTiposDeClase();
+        for (TipoClase tipoClase : tiposDeClase) {
+            selectTipoClaseAgendar.addItem(tipoClase);
+        }
+
 
         labelSedeAgendar.setText("Sede:");
 
         labelEmplazamientoAgendar.setText("Emplazamiento:");
+        JComboBox<Emplazamiento> selectEmplazamientoAgendar = new JComboBox<>();
+        List<Emplazamiento> emplazamientos = controller.listarEmplazamientosSede((Sede) selectSedeAgendar.getSelectedItem());
+        for (Emplazamiento emplazamiento : emplazamientos) {
+            selectEmplazamientoAgendar.addItem(emplazamiento);
+        }
 
         labelFechaHoraAgendar.setText("Fecha y Hora:");
 
@@ -213,6 +234,34 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         labelDuracionHorasAgendar.setText("Horas:");
 
         btnAgendarClase.setText("Agendar Clase");
+        btnAgendarClase.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener los valores de los campos y seleccionar elementos relevantes
+                Profesor profesor = (Profesor) selectProfesorAgendar.getSelectedItem();
+                TipoClase tipoClase = (TipoClase) selectTipoClaseAgendar.getSelectedItem();
+                Sede sede = (Sede) selectSedeAgendar.getSelectedItem();
+
+                Emplazamiento emplazamiento = (Emplazamiento) selectEmplazamientoAgendar.getSelectedItem();
+
+                int dia = (Integer) spinnerDiaAgendar.getValue();
+                int mes = (Integer) spinnerMesAgendar.getValue();
+                int año = (Integer) spinnerAñoAgendar.getValue();
+                int hora = (Integer) spinnerHoraAgendar.getValue();
+                int minuto = (Integer) spinnerMinutoAgendar.getValue();
+                LocalDateTime fechaHoraInicio = LocalDateTime.of(año, mes, dia, hora, minuto);
+
+                int duracionHoras = (Integer) spinnerDuracionHorasAgendar.getValue();
+                int duracionMinutos = (Integer) spinnerDuracionMinutosAgendar.getValue();
+                LocalTime duracion = LocalTime.of(duracionHoras, duracionMinutos);
+
+                if(controller.agendarClase(profesor, tipoClase, sede, emplazamiento, fechaHoraInicio, duracion, administrativoIniciado)) {
+                    JOptionPane.showMessageDialog(null, "Clase agendada con éxito.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo agendar.");
+                }
+            }
+        });
 
         javax.swing.GroupLayout panelAgendarClaseLayout = new javax.swing.GroupLayout(panelAgendarClase);
         panelAgendarClase.setLayout(panelAgendarClaseLayout);
@@ -238,10 +287,10 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                                         .addComponent(labelDuracionMinutosAgendar)))
                                 .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(labelEmplazamientoAgendar)
-                                    .addComponent(labelProfesorAgendar)
-                                    .addComponent(txtProfesorAgendar)
-                                    .addComponent(txtTipoClaseAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                                    .addComponent(labelTipoClaseAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelProfesorAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(selectProfesorAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(selectTipoClaseAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelTipoClaseAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(labelSedeAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(selectSedeAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(panelAgendarClaseLayout.createSequentialGroup()
@@ -285,11 +334,11 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelProfesorAgendar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtProfesorAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectProfesorAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelTipoClaseAgendar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTipoClaseAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectTipoClaseAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelSedeAgendar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1043,7 +1092,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendarClase;
@@ -1139,6 +1188,8 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JComboBox<Nivel> selectNivelClienteAlta;
     private javax.swing.JComboBox<EstadoClase> selectNuevoEstadoClaseModificar;
     private javax.swing.JComboBox<Nivel> selectNuevoNivelClienteModificar;
+    private javax.swing.JComboBox<Profesor> selectProfesorAgendar;
+    private javax.swing.JComboBox<TipoClase> selectTipoClaseAgendar;
     private javax.swing.JComboBox<Sede> selectSedeAgendar;
     private javax.swing.JComboBox<Sede> selectSedeAltaArticulo;
     private javax.swing.JComboBox<Sede> selectSedeArticulosDisponibles;
@@ -1169,7 +1220,5 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JTextField txtFiltroNombreClienteBaja;
     private javax.swing.JTextField txtFiltroNombreClienteModificar;
     private javax.swing.JTextField txtNombreClienteAlta;
-    private javax.swing.JTextField txtProfesorAgendar;
-    private javax.swing.JTextField txtTipoClaseAgendar;
     // End of variables declaration//GEN-END:variables
 }

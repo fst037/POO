@@ -17,6 +17,10 @@ public class Profesor extends Usuario{
         this.clases = new ArrayList<Clase>();
     }
 
+    public String toString(){
+        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
+    }
+
     public float getSalario() {
         return salario;
     }

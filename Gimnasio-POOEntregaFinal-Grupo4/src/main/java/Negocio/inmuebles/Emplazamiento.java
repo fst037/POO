@@ -16,6 +16,10 @@ public class Emplazamiento {
         this.metrosCuadrados = metrosCuadrados;
     }
 
+    public String toString(){
+        return "Tipo: " + this.getTipo() + " Metros Cuadrados: " + this.getMetrosCuadrados();
+    }
+
     public TipoEmplazamiento getTipo() {
         return tipo;
     }

@@ -1,5 +1,6 @@
 package Aplication;
 
+import Negocio.enums.*;
 import Negocio.inmuebles.Emplazamiento;
 import Negocio.inmuebles.Sede;
 import Negocio.articulos.Articulo;
@@ -9,10 +10,6 @@ import Negocio.articulos.TipoColchoneta;
 import Negocio.articulos.TipoPesa;
 import Negocio.clases.Clase;
 import Negocio.clases.TipoClase;
-import Negocio.enums.Amortizacion;
-import Negocio.enums.EstadoClase;
-import Negocio.enums.Nivel;
-import Negocio.enums.TipoUsoPesa;
 import Negocio.usuarios.Administrativo;
 import Negocio.usuarios.Cliente;
 import Negocio.usuarios.Profesor;
@@ -66,12 +63,19 @@ public class Gimnasio {
     public List<Profesor> listarProfesores(){
         return this.profesores;
     }
+    public SoporteTecnico mostrarSoporteTecnico(){
+        return this.soporteTecnico;
+    }
     
     public void crearSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
         for (Sede sede : sedes ){
             assert sede.getBarrio().equals(barrio) : "Ya existe una sede en ese barrio";
         }
         Sede sede = soporteTecnico.crearNuevaSede(nombre, nivelMinimo, barrio, alquiler);
+        sedes.add(sede);
+    }
+    public void agregarEmplazamiento(Sede sede, TipoEmplazamiento tipo, float metrosCuadrados) {
+        Emplazamiento emplazamiento = soporteTecnico.crearEmplazamiento( sede, tipo, metrosCuadrados);
         sedes.add(sede);
     }
 
@@ -119,10 +123,11 @@ public class Gimnasio {
         this.tiposDeArticulo.add(nuevoTipoAccesorio);  
     }
 
-    public void agendarClase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion, Administrativo administrativo) {
+    public boolean agendarClase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion, Administrativo administrativo) {
         assert administrativo.getSedes().contains(sede) : "El administrativo seleccionado no maneja la sede";
         
         administrativo.agendarClase(prof, tipoClase, sede, emp, fHI, duracion);
+        return true;
     }
     
     public List<Sede> listarSedesAdministrativo(Administrativo admin){

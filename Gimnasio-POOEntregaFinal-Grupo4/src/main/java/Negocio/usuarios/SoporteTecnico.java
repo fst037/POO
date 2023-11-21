@@ -1,6 +1,8 @@
 package Negocio.usuarios;
 
 import Negocio.enums.Nivel;
+import Negocio.enums.TipoEmplazamiento;
+import Negocio.inmuebles.Emplazamiento;
 import Negocio.inmuebles.Sede;
 import Negocio.articulos.TipoAccesorio;
 import Negocio.articulos.TipoArticulo;
@@ -18,6 +20,9 @@ public class SoporteTecnico extends Usuario {
         super(nombre, dni);
     }
 
+    public String toString(){
+        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
+    }
     public Sede crearNuevaSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
         Sede sedeNueva = new Sede(nombre, nivelMinimo, barrio, alquiler);
         return sedeNueva;
@@ -62,4 +67,9 @@ public class SoporteTecnico extends Usuario {
         return nuevoTipoAccesorio;
     }
 
+    public Emplazamiento crearEmplazamiento(Sede sede, TipoEmplazamiento tipo, float metrosCuadrados) {
+        Emplazamiento emplazamiento = new Emplazamiento(tipo, metrosCuadrados);
+        sede.agregarEmplazamiento(emplazamiento);
+        return emplazamiento;
+    }
 }
