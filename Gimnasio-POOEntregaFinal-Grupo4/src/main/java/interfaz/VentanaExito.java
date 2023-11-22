@@ -16,7 +16,7 @@ public class VentanaExito extends javax.swing.JFrame {
      */
     public VentanaExito(String mensaje) {
         initComponents();
-        labelMensaje.setText(mensaje);
+        textAreaExitoMensaje.setText(mensaje);
     }
 
     /**
@@ -29,15 +29,18 @@ public class VentanaExito extends javax.swing.JFrame {
     private void initComponents() {
 
         labelTituloExito = new javax.swing.JLabel();
-        labelMensaje = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaExitoMensaje = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTituloExito.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         labelTituloExito.setForeground(new java.awt.Color(51, 255, 51));
         labelTituloExito.setText("OPERACION TERMINADA CON EXITO");
 
-        labelMensaje.setText("mensaje");
+        textAreaExitoMensaje.setColumns(20);
+        textAreaExitoMensaje.setRows(5);
+        jScrollPane1.setViewportView(textAreaExitoMensaje);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,7 +49,7 @@ public class VentanaExito extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(labelTituloExito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
@@ -55,9 +58,9 @@ public class VentanaExito extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(labelTituloExito)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,7 +72,8 @@ public class VentanaExito extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel labelMensaje;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTituloExito;
+    private javax.swing.JTextArea textAreaExitoMensaje;
     // End of variables declaration//GEN-END:variables
 }

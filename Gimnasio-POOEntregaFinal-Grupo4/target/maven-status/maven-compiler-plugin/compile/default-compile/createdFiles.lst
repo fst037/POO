@@ -79,6 +79,7 @@ interfaz\VentanaAdministrativo$7.class
 interfaz\VentanaCliente$3.class
 Negocio\enums\EstadoClase.class
 interfaz\VentanaAdministrativo$14.class
+interfaz\VentanaAdministrativo$24.class
 Negocio\usuarios\Cliente.class
 interfaz\VentanaPrincipal$6.class
 interfaz\VentanaError.class

@@ -299,14 +299,14 @@
                     <Component class="javax.swing.JSpinner" name="spinnerDiaAgendar">
                       <Properties>
                         <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="LocalDateTime.now().getDayOfMonth()" type="code"/>
+                          <Connection code="1" type="code"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerMesAgendar">
                       <Properties>
                         <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="LocalDateTime.now().getMonth()" type="code"/>
+                          <Connection code="1" type="code"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -318,7 +318,7 @@
                     <Component class="javax.swing.JSpinner" name="spinnerA&#xf1;oAgendar">
                       <Properties>
                         <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="LocalDateTime.now().getYear()" type="code"/>
+                          <Connection code="1" type="code"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -328,11 +328,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerHoraAgendar">
-                      <Properties>
-                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="LocalDateTime.now().getHour()" type="code"/>
-                        </Property>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelHoraAgendar">
                       <Properties>
@@ -341,9 +336,7 @@
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerMinutoAgendar">
                       <Properties>
-                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="LocalDateTime.now().getMinute()" type="code"/>
-                        </Property>
+                        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelMinutoAgendar">
@@ -469,13 +462,13 @@
                               <Component id="labelClaseModificar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="selectClaseModificar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="labelNuevoEstadoClaseModificar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="selectNuevoEstadoClaseModificar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnModificarClase" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace pref="145" max="32767" attributes="0"/>
+                              <EmptySpace pref="177" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -499,9 +492,10 @@
                       </Properties>
                       <Events>
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeModificarFocusGained"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectSedeModificarActionPerformed"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeModificar, controller.listarSedesAdministrativo(administrativoIniciado));"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
                       </AuxValues>
                     </Component>
@@ -558,7 +552,7 @@
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectNuevoEstadoClaseModificarFocusGained"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectNuevoEstadoClaseModificar, controller.listarEstadosClase());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;EstadoClase&gt;"/>
                       </AuxValues>
                     </Component>
@@ -566,6 +560,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modificar Clase"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarClaseActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

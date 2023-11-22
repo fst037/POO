@@ -67,9 +67,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         selectAdministrativo.setInheritsPopupMenu(true);
-        for(Administrativo admin : controller.listarAdministrativos()){
-            selectAdministrativo.addItem(admin);
-        }
+        refreshSelect(selectAdministrativo, controller.listarAdministrativos());
         selectAdministrativo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 selectAdministrativoFocusGained(evt);
@@ -183,10 +181,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAdministrativoActionPerformed
 
     private void selectAdministrativoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectAdministrativoFocusGained
-        selectAdministrativo.removeAllItems();
-        for(Administrativo admin : controller.listarAdministrativos()){
-            selectAdministrativo.addItem(admin);
-        }
+        refreshSelect(selectAdministrativo,controller.listarAdministrativos());
     }//GEN-LAST:event_selectAdministrativoFocusGained
 
     private void btnAdministrativo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrativo

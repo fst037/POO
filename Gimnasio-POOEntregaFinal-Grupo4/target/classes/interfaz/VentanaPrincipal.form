@@ -100,7 +100,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectAdministrativoActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Administrativo admin : controller.listarAdministrativos()){&#xa;            selectAdministrativo.addItem(admin);&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectAdministrativo, controller.listarAdministrativos());"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Administrativo&gt;"/>
       </AuxValues>
     </Component>

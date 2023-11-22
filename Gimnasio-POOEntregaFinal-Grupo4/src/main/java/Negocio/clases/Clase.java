@@ -90,6 +90,11 @@ public class Clase {
         this.estadoClase = EstadoClase.Agendada;
     }
     
+    public String toString(){
+        return this.tipoClase.getNombre() + " - " + this.estadoClase.toString() + " - " +  this.fechaHoraInicio.toString()
+                + " - " + this.duracion + " - " + this.profesor.getNombre();
+    }
+    
     public EstadoClase getEstadoClase() {
         return this.estadoClase;
     }

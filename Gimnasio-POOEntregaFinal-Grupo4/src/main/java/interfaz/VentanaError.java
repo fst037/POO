@@ -15,7 +15,7 @@ public class VentanaError extends javax.swing.JFrame {
      */
     public VentanaError(String mensaje) {
         initComponents();
-        labelMensaje.setText(mensaje);
+        textAreaMensajeError.setText(mensaje);
     }
 
     /**
@@ -28,7 +28,8 @@ public class VentanaError extends javax.swing.JFrame {
     private void initComponents() {
 
         labelTituloError = new javax.swing.JLabel();
-        labelMensaje = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaMensajeError = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Error");
@@ -37,7 +38,9 @@ public class VentanaError extends javax.swing.JFrame {
         labelTituloError.setForeground(new java.awt.Color(204, 0, 0));
         labelTituloError.setText("HA OCURIDO UN ERROR");
 
-        labelMensaje.setText("mensaje");
+        textAreaMensajeError.setColumns(20);
+        textAreaMensajeError.setRows(5);
+        jScrollPane1.setViewportView(textAreaMensajeError);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,7 +49,7 @@ public class VentanaError extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(labelTituloError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
@@ -55,9 +58,9 @@ public class VentanaError extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(labelTituloError, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,7 +72,8 @@ public class VentanaError extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel labelMensaje;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTituloError;
+    private javax.swing.JTextArea textAreaMensajeError;
     // End of variables declaration//GEN-END:variables
 }

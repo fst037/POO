@@ -402,10 +402,15 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelClaseModificar.setText("Clase:");
 
-        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        refreshSelect(selectSedeModificar, controller.listarSedesAdministrativo(administrativoIniciado));
         selectSedeModificar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 selectSedeModificarFocusGained(evt);
+            }
+        });
+        selectSedeModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSedeModificarActionPerformed(evt);
             }
         });
 
@@ -431,7 +436,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelNuevoEstadoClaseModificar.setText("Nuevo estado de la Clase:");
 
-        refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());
+        refreshSelect(selectNuevoEstadoClaseModificar, controller.listarEstadosClase());
         selectNuevoEstadoClaseModificar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 selectNuevoEstadoClaseModificarFocusGained(evt);
@@ -439,6 +444,11 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         });
 
         btnModificarClase.setText("Modificar Clase");
+        btnModificarClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarClaseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelModificarClaseLayout = new javax.swing.GroupLayout(panelModificarClase);
         panelModificarClase.setLayout(panelModificarClaseLayout);
@@ -480,13 +490,13 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addComponent(labelClaseModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectClaseModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelNuevoEstadoClaseModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectNuevoEstadoClaseModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnModificarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         opcionesAdministrarClases.addTab("ModificarClase", panelModificarClase);
@@ -495,7 +505,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelTipoClaseGrabaciones.setText("Tipo de Clase:");
 
-        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        refreshSelect(selectSedeGrabaciones, controller.listarSedesAdministrativo(administrativoIniciado));
         selectSedeGrabaciones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 selectSedeGrabacionesFocusGained(evt);
@@ -511,6 +521,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             }
         });
 
+        listClasesEncontradas.setFocusable(false);
         jScrollPane1.setViewportView(listClasesEncontradas);
 
         labelClasesEncontradas.setText("Clases Encontradas:");
@@ -1096,7 +1107,24 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListarClasesGrabadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarClasesGrabadasActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+            listClasesEncontradas.clearSelection();
+            DefaultListModel model = new DefaultListModel();
+            for(Clase clase : controller.verClasesAlmacenadas(
+                    (TipoClase)selectTipoClaseGrabaciones.getSelectedItem(), 
+                    (Sede)selectSedeGrabaciones.getSelectedItem(), 
+                    administrativoIniciado)){
+                model.addElement(clase);
+            }
+            
+            listClasesEncontradas.setModel(model);
+                        
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
     }//GEN-LAST:event_btnListarClasesGrabadasActionPerformed
 
     private void txtFiltroNombreClienteBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreClienteBajaActionPerformed
@@ -1162,7 +1190,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectEmplazamientoAgendarFocusGained
 
     private void selectSedeModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeModificarFocusGained
-        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        refreshSelect(selectSedeModificar, controller.listarSedesAdministrativo(administrativoIniciado));
     }//GEN-LAST:event_selectSedeModificarFocusGained
 
     private void selectEstadoClaseModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectEstadoClaseModificarFocusGained
@@ -1176,7 +1204,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectClaseModificarFocusGained
 
     private void selectNuevoEstadoClaseModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectNuevoEstadoClaseModificarFocusGained
-        refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());
+        refreshSelect(selectNuevoEstadoClaseModificar, controller.listarEstadosClase());
     }//GEN-LAST:event_selectNuevoEstadoClaseModificarFocusGained
 
     private void selectTipoClaseGrabacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoClaseGrabacionesFocusGained
@@ -1184,7 +1212,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectTipoClaseGrabacionesFocusGained
 
     private void selectSedeGrabacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeGrabacionesFocusGained
-        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        refreshSelect(selectSedeGrabaciones, controller.listarSedesAdministrativo(administrativoIniciado));
     }//GEN-LAST:event_selectSedeGrabacionesFocusGained
 
     private void btnAgendarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarClaseActionPerformed
@@ -1210,7 +1238,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 duracion, 
                 administrativoIniciado);
             
-            VentanaExito ventanaExito = new VentanaExito("Se creo la clase con exito.");
+            VentanaExito ventanaExito = new VentanaExito("Se agendó la clase con éxito.");
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
@@ -1222,6 +1250,29 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAgendarClaseActionPerformed
+
+    private void selectSedeModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSedeModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectSedeModificarActionPerformed
+
+    private void btnModificarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClaseActionPerformed
+        try {            
+            controller.actualizarEstadoClase(
+                    (Sede)selectSedeModificar.getSelectedItem(), 
+                    (Clase)selectClaseModificar.getSelectedItem(), 
+                    administrativoIniciado, 
+                    (EstadoClase) selectNuevoEstadoClaseModificar.getSelectedItem());
+            
+            VentanaExito ventanaExito = new VentanaExito("Se modificó la clase con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
+    }//GEN-LAST:event_btnModificarClaseActionPerformed
 
     /**
      * @param args the command line arguments
