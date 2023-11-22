@@ -3,14 +3,17 @@ interfaz\VentanaAdministrativo$2.class
 interfaz\VentanaSoporteTecnico$12.class
 Aplication\pruebas.class
 interfaz\VentanaAdministrativo$13.class
+interfaz\VentanaAdministrativo$33.class
 interfaz\VentanaExito.class
 interfaz\VentanaSoporteTecnico$22.class
 interfaz\VentanaSoporteTecnico$32.class
 Negocio\inmuebles\Sede.class
 interfaz\VentanaAdministrativo$5.class
+interfaz\VentanaAdministrativo$29.class
 interfaz\VentanaSoporteTecnico$15.class
 interfaz\VentanaSoporteTecnico$25.class
 interfaz\VentanaAdministrativo$16.class
+interfaz\VentanaAdministrativo$26.class
 Aplication\Gimnasio.class
 interfaz\VentanaSoporteTecnico$28.class
 interfaz\VentanaAdministrativo$8.class
@@ -28,6 +31,8 @@ interfaz\VentanaSoporteTecnico$9.class
 interfaz\VentanaSoporteTecnico$2.class
 Aplication\Gimnasio$1.class
 Negocio\clases\TipoClase.class
+interfaz\VentanaAdministrativo$28.class
+interfaz\VentanaAdministrativo$34.class
 interfaz\VentanaSoporteTecnico$33.class
 Negocio\usuarios\Administrativo.class
 interfaz\VentanaSoporteTecnico$23.class
@@ -59,6 +64,7 @@ interfaz\VentanaSoporteTecnico.class
 interfaz\VentanaCliente$1.class
 Negocio\enums\Nivel.class
 Negocio\usuarios\Cliente$1.class
+interfaz\VentanaAdministrativo$27.class
 interfaz\VentanaPrincipal$1.class
 interfaz\VentanaAdministrativo$12.class
 interfaz\VentanaSoporteTecnico$21.class
@@ -71,9 +77,12 @@ Negocio\inmuebles\Emplazamiento.class
 interfaz\VentanaCliente.class
 interfaz\VentanaSoporteTecnico$16.class
 interfaz\VentanaAdministrativo$15.class
+interfaz\VentanaAdministrativo$32.class
+interfaz\VentanaAdministrativo$35.class
 interfaz\VentanaSoporteTecnico$19.class
 interfaz\VentanaAdministrativo$4.class
 interfaz\VentanaSoporteTecnico$24.class
+interfaz\VentanaAdministrativo$31.class
 interfaz\VentanaSoporteTecnico$27.class
 interfaz\VentanaAdministrativo$7.class
 interfaz\VentanaCliente$3.class
@@ -88,6 +97,7 @@ interfaz\VentanaSoporteTecnico$30.class
 Negocio\articulos\TipoArticulo.class
 interfaz\VentanaSoporteTecnico$31.class
 interfaz\VentanaPrincipal.class
+interfaz\VentanaAdministrativo$30.class
 interfaz\VentanaSoporteTecnico$26.class
 interfaz\VentanaSoporteTecnico$5.class
 Negocio\articulos\TipoPesa.class

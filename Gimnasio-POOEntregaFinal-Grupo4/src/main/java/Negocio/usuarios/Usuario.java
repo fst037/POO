@@ -11,7 +11,7 @@ public class Usuario {
     }
 
     public String toString(){
-        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
+        return this.getNombre() + "|" + this.getDni();
     }
     public String getNombre() {
         return nombre;

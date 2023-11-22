@@ -18,6 +18,10 @@ public abstract class TipoArticulo {
         this.costo = costo;
     }
 
+    public String toString(){
+        return this.nombre + "|" + this.marca;
+    }
+    
     public Amortizacion getAmortizacion() {
         return this.amortizacion;
     }

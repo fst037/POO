@@ -88,11 +88,15 @@ public class Clase {
         this.alumnosInscriptosPresencial = new ArrayList<Cliente>();
         this.alumnosInscriptosOnline = new ArrayList<Cliente>();
         this.estadoClase = EstadoClase.Agendada;
+        
+        if (tipoClase.getGrabacionesMaximas() > 0){
+            this.sede.addClaseAAlmacenamiento(this);
+        }
     }
     
     public String toString(){
-        return this.tipoClase.getNombre() + " - " + this.estadoClase.toString() + " - " +  this.fechaHoraInicio.toString()
-                + " - " + this.duracion + " - " + this.profesor.getNombre();
+        return this.tipoClase.getNombre() + "|" + this.estadoClase.toString() + "|" +  this.fechaHoraInicio.toString()
+                + "|" + this.duracion + "|" + this.profesor.getNombre();
     }
     
     public EstadoClase getEstadoClase() {

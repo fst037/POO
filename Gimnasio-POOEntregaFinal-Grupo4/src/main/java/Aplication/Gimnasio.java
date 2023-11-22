@@ -48,6 +48,18 @@ public class Gimnasio {
         return this.tiposDeClase;
     }
     
+    public List<TipoClase> listarTiposDeClaseOnlineHabilitado(){
+        List<TipoClase> resultado = new ArrayList();
+        
+        for (TipoClase tipoClase : this.tiposDeClase){
+            if (tipoClase.getGrabacionesMaximas() > 0){
+                resultado.add(tipoClase);                
+            }
+        }        
+        
+        return resultado;
+    }
+    
     public List<Clase> listarClasesDeSedeConEstado(Sede sede, EstadoClase estado){
             switch (estado) {
             case Agendada:
@@ -69,8 +81,24 @@ public class Gimnasio {
         return Arrays.asList(EstadoClase.values());
     }
     
+    public List<Nivel> listarNiveles(){
+        return Arrays.asList(Nivel.values());
+    }
+    
     public List<Cliente> listarClientes(){
         return this.clientes;
+    }
+    
+    public List<Cliente> listarClientesConFiltro(String filtro){
+        List<Cliente> resultado = new ArrayList<Cliente>();
+        
+        for (Cliente cliente : this.clientes){
+            if (cliente.getNombre().contains(filtro)){
+                resultado.add(cliente);
+            }                
+        }
+        
+        return resultado;
     }
     
     public List<Administrativo> listarAdministrativos(){
@@ -175,6 +203,9 @@ public class Gimnasio {
     }
 
     public void darAltaCliente(Administrativo administrativo, String nombre, int dni, Nivel nivel) {
+        
+        assert nombre != "" : "El nombre esta vacio";
+        
         for (Cliente cliente: clientes){
             assert cliente.getDni() != dni: "El dni ya esta asociado a un cliente";
         }
@@ -185,14 +216,8 @@ public class Gimnasio {
         administrativo.darBajaCliente(cliente, clientes);
     }
 
-    public void actualizarNivelCliente(int dni_cliente, String nivel, Administrativo administrativo) {
-        for (Cliente cliente: this.clientes){
-            if (cliente.getDni() == dni_cliente){
-                administrativo.actualizarCliente(cliente, Nivel.valueOf(nivel));
-                return;            
-            }
-        }
-        assert false : "No existe el dni especificado";
+    public void actualizarNivelCliente(Cliente clienteElegido, Nivel nivel, Administrativo administrativo) {
+        administrativo.actualizarCliente(clienteElegido, nivel);
     }
 
     public List<Articulo> verArtDisp(Sede sede, Administrativo administrativo, LocalDateTime fechaHoraInicio, LocalTime duracion) {

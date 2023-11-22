@@ -23,6 +23,10 @@ public class Articulo {
         this.agendaReservas = new ArrayList<Clase>();
     }
 
+    public final String toString(){
+        return this.tipo + "|" + this.verDesgasteEnPorcentaje() + "%|" + this.fechaFabricacion.toString();
+    }
+    
     public Amortizacion getAmortizacion() {
         return this.tipo.getAmortizacion();
     }
@@ -102,7 +106,7 @@ public class Articulo {
         }
     }
     
-    public float verDesgasteEnPorcentaje() {
+    public final float verDesgasteEnPorcentaje() {
         // devuelve el desgaste entre 1.00 y 0.00. Siendo 1.00 el 100% de desgaste y 0.00 el 0% de desgaste
         return this.getDesgasteActual() / this.getDesgasteMax();
     }

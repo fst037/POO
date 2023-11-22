@@ -38,7 +38,7 @@ public class Sede {
 
     @Override
     public String toString() {
-        return this.nombre;
+        return this.nombre + "|" + this.barrio;
     }
 
 
@@ -102,8 +102,16 @@ public class Sede {
         return this.clasesGrabadasPorTipo;
     }
 
-    public void setClasesAlmacenadasPorTipo(List<StreamingClass> claseGrabadaPorTipo) {
-        this.clasesGrabadasPorTipo = claseGrabadaPorTipo;
+    public void setClasesAlmacenadasPorTipo(List<StreamingClass> clasesGrabadaPorTipo) {
+        this.clasesGrabadasPorTipo = clasesGrabadaPorTipo;
+    }
+    
+    public void addClaseAAlmacenamiento(Clase clase){
+        for (StreamingClass claseGrabadaDeTipo: this.clasesGrabadasPorTipo){
+            if (claseGrabadaDeTipo.getTipoClase() == clase.getTipoClase()){
+                claseGrabadaDeTipo.addClase(clase);
+            }
+        }
     }
 
     public List<Articulo> getArticulos() {

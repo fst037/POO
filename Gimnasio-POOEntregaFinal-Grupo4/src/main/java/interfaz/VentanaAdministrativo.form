@@ -318,7 +318,7 @@
                     <Component class="javax.swing.JSpinner" name="spinnerA&#xf1;oAgendar">
                       <Properties>
                         <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="1" type="code"/>
+                          <Connection code="2000" type="code"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -698,7 +698,7 @@
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectTipoClaseGrabacionesFocusGained"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClase());"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClaseOnlineHabilitado());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TipoClase&gt;"/>
                       </AuxValues>
                     </Component>
@@ -747,7 +747,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="labelTituloAltaCliente" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -759,18 +759,18 @@
                                           <Component id="labelDNIClienteAlta" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtDNIClienteAlta" alignment="0" max="32767" attributes="0"/>
                                           <Component id="selectNivelClienteAlta" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnDarAltaCliente" pref="377" max="32767" attributes="0"/>
+                                          <Component id="btnDarAltaCliente" min="-2" pref="377" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="77" max="32767" attributes="0"/>
+                              <EmptySpace pref="56" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="labelTituloAltaCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="labelNombreClienteAlta" min="-2" max="-2" attributes="0"/>
@@ -786,7 +786,7 @@
                               <Component id="selectNivelClienteAlta" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnDarAltaCliente" min="-2" pref="66" max="-2" attributes="0"/>
-                              <EmptySpace pref="233" max="32767" attributes="0"/>
+                              <EmptySpace pref="231" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -823,6 +823,7 @@
                         </Property>
                       </Properties>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectNivelClienteAlta, controller.listarNiveles());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Nivel&gt;"/>
                       </AuxValues>
                     </Component>
@@ -830,6 +831,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Dar de Alta Cliente"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDarAltaClienteActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -846,28 +850,28 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="labelTituloDarBajaCliente" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="btnDarBajaCliente" pref="371" max="32767" attributes="0"/>
+                                          <Component id="btnDarBajaCliente" max="32767" attributes="0"/>
                                           <Component id="labelFiltroNombreClienteBaja" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelClienteBaja" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="selectClienteBaja" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtFiltroNombreClienteBaja" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtFiltroNombreClienteBaja" alignment="0" min="-2" pref="371" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="86" max="32767" attributes="0"/>
+                              <EmptySpace pref="58" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="labelTituloDarBajaCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="labelFiltroNombreClienteBaja" min="-2" max="-2" attributes="0"/>
@@ -879,7 +883,7 @@
                               <Component id="selectClienteBaja" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="btnDarBajaCliente" min="-2" pref="61" max="-2" attributes="0"/>
-                              <EmptySpace pref="265" max="32767" attributes="0"/>
+                              <EmptySpace pref="264" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -901,8 +905,12 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectClienteBajaFocusGained"/>
+                      </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectClienteBaja, controller.listarClientes());"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cliente&gt;"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelClienteBaja">
@@ -938,7 +946,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="labelTituloModificarCliente" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -947,21 +955,21 @@
                                           <Component id="labelFiltroNombreClienteModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelClienteModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="selectClienteModificar" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtFiltroNombreClienteModificar" alignment="0" pref="371" max="32767" attributes="0"/>
+                                          <Component id="txtFiltroNombreClienteModificar" alignment="0" max="32767" attributes="0"/>
                                           <Component id="selectNuevoNivelClienteModificar" alignment="0" max="32767" attributes="0"/>
                                           <Component id="labelNuevoNivelClienteModificar" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnModificarCliente" max="32767" attributes="0"/>
+                                          <Component id="btnModificarCliente" min="-2" pref="371" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="84" max="32767" attributes="0"/>
+                              <EmptySpace pref="54" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="labelTituloModificarCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="labelFiltroNombreClienteModificar" min="-2" max="-2" attributes="0"/>
@@ -975,9 +983,9 @@
                               <Component id="labelNuevoNivelClienteModificar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="selectNuevoNivelClienteModificar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnModificarCliente" min="-2" pref="56" max="-2" attributes="0"/>
-                              <EmptySpace pref="235" max="32767" attributes="0"/>
+                              <EmptySpace pref="221" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -995,9 +1003,11 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectClienteModificarFocusGained"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectClienteModificarActionPerformed"/>
                       </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectClienteModificar, controller.listarClientes());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cliente&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1023,6 +1033,7 @@
                         </Property>
                       </Properties>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectNuevoNivelClienteModificar, controller.listarNiveles());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Nivel&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1035,6 +1046,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modificar Cliente"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarClienteActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1230,7 +1244,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeArticulosDisponiblesFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeArticulosDisponibles, controller.listarSedesAdministrativo(administrativoIniciado));"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1247,6 +1265,11 @@
                     <Component class="javax.swing.JSpinner" name="spinnerDuracionMinutosArticulosDisponibles">
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerDuracionHorasArticulosDisponibles">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelDuracionHorasArticulosDisponibles">
                       <Properties>
@@ -1264,6 +1287,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerDiaArticulosDisponibles">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelDiaArticulosDisponibles">
                       <Properties>
@@ -1276,6 +1304,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerMesArticulosDisponibles">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelMesArticulosDisponibles">
                       <Properties>
@@ -1283,6 +1316,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerA&#xf1;oArticulosDisponibles">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="2000" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelA&#xf1;oArticulosDisponibles">
                       <Properties>
@@ -1402,7 +1440,12 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeVerDesgasteBajaArticulosFocusGained"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectSedeVerDesgasteBajaArticulosActionPerformed"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeVerDesgasteBajaArticulos, controller.listarSedesAdministrativo(administrativoIniciado));"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1418,9 +1461,11 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectVerDesgasteBajaArticuloFocusGained"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectVerDesgasteBajaArticuloActionPerformed"/>
                       </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (selectSedeVerDesgasteBajaArticulos.getItemCount() &gt; 0) {&#xa;            refreshSelect(&#xa;                    selectVerDesgasteBajaArticulo, &#xa;                    controller.verTodosArt(&#xa;                            (Sede)selectSedeVerDesgasteBajaArticulos.getSelectedItem(), &#xa;                            administrativoIniciado)&#xa;            );&#xa;        }"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Articulo&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1550,7 +1595,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeAltaArticuloFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeAltaArticulo, controller.listarSedesAdministrativo(administrativoIniciado));"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1565,7 +1614,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectTipoArticuloAltaArticuloFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectTipoArticuloAltaArticulo, controller.listarTiposDeArticulo());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TipoArticulo&gt;"/>
                       </AuxValues>
                     </Component>

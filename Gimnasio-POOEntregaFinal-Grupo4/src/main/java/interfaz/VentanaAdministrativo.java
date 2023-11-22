@@ -220,7 +220,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelDiaAgendar.setText("Dia:");
 
-        spinnerAñoAgendar.setValue(1);
+        spinnerAñoAgendar.setValue(2000);
 
         labelAñoAgendar.setText("Año:");
 
@@ -526,7 +526,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelClasesEncontradas.setText("Clases Encontradas:");
 
-        refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClase());
+        refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClaseOnlineHabilitado());
         selectTipoClaseGrabaciones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 selectTipoClaseGrabacionesFocusGained(evt);
@@ -599,14 +599,21 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelNivelClienteAlta.setText("Nivel:");
 
+        refreshSelect(selectNivelClienteAlta, controller.listarNiveles());
+
         btnDarAltaCliente.setText("Dar de Alta Cliente");
+        btnDarAltaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarAltaClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelAltaClienteLayout = new javax.swing.GroupLayout(panelAltaCliente);
         panelAltaCliente.setLayout(panelAltaClienteLayout);
         panelAltaClienteLayout.setHorizontalGroup(
             panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAltaClienteLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(45, 45, 45)
                 .addGroup(panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTituloAltaCliente)
                     .addGroup(panelAltaClienteLayout.createSequentialGroup()
@@ -618,13 +625,13 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                             .addComponent(labelDNIClienteAlta)
                             .addComponent(txtDNIClienteAlta)
                             .addComponent(selectNivelClienteAlta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDarAltaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                            .addComponent(btnDarAltaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         panelAltaClienteLayout.setVerticalGroup(
             panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAltaClienteLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(16, 16, 16)
                 .addComponent(labelTituloAltaCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelNombreClienteAlta)
@@ -640,7 +647,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addComponent(selectNivelClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnDarAltaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         opcionesAdministrarClientes.addTab("DarAltaCliente", panelAltaCliente);
@@ -650,6 +657,13 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         txtFiltroNombreClienteBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFiltroNombreClienteBajaActionPerformed(evt);
+            }
+        });
+
+        refreshSelect(selectClienteBaja, controller.listarClientes());
+        selectClienteBaja.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectClienteBajaFocusGained(evt);
             }
         });
 
@@ -669,23 +683,23 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         panelBajaClienteLayout.setHorizontalGroup(
             panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBajaClienteLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(49, 49, 49)
                 .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTituloDarBajaCliente)
                     .addGroup(panelBajaClienteLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnDarBajaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                            .addComponent(btnDarBajaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelFiltroNombreClienteBaja)
                             .addComponent(labelClienteBaja)
                             .addComponent(selectClienteBaja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFiltroNombreClienteBaja))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                            .addComponent(txtFiltroNombreClienteBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         panelBajaClienteLayout.setVerticalGroup(
             panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBajaClienteLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(labelTituloDarBajaCliente)
                 .addGap(18, 18, 18)
                 .addComponent(labelFiltroNombreClienteBaja)
@@ -697,13 +711,19 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addComponent(selectClienteBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(btnDarBajaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         opcionesAdministrarClientes.addTab("DarBajaCliente", panelBajaCliente);
 
         labelTituloModificarCliente.setText("MODIFICAR CLIENTE");
 
+        refreshSelect(selectClienteModificar, controller.listarClientes());
+        selectClienteModificar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectClienteModificarFocusGained(evt);
+            }
+        });
         selectClienteModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectClienteModificarActionPerformed(evt);
@@ -720,16 +740,23 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelFiltroNombreClienteModificar.setText("Filtro Nombre Cliente:");
 
+        refreshSelect(selectNuevoNivelClienteModificar, controller.listarNiveles());
+
         labelNuevoNivelClienteModificar.setText("Nuevo Nivel:");
 
         btnModificarCliente.setText("Modificar Cliente");
+        btnModificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelModificarClienteLayout = new javax.swing.GroupLayout(panelModificarCliente);
         panelModificarCliente.setLayout(panelModificarClienteLayout);
         panelModificarClienteLayout.setHorizontalGroup(
             panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelModificarClienteLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(53, 53, 53)
                 .addGroup(panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTituloModificarCliente)
                     .addGroup(panelModificarClienteLayout.createSequentialGroup()
@@ -738,16 +765,16 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                             .addComponent(labelFiltroNombreClienteModificar)
                             .addComponent(labelClienteModificar)
                             .addComponent(selectClienteModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFiltroNombreClienteModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                            .addComponent(txtFiltroNombreClienteModificar)
                             .addComponent(selectNuevoNivelClienteModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelNuevoNivelClienteModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                            .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         panelModificarClienteLayout.setVerticalGroup(
             panelModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelModificarClienteLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(24, 24, 24)
                 .addComponent(labelTituloModificarCliente)
                 .addGap(18, 18, 18)
                 .addComponent(labelFiltroNombreClienteModificar)
@@ -761,9 +788,9 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addComponent(labelNuevoNivelClienteModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectNuevoNivelClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         opcionesAdministrarClientes.addTab("ModificarCliente", panelModificarCliente);
@@ -781,9 +808,18 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         opcionesAdministrativo.addTab("AdministrarClientes", panelAdministrarClientes);
 
+        refreshSelect(selectSedeArticulosDisponibles, controller.listarSedesAdministrativo(administrativoIniciado));
+        selectSedeArticulosDisponibles.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeArticulosDisponiblesFocusGained(evt);
+            }
+        });
+
         labelSedeArticulosDisponibles.setText("Sede:");
 
         labelTituloVerArticulosDisponiblesEnFecha.setText("VER ARTICULOS DISPONIBLES EN FECHA");
+
+        spinnerDuracionHorasArticulosDisponibles.setValue(1);
 
         labelDuracionHorasArticulosDisponibles.setText("Horas:");
 
@@ -791,11 +827,17 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelDuracionArticulosDisponibles.setText("Duracion:");
 
+        spinnerDiaArticulosDisponibles.setValue(1);
+
         labelDiaArticulosDisponibles.setText("Dia:");
 
         labelFechaHoraArticulosDisponibles.setText("Fecha y Hora:");
 
+        spinnerMesArticulosDisponibles.setValue(1);
+
         labelMesArticulosDisponibles.setText("Mes:");
+
+        spinnerAñoArticulosDisponibles.setValue(2000);
 
         labelAñoArticulosDisponibles.setText("Año:");
 
@@ -931,8 +973,33 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelTituloDesgasteArticulosYBaja.setText("VER DESGASTE ARTICULOS Y DAR DE BAJA");
 
+        refreshSelect(selectSedeVerDesgasteBajaArticulos, controller.listarSedesAdministrativo(administrativoIniciado));
+        selectSedeVerDesgasteBajaArticulos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeVerDesgasteBajaArticulosFocusGained(evt);
+            }
+        });
+        selectSedeVerDesgasteBajaArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSedeVerDesgasteBajaArticulosActionPerformed(evt);
+            }
+        });
+
         labelSedeVerDesgasteBajaArticulos.setText("Sede:");
 
+        if (selectSedeVerDesgasteBajaArticulos.getItemCount() > 0) {
+            refreshSelect(
+                selectVerDesgasteBajaArticulo,
+                controller.verTodosArt(
+                    (Sede)selectSedeVerDesgasteBajaArticulos.getSelectedItem(),
+                    administrativoIniciado)
+            );
+        }
+        selectVerDesgasteBajaArticulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectVerDesgasteBajaArticuloFocusGained(evt);
+            }
+        });
         selectVerDesgasteBajaArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectVerDesgasteBajaArticuloActionPerformed(evt);
@@ -991,7 +1058,21 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelTipoArticuloAltaArticulo.setText("Tipo de Articulo:");
 
+        refreshSelect(selectSedeAltaArticulo, controller.listarSedesAdministrativo(administrativoIniciado));
+        selectSedeAltaArticulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeAltaArticuloFocusGained(evt);
+            }
+        });
+
         labelSedeAltaArticulo.setText("Sede:");
+
+        refreshSelect(selectTipoArticuloAltaArticulo, controller.listarTiposDeArticulo());
+        selectTipoArticuloAltaArticulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectTipoArticuloAltaArticuloFocusGained(evt);
+            }
+        });
 
         labelAñoFechaFabricacionAltaArticulo.setText("Año:");
 
@@ -1128,15 +1209,28 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarClasesGrabadasActionPerformed
 
     private void txtFiltroNombreClienteBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreClienteBajaActionPerformed
-        // TODO add your handling code here:
+        refreshSelect(selectClienteBaja, controller.listarClientesConFiltro(txtFiltroNombreClienteBaja.getText()));
     }//GEN-LAST:event_txtFiltroNombreClienteBajaActionPerformed
 
     private void btnDarBajaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaClienteActionPerformed
-        // TODO add your handling code here:
+        try {            
+            controller.darBajaCliente(
+                    administrativoIniciado, 
+                    (Cliente) selectClienteBaja.getSelectedItem());            
+            
+            VentanaExito ventanaExito = new VentanaExito("Se dió de baja el cliente con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
     }//GEN-LAST:event_btnDarBajaClienteActionPerformed
 
     private void txtFiltroNombreClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroNombreClienteModificarActionPerformed
-        // TODO add your handling code here:
+        refreshSelect(selectClienteModificar, controller.listarClientesConFiltro(txtFiltroNombreClienteModificar.getText()));
     }//GEN-LAST:event_txtFiltroNombreClienteModificarActionPerformed
 
     private void selectClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteModificarActionPerformed
@@ -1144,7 +1238,37 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectClienteModificarActionPerformed
 
     private void btnBuscarArticulosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarArticulosDisponiblesActionPerformed
-        // TODO add your handling code here:
+        try {            
+            LocalDateTime fechaHoraInicio = LocalDateTime.of(
+                (int)spinnerAñoArticulosDisponibles.getValue(),
+                (int)spinnerMesArticulosDisponibles.getValue(),
+                (int)spinnerDiaArticulosDisponibles.getValue(),
+                (int)spinnerHoraArticulosDisponibles.getValue(),
+                (int)spinnerMinutoArticulosDisponibles.getValue());
+        
+            LocalTime duracion = LocalTime.of(
+                (int)spinnerDuracionHorasArticulosDisponibles.getValue(), 
+                (int)spinnerDuracionMinutosArticulosDisponibles.getValue());
+            
+            List <Articulo> articulos = controller.verArtDisp(
+                    (Sede) selectSedeArticulosDisponibles.getSelectedItem(), 
+                    administrativoIniciado, 
+                    fechaHoraInicio, 
+                    duracion);
+            
+            listArticulosDisponiblesEncontrados.clearSelection();
+            DefaultListModel model = new DefaultListModel();
+            for(Articulo articulo : articulos){
+                model.addElement(articulo);
+            }
+            
+            listArticulosDisponiblesEncontrados.setModel(model);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
     }//GEN-LAST:event_btnBuscarArticulosDisponiblesActionPerformed
 
     private void selectVerDesgasteBajaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectVerDesgasteBajaArticuloActionPerformed
@@ -1152,11 +1276,52 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectVerDesgasteBajaArticuloActionPerformed
 
     private void btnDarBajaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaArticuloActionPerformed
-        // TODO add your handling code here:
+        try {            
+            
+            Sede sedeElegida = (Sede) selectSedeVerDesgasteBajaArticulos.getSelectedItem();
+            Articulo articuloElegido = (Articulo) selectVerDesgasteBajaArticulo.getSelectedItem();
+            
+            assert sedeElegida != null : "No se eligio una sede";
+            assert articuloElegido != null : "No se eligio un articulo";            
+            
+            controller.darBajaArticulo(
+                    administrativoIniciado, 
+                    sedeElegida, 
+                    articuloElegido);
+            
+            VentanaExito ventanaExito = new VentanaExito("Se dió de baja el artículo con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
     }//GEN-LAST:event_btnDarBajaArticuloActionPerformed
 
     private void btnDarAltaArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaArticuloActionPerformed
-        // TODO add your handling code here:
+        try {            
+            LocalDate fechaFabricacion = LocalDate.of(
+                (int)spinnerAñoFechaFabricacionAltaArticulo.getValue(),
+                (int)spinnerMesFechaFabricacionAltaArticulo.getValue(),
+                (int)spinnerDiaFechaFabricacionAltaArticulo.getValue());     
+            
+            controller.darAltaArticulo(
+                    administrativoIniciado, 
+                    (Sede) selectSedeAltaArticulo.getSelectedItem(),
+                    (TipoArticulo) selectTipoArticuloAltaArticulo.getSelectedItem(), 
+                    fechaFabricacion);
+            
+            VentanaExito ventanaExito = new VentanaExito("Se dió de alta el artículo con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
     }//GEN-LAST:event_btnDarAltaArticuloActionPerformed
 
     private void selectTipoClaseAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTipoClaseAgendarActionPerformed
@@ -1208,7 +1373,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectNuevoEstadoClaseModificarFocusGained
 
     private void selectTipoClaseGrabacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoClaseGrabacionesFocusGained
-        refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClase());
+        refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClaseOnlineHabilitado());
     }//GEN-LAST:event_selectTipoClaseGrabacionesFocusGained
 
     private void selectSedeGrabacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeGrabacionesFocusGained
@@ -1256,12 +1421,21 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_selectSedeModificarActionPerformed
 
     private void btnModificarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClaseActionPerformed
-        try {            
+        try {           
+            Sede sedeElegida = (Sede)selectSedeModificar.getSelectedItem();
+            Clase claseElegida = (Clase)selectClaseModificar.getSelectedItem();
+            EstadoClase estadoElegido = (EstadoClase) selectNuevoEstadoClaseModificar.getSelectedItem();
+            
+            assert sedeElegida != null : "No se eligio una sede";
+            assert claseElegida != null : "No se eligio una clase";
+            assert estadoElegido != null : "No se eligio un estado nuevo";
+            
             controller.actualizarEstadoClase(
-                    (Sede)selectSedeModificar.getSelectedItem(), 
-                    (Clase)selectClaseModificar.getSelectedItem(), 
+                    sedeElegida, 
+                    claseElegida, 
                     administrativoIniciado, 
-                    (EstadoClase) selectNuevoEstadoClaseModificar.getSelectedItem());
+                    estadoElegido
+                    );
             
             VentanaExito ventanaExito = new VentanaExito("Se modificó la clase con éxito.");
             ventanaExito.setLocationRelativeTo(null);
@@ -1273,6 +1447,81 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaError.setVisible(true);
         }
     }//GEN-LAST:event_btnModificarClaseActionPerformed
+
+    private void selectClienteBajaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectClienteBajaFocusGained
+        refreshSelect(selectClienteBaja, controller.listarClientesConFiltro(txtFiltroNombreClienteBaja.getText()));
+    }//GEN-LAST:event_selectClienteBajaFocusGained
+
+    private void selectClienteModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectClienteModificarFocusGained
+        refreshSelect(selectClienteModificar, controller.listarClientesConFiltro(txtFiltroNombreClienteModificar.getText()));
+    }//GEN-LAST:event_selectClienteModificarFocusGained
+
+    private void btnDarAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaClienteActionPerformed
+        try {            
+            controller.darAltaCliente(administrativoIniciado, 
+                    txtNombreClienteAlta.getText(), 
+                    Integer.parseInt(txtDNIClienteAlta.getText()), 
+                    (Nivel) selectNivelClienteAlta.getSelectedItem());
+            
+            VentanaExito ventanaExito = new VentanaExito("Se dió de alta el cliente con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
+    }//GEN-LAST:event_btnDarAltaClienteActionPerformed
+
+    private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
+        try {            
+            controller.actualizarNivelCliente(
+                    (Cliente) selectClienteModificar.getSelectedItem(), 
+                    (Nivel) selectNuevoNivelClienteModificar.getSelectedItem(), 
+                    administrativoIniciado);
+            
+            VentanaExito ventanaExito = new VentanaExito("Se modificó el cliente con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
+    }//GEN-LAST:event_btnModificarClienteActionPerformed
+
+    private void selectSedeArticulosDisponiblesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeArticulosDisponiblesFocusGained
+        refreshSelect(selectSedeArticulosDisponibles, controller.listarSedesAdministrativo(administrativoIniciado));
+    }//GEN-LAST:event_selectSedeArticulosDisponiblesFocusGained
+
+    private void selectSedeVerDesgasteBajaArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSedeVerDesgasteBajaArticulosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectSedeVerDesgasteBajaArticulosActionPerformed
+
+    private void selectSedeVerDesgasteBajaArticulosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeVerDesgasteBajaArticulosFocusGained
+        refreshSelect(selectSedeVerDesgasteBajaArticulos, controller.listarSedesAdministrativo(administrativoIniciado));
+    }//GEN-LAST:event_selectSedeVerDesgasteBajaArticulosFocusGained
+
+    private void selectVerDesgasteBajaArticuloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectVerDesgasteBajaArticuloFocusGained
+        if (selectSedeVerDesgasteBajaArticulos.getItemCount() > 0) {
+            refreshSelect(
+                    selectVerDesgasteBajaArticulo, 
+                    controller.verTodosArt(
+                            (Sede)selectSedeVerDesgasteBajaArticulos.getSelectedItem(), 
+                            administrativoIniciado)
+            );
+        }            
+    }//GEN-LAST:event_selectVerDesgasteBajaArticuloFocusGained
+
+    private void selectSedeAltaArticuloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeAltaArticuloFocusGained
+        refreshSelect(selectSedeAltaArticulo, controller.listarSedesAdministrativo(administrativoIniciado));
+    }//GEN-LAST:event_selectSedeAltaArticuloFocusGained
+
+    private void selectTipoArticuloAltaArticuloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoArticuloAltaArticuloFocusGained
+        refreshSelect(selectTipoArticuloAltaArticulo, controller.listarTiposDeArticulo());
+    }//GEN-LAST:event_selectTipoArticuloAltaArticuloFocusGained
 
     /**
      * @param args the command line arguments
@@ -1374,7 +1623,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JPanel panelVerArtDisponibleEnFecha;
     private javax.swing.JPanel panelVerDesgasteArticulos;
     private javax.swing.JComboBox<Clase> selectClaseModificar;
-    private javax.swing.JComboBox<Sede> selectClienteBaja;
+    private javax.swing.JComboBox<Cliente> selectClienteBaja;
     private javax.swing.JComboBox<Cliente> selectClienteModificar;
     private javax.swing.JComboBox<Emplazamiento> selectEmplazamientoAgendar;
     private javax.swing.JComboBox<EstadoClase> selectEstadoClaseModificar;

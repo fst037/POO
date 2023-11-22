@@ -24,10 +24,6 @@ public class Administrativo extends Usuario {
         super(nombre, dni);
         this.sedes = new ArrayList<Sede>();
     }
-
-    public String toString(){
-        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
-    }
     
     public List<Sede> getSedes() {
         return this.sedes;
@@ -39,7 +35,10 @@ public class Administrativo extends Usuario {
     }
 
     public void agendarClase(Profesor prof, TipoClase tipoClase, Sede sede, Emplazamiento emp, LocalDateTime fHI, LocalTime duracion) {
-        if (sedes.contains(sede) && prof.isDisponibleParaClase(fHI, duracion)){
+        assert emp.isDisponibleParaFechaHorario(fHI, duracion) : "El emplazamiento no se encuentra disponible en ese momento";
+        assert prof.isDisponibleParaClase(fHI, duracion) : "El profesor no se encuentra disponible en ese momento";
+        
+        if (sedes.contains(sede)){
             Clase nuevaClase = new Clase(prof, tipoClase, sede, emp, fHI, duracion);
             prof.agendarClase(nuevaClase);
             sede.agendarClase(nuevaClase);
@@ -88,7 +87,7 @@ public class Administrativo extends Usuario {
                 return clase.getClases();
             }
         }
-        return null;
+            return new ArrayList();
     }
 
     public void removeSede(Sede sede, List<Sede> sedes) {

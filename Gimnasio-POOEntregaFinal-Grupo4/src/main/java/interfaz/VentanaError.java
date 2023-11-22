@@ -38,6 +38,7 @@ public class VentanaError extends javax.swing.JFrame {
         labelTituloError.setForeground(new java.awt.Color(204, 0, 0));
         labelTituloError.setText("HA OCURIDO UN ERROR");
 
+        textAreaMensajeError.setEditable(false);
         textAreaMensajeError.setColumns(20);
         textAreaMensajeError.setRows(5);
         jScrollPane1.setViewportView(textAreaMensajeError);

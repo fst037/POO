@@ -285,6 +285,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controller.crearTipoClase("Yoga", new ArrayList<>(), new ArrayList<>(), 60);
         controller.crearTipoClase("Pilates", new ArrayList<>(), new ArrayList<>(), 60);
         controller.crearTipoClase("Spinning", new ArrayList<>(), new ArrayList<>(), 60);
+        controller.crearTipoClase("Jiu-Jitsu", new ArrayList<>(), new ArrayList<>(), 0);
 
         // TIPOS DE ARTICULO
         controller.crearTipoDePesa(soporteTecnico, 10, TipoUsoPesa.DeMano, Amortizacion.porUso, 100, "Marca Pesa", "Pesa 10kg", 500);

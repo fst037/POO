@@ -20,9 +20,6 @@ public class SoporteTecnico extends Usuario {
         super(nombre, dni);
     }
 
-    public String toString(){
-        return "Nombre: " + this.getNombre() + " DNI: " + this.getDni();
-    }
     public Sede crearNuevaSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
         Sede sedeNueva = new Sede(nombre, nivelMinimo, barrio, alquiler);
         return sedeNueva;

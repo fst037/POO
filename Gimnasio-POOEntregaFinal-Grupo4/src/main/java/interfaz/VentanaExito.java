@@ -38,6 +38,7 @@ public class VentanaExito extends javax.swing.JFrame {
         labelTituloExito.setForeground(new java.awt.Color(51, 255, 51));
         labelTituloExito.setText("OPERACION TERMINADA CON EXITO");
 
+        textAreaExitoMensaje.setEditable(false);
         textAreaExitoMensaje.setColumns(20);
         textAreaExitoMensaje.setRows(5);
         jScrollPane1.setViewportView(textAreaExitoMensaje);
