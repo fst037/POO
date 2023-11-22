@@ -7,7 +7,12 @@ package interfaz;
 import Aplication.Gimnasio;
 import Negocio.clases.Clase;
 import Negocio.clases.TipoClase;
+import Negocio.enums.Nivel;
+import Negocio.inmuebles.Sede;
 import Negocio.usuarios.Cliente;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -37,35 +42,75 @@ public class VentanaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        selectClase = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        opcionesCliente = new javax.swing.JTabbedPane();
+        panelReservarClase = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        labelSede = new javax.swing.JLabel();
+        selectTipoClaseReservar = new javax.swing.JComboBox<>();
+        labelTipoClase = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        selectTipoClase = new javax.swing.JComboBox<>();
-        toggleVirtual = new javax.swing.JToggleButton();
+        selectClaseReservar = new javax.swing.JComboBox<>();
         labelVirtual = new javax.swing.JLabel();
+        toggleVirtual = new javax.swing.JToggleButton();
         btnReservarClase = new javax.swing.JButton();
+        selectSedeReservar = new javax.swing.JComboBox<>();
+        panelVerClasesReservadas = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listClasesReservadas = new javax.swing.JList<>();
+        btnActualizarListaClasesReservadas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente");
 
-        selectClase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectClaseActionPerformed(evt);
+        panelReservarClase.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                panelReservarClaseFocusGained(evt);
             }
         });
-
-        jLabel1.setText("Tipo de Clase:");
 
         jLabel2.setText("RESERVAR CLASE");
 
-        jLabel3.setText("Clase:");
+        labelSede.setText("Sede:");
 
-        selectTipoClase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectTipoClaseActionPerformed(evt);
+        refreshSelect(selectTipoClaseReservar, controller.listarTiposDeClase());
+        selectTipoClaseReservar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectTipoClaseReservarFocusGained(evt);
             }
         });
+        selectTipoClaseReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTipoClaseReservarActionPerformed(evt);
+            }
+        });
+
+        labelTipoClase.setText("Tipo de Clase:");
+
+        jLabel3.setText("Clase:");
+
+        if (selectSedeReservar.getItemCount() > 0
+            && selectTipoClaseReservar.getItemCount() > 0){
+            refreshSelect(
+                selectClaseReservar,
+                controller.listarClasesDisponiblesReservar(
+                    (Sede) selectSedeReservar.getSelectedItem(),
+                    (TipoClase) selectTipoClaseReservar.getSelectedItem()
+                )
+            );
+        }
+        selectClaseReservar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectClaseReservarFocusGained(evt);
+            }
+        });
+        selectClaseReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectClaseReservarActionPerformed(evt);
+            }
+        });
+
+        labelVirtual.setText("Virtual:");
 
         toggleVirtual.setText("No");
         toggleVirtual.addActionListener(new java.awt.event.ActionListener() {
@@ -74,8 +119,6 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
         });
 
-        labelVirtual.setText("Virtual:");
-
         btnReservarClase.setText("Reservar Clase");
         btnReservarClase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,91 +126,219 @@ public class VentanaCliente extends javax.swing.JFrame {
             }
         });
 
+        refreshSelect(selectSedeReservar, controller.listarSedes());
+        selectSedeReservar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeReservarFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelReservarClaseLayout = new javax.swing.GroupLayout(panelReservarClase);
+        panelReservarClase.setLayout(panelReservarClaseLayout);
+        panelReservarClaseLayout.setHorizontalGroup(
+            panelReservarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReservarClaseLayout.createSequentialGroup()
+                .addGroup(panelReservarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelReservarClaseLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2))
+                    .addGroup(panelReservarClaseLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(panelReservarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelVirtual)
+                            .addGroup(panelReservarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(selectClaseReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(selectTipoClaseReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(selectSedeReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTipoClase)
+                            .addComponent(labelSede)
+                            .addComponent(btnReservarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelReservarClaseLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(toggleVirtual)))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        panelReservarClaseLayout.setVerticalGroup(
+            panelReservarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReservarClaseLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
+                .addGap(15, 15, 15)
+                .addComponent(labelSede)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectSedeReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(labelTipoClase)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectTipoClaseReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectClaseReservar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelVirtual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(toggleVirtual)
+                .addGap(18, 18, 18)
+                .addComponent(btnReservarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        opcionesCliente.addTab("ReservarClase", panelReservarClase);
+
+        jLabel4.setText("VER CLASES RESERVADAS");
+
+        jScrollPane1.setViewportView(listClasesReservadas);
+
+        btnActualizarListaClasesReservadas.setText("Actualizar");
+        btnActualizarListaClasesReservadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarListaClasesReservadasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelVerClasesReservadasLayout = new javax.swing.GroupLayout(panelVerClasesReservadas);
+        panelVerClasesReservadas.setLayout(panelVerClasesReservadasLayout);
+        panelVerClasesReservadasLayout.setHorizontalGroup(
+            panelVerClasesReservadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerClasesReservadasLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelVerClasesReservadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnActualizarListaClasesReservadas)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        panelVerClasesReservadasLayout.setVerticalGroup(
+            panelVerClasesReservadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVerClasesReservadasLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnActualizarListaClasesReservadas)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        opcionesCliente.addTab("VerClasesReservadas", panelVerClasesReservadas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(selectTipoClase, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(16, 16, 16)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel1))
-                                .addComponent(jLabel2)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(toggleVirtual)
-                                    .addComponent(selectClase, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelVirtual)
-                        .addGap(290, 290, 290)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
-                .addComponent(btnReservarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+            .addComponent(opcionesCliente)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectTipoClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelVirtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(toggleVirtual)
-                .addGap(18, 18, 18)
-                .addComponent(btnReservarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(opcionesCliente)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selectClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClaseActionPerformed
+    private void selectClaseReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClaseReservarActionPerformed
         // TODO add your handling code here:
         // TIENE QUE MOSTRAR LAS CLASES QUE SEAN DEL TIPO ELEGIDO ANTERIORMENTE EN TIPO CLASE        
-    }//GEN-LAST:event_selectClaseActionPerformed
+    }//GEN-LAST:event_selectClaseReservarActionPerformed
 
-    private void selectTipoClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTipoClaseActionPerformed
+    private void selectTipoClaseReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTipoClaseReservarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_selectTipoClaseActionPerformed
+    }//GEN-LAST:event_selectTipoClaseReservarActionPerformed
 
     private void toggleVirtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleVirtualActionPerformed
-        // TODO add your handling code here:
+        if (toggleVirtual.isSelected()){
+            toggleVirtual.setText("Si");
+        } else {
+            toggleVirtual.setText("No");
+        }
     }//GEN-LAST:event_toggleVirtualActionPerformed
 
     private void btnReservarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarClaseActionPerformed
-        // TODO add your handling code here:
+        try {            
+            controller.reservarClaseAlumno(
+                    clienteIniciado, 
+                    (Clase) selectClaseReservar.getSelectedItem(), 
+                    toggleVirtual.isSelected());
+            
+            VentanaExito ventanaExito = new VentanaExito("Se reservo la clase con éxito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
     }//GEN-LAST:event_btnReservarClaseActionPerformed
+
+    private void selectTipoClaseReservarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoClaseReservarFocusGained
+        refreshSelect(selectTipoClaseReservar, controller.listarTiposDeClase());
+    }//GEN-LAST:event_selectTipoClaseReservarFocusGained
+
+    private void selectClaseReservarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectClaseReservarFocusGained
+        if (selectSedeReservar.getItemCount() > 0
+                && selectTipoClaseReservar.getItemCount() > 0){
+            refreshSelect(selectClaseReservar, 
+                    controller.listarClasesDisponiblesReservar(
+                            (Sede) selectSedeReservar.getSelectedItem(), 
+                            (TipoClase) selectTipoClaseReservar.getSelectedItem()
+                    )
+            );
+        }
+    }//GEN-LAST:event_selectClaseReservarFocusGained
+
+    private void btnActualizarListaClasesReservadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarListaClasesReservadasActionPerformed
+        listClasesReservadas.clearSelection();
+        
+        System.out.println(clienteIniciado.getClases());
+        
+        DefaultListModel model = new DefaultListModel();
+        
+        for(Clase clase : controller.listarClasesReservadasCliente(clienteIniciado)){
+            model.addElement(clase);
+        }
+
+        listClasesReservadas.setModel(model);
+    }//GEN-LAST:event_btnActualizarListaClasesReservadasActionPerformed
+
+    private void selectSedeReservarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeReservarFocusGained
+        refreshSelect(selectSedeReservar, controller.listarSedes());
+    }//GEN-LAST:event_selectSedeReservarFocusGained
+
+    private void panelReservarClaseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panelReservarClaseFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelReservarClaseFocusGained
 
     /**
      * @param args the command line arguments
      */    
 
+    public <T> void refreshSelect(JComboBox<T> select, List<T> elementos) {
+        select.removeAllItems();
+        for (T item : elementos) {
+            select.addItem(item);            
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarListaClasesReservadas;
     private javax.swing.JButton btnReservarClase;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelSede;
+    private javax.swing.JLabel labelTipoClase;
     private javax.swing.JLabel labelVirtual;
-    private javax.swing.JComboBox<Clase> selectClase;
-    private javax.swing.JComboBox<TipoClase> selectTipoClase;
+    private javax.swing.JList<Clase> listClasesReservadas;
+    private javax.swing.JTabbedPane opcionesCliente;
+    private javax.swing.JPanel panelReservarClase;
+    private javax.swing.JPanel panelVerClasesReservadas;
+    private javax.swing.JComboBox<Clase> selectClaseReservar;
+    private javax.swing.JComboBox<Sede> selectSedeReservar;
+    private javax.swing.JComboBox<TipoClase> selectTipoClaseReservar;
     private javax.swing.JToggleButton toggleVirtual;
     // End of variables declaration//GEN-END:variables
 }

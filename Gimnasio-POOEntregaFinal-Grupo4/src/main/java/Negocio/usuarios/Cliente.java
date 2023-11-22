@@ -9,6 +9,7 @@ public class Cliente extends Usuario {
     public Cliente(String nombre, int dni, Nivel nivel) {
         super(nombre, dni);
         this.nivel = nivel;
+        this.clases = new ArrayList<Clase>();
     }
     
     public String toString(){
@@ -44,18 +45,19 @@ public class Cliente extends Usuario {
         }
     }
 
-    public boolean reservarClase(Clase clase, boolean isOnline) {
+    public void reservarClase(Clase clase, boolean isOnline) {
+        boolean agendada = false;
         if (clienteDisponibleParaClase(clase)) {
-            this.clases.add(clase);
             if (isOnline) {
-                return clase.inscribirAlumnoOnline(this);
+                agendada = clase.inscribirAlumnoOnline(this);
             } else {
-                return clase.inscribirAlumnoPresencial(this);
+                agendada = clase.inscribirAlumnoPresencial(this);
             }
-            //System.out.println("clase reservada");            
+            if (agendada){
+                this.clases.add(clase);
+            }
         }
-        //System.out.println("la clase no puede ser reservada");
-        return false;
+        assert agendada : "No se pudo agendar la clase";
     }
 
     // un cliente no puede tener mas de una clase por dia

@@ -61,16 +61,15 @@ public class Gimnasio {
     }
     
     public List<Clase> listarClasesDeSedeConEstado(Sede sede, EstadoClase estado){
-            switch (estado) {
-            case Agendada:
-                return sede.getClasesAgendadas();
-            case Confirmada:
-                return sede.getClasesConfirmadas();
-            case Finalizada:             
-                return sede.getClasesFinalizadas();        
-            default:
-                return null;
-        }
+            return sede.getClasesConEstado(estado);        
+    }
+    
+    public List<Clase> listarClasesDisponiblesReservar(Sede sede, TipoClase tipoClase){
+        return sede.listarClasesDisponiblesReservar(tipoClase);
+    }
+    
+    public List<Clase> listarClasesReservadasCliente(Cliente cliente){
+        return cliente.getClases();
     }
     
     public List<TipoArticulo> listarTiposDeArticulo(){
@@ -115,14 +114,14 @@ public class Gimnasio {
     
     public void crearSede(String nombre, Nivel nivelMinimo, String barrio, float alquiler) {
         for (Sede sede : sedes ){
-            assert sede.getBarrio().equals(barrio) : "Ya existe una sede en ese barrio";
+            assert !sede.getBarrio().equals(barrio) : "Ya existe una sede en ese barrio";
         }
         Sede sede = soporteTecnico.crearNuevaSede(nombre, nivelMinimo, barrio, alquiler);
         sedes.add(sede);
     }
+    
     public void agregarEmplazamiento(Sede sede, TipoEmplazamiento tipo, float metrosCuadrados) {
-        Emplazamiento emplazamiento = soporteTecnico.crearEmplazamiento( sede, tipo, metrosCuadrados);
-        sedes.add(sede);
+        Emplazamiento emplazamiento = soporteTecnico.crearEmplazamiento( sede, tipo, metrosCuadrados);        
     }
 
     public void crearAdministrativo(String nombre, int dni) {
@@ -239,9 +238,18 @@ public class Gimnasio {
         
         return administrativo.verClasesAlmacenadas(tipoClase, sede);
     }
+    
+    public Cliente buscarCliente(String nombre, int DNI){
+        for (Cliente cliente : this.clientes){
+            if (cliente.getDni() == DNI && cliente.getNombre() == nombre){
+                return cliente;
+            }
+        }        
+        return null;
+    }
 
     public void reservarClaseAlumno(Cliente cliente, Clase clase, boolean online) {
-        assert cliente.reservarClase(clase, online) : "No se pudo reservar la clase";
+        cliente.reservarClase(clase, online);
     }
 
     public List<Clase> visualizarClases(Sede sede, EstadoClase estadoClase, Administrativo administrativo) {

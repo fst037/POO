@@ -1074,11 +1074,17 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             }
         });
 
+        spinnerMesFechaFabricacionAltaArticulo.setValue(1);
+
+        spinnerAñoFechaFabricacionAltaArticulo.setValue(2000);
+
         labelAñoFechaFabricacionAltaArticulo.setText("Año:");
 
         labelMesFechaFabricacionAltaArticulo.setText("Mes:");
 
         labelDiaFechaFabricacionAltaArticulo.setText("Dia:");
+
+        spinnerDiaFechaFabricacionAltaArticulo.setValue(1);
 
         labelFechaFabricacionAltaArticulo.setText("Fecha de Fabricación:");
 
@@ -1201,7 +1207,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             
             listClasesEncontradas.setModel(model);
                         
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1222,7 +1228,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1264,7 +1270,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             
             listArticulosDisponiblesEncontrados.setModel(model);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1293,7 +1299,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1317,7 +1323,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1393,7 +1399,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 (int)spinnerDuracionMinutosAgendar.getValue());
         
         
-        try {            
+        try {
             controller.agendarClase(
                 (Profesor)selectProfesorAgendar.getSelectedItem(), 
                 (TipoClase)selectTipoClaseAgendar.getSelectedItem(),
@@ -1407,7 +1413,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1441,7 +1447,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1467,7 +1473,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -1485,7 +1491,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);

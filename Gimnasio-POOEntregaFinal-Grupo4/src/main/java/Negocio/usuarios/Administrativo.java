@@ -97,16 +97,7 @@ public class Administrativo extends Usuario {
     }    
 
     public List<Clase> listarClases(Sede sede, EstadoClase estadoClase) {
-        switch (estadoClase) {
-            case Agendada:
-                return sede.getClasesAgendadas();
-            case Confirmada:
-                return sede.getClasesConfirmadas();
-            case Finalizada:             
-                return sede.getClasesFinalizadas();        
-            default:
-                return null;
-        }
+        return sede.getClasesConEstado(estadoClase);
     }
 
     public List<Articulo> listarArticulos(Sede sede) {

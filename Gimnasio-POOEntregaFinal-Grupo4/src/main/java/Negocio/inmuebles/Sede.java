@@ -6,6 +6,8 @@ import Negocio.usuarios.Administrativo;
 import Negocio.clases.Clase;
 import Negocio.clases.StreamingClass;
 import Negocio.articulos.Articulo;
+import Negocio.clases.TipoClase;
+import Negocio.enums.EstadoClase;
 
 import java.util.*;
 
@@ -14,9 +16,7 @@ public class Sede {
     private String nombre;
     private Nivel nivelMinimo;
     private List<Administrativo> administrativos;
-    private List<Clase> clasesAgendadas;
-    private List<Clase> clasesConfirmadas;
-    private List<Clase> clasesFinalizadas;
+    private List<Clase> clases;
     private List<StreamingClass> clasesGrabadasPorTipo;
     private List<Articulo> articulos;
     private float alquiler;
@@ -28,9 +28,7 @@ public class Sede {
         this.nivelMinimo = nivelMinimo;
         this.barrio = barrio;
         this.alquiler = alquiler;
-        this.clasesAgendadas = new ArrayList<Clase>();
-        this.clasesConfirmadas = new ArrayList<Clase>();
-        this.clasesFinalizadas = new ArrayList<Clase>();
+        this.clases = new ArrayList<Clase>();
         this.clasesGrabadasPorTipo = new ArrayList<StreamingClass>();
         this.articulos = new ArrayList<Articulo>();
         this.emplazamientos = new ArrayList<Emplazamiento>();
@@ -66,38 +64,41 @@ public class Sede {
         this.administrativos = administrativos;
     }
 
-    public List<Clase> getClasesAgendadas() {
-        return this.clasesAgendadas;
+    public List<Clase> getClasesConEstado(EstadoClase estadoClase) {
+        List<Clase> resultado = new ArrayList<Clase>();
+        
+        for(Clase clase : this.clases){
+            if (clase.getEstadoClase() == estadoClase){
+                resultado.add(clase);
+            }
+        }
+        
+        return resultado;
     }
-
-    public void setClasesAgendadas(List<Clase> clasesAgendadas) {
-        this.clasesAgendadas = clasesAgendadas;
+    
+    public List<Clase> listarClasesDisponiblesReservar(TipoClase tipoClase){
+        List<Clase> resultado = new ArrayList<Clase>();
+        
+        for(Clase clase : this.clases){
+            if (clase.getEstadoClase() != EstadoClase.Finalizada 
+                    && clase.getTipoClase() == tipoClase
+                    && clase.getAlumnosInscriptosPresencial().size() < clase.getCapacidadMaxima()
+                    ){
+                resultado.add(clase);
+            }
+        }
+        
+        return resultado;
     }
-
+    
     public void agendarClase(Clase clase) {
-        this.clasesAgendadas.add(clase);
+        this.clases.add(clase);
     }
 
     public void borrarClase(Clase clase) {
-        this.clasesAgendadas.remove(clase);
+        this.clases.remove(clase);
     }
-
-    public List<Clase> getClasesConfirmadas() {
-        return this.clasesConfirmadas;
-    }
-
-    public void setClasesConfirmadas(List<Clase> clasesConfirmadas) {
-        this.clasesConfirmadas = clasesConfirmadas;
-    }
-
-    public List<Clase> getClasesFinalizadas() {
-        return this.clasesFinalizadas;
-    }
-
-    public void setClasesFinalizadas(List<Clase> clasesFinalizadas) {
-        this.clasesFinalizadas = clasesFinalizadas;
-    }
-
+    
     public List<StreamingClass> getClasesAlmacenadasPorTipo() {
         return this.clasesGrabadasPorTipo;
     }

@@ -5,6 +5,7 @@
 package interfaz;
 
 import Aplication.Gimnasio;
+import Negocio.clases.Clase;
 import Negocio.enums.Amortizacion;
 import Negocio.enums.Nivel;
 import Negocio.enums.TipoEmplazamiento;
@@ -202,12 +203,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDNIClienteActionPerformed
 
     private void btnCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliente
-        // TODO corregir por el cliente elegido correcto (Hay que buscarlo en la lista del controller)
-        Cliente cliente = new Cliente("Cliente1", 1, Nivel.Platinum);       
-        
-        VentanaCliente ventanaCliente = new VentanaCliente(this.controller, cliente);
-        ventanaCliente.setLocationRelativeTo(null);
-        ventanaCliente.setVisible(true);
+        try {           
+            
+            String Nombre = txtNombreCliente.getText();
+            int DNI = Integer.parseInt(txtDNICliente.getText());
+
+            Cliente cliente = controller.buscarCliente(Nombre, DNI);
+            
+            if (cliente == null) {
+                throw new RuntimeException("No se encontró el cliente");
+            }
+            System.out.print(cliente);
+                    
+            VentanaCliente ventanaCliente = new VentanaCliente(this.controller, cliente);
+            ventanaCliente.setLocationRelativeTo(null);
+            ventanaCliente.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }        
     }//GEN-LAST:event_btnCliente
 
     

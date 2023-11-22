@@ -7,6 +7,7 @@ interfaz\VentanaAdministrativo$33.class
 interfaz\VentanaExito.class
 interfaz\VentanaSoporteTecnico$22.class
 interfaz\VentanaSoporteTecnico$32.class
+interfaz\VentanaCliente$8.class
 Negocio\inmuebles\Sede.class
 interfaz\VentanaAdministrativo$5.class
 interfaz\VentanaAdministrativo$29.class
@@ -24,12 +25,12 @@ interfaz\VentanaSoporteTecnico$6.class
 Negocio\clases\Clase.class
 interfaz\VentanaSoporteTecnico$3.class
 Negocio\clases\StreamingClass.class
+interfaz\VentanaCliente$6.class
 Negocio\enums\TipoUsoPesa.class
 interfaz\VentanaPrincipal$2.class
 interfaz\VentanaSoporteTecnico$17.class
 interfaz\VentanaSoporteTecnico$9.class
 interfaz\VentanaSoporteTecnico$2.class
-Aplication\Gimnasio$1.class
 Negocio\clases\TipoClase.class
 interfaz\VentanaAdministrativo$28.class
 interfaz\VentanaAdministrativo$34.class
@@ -42,6 +43,7 @@ interfaz\VentanaSoporteTecnico$18.class
 Negocio\articulos\TipoColchoneta.class
 interfaz\VentanaAdministrativo$17.class
 interfaz\VentanaSoporteTecnico$11.class
+interfaz\VentanaCliente$5.class
 interfaz\VentanaAdministrativo$10.class
 interfaz\VentanaAdministrativo$3.class
 Negocio\articulos\TipoAccesorio.class
@@ -68,10 +70,10 @@ interfaz\VentanaAdministrativo$27.class
 interfaz\VentanaPrincipal$1.class
 interfaz\VentanaAdministrativo$12.class
 interfaz\VentanaSoporteTecnico$21.class
-Negocio\usuarios\Administrativo$1.class
 Negocio\articulos\Articulo.class
 interfaz\VentanaAdministrativo$1.class
 interfaz\VentanaSoporteTecnico$13.class
+interfaz\VentanaCliente$7.class
 Negocio\enums\TipoEmplazamiento.class
 Negocio\inmuebles\Emplazamiento.class
 interfaz\VentanaCliente.class
@@ -86,6 +88,7 @@ interfaz\VentanaAdministrativo$31.class
 interfaz\VentanaSoporteTecnico$27.class
 interfaz\VentanaAdministrativo$7.class
 interfaz\VentanaCliente$3.class
+interfaz\VentanaCliente$9.class
 Negocio\enums\EstadoClase.class
 interfaz\VentanaAdministrativo$14.class
 interfaz\VentanaAdministrativo$24.class
