@@ -531,6 +531,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectClaseModificarFocusGained"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectClaseModificarActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (selectSedeModificar.getItemCount() &gt; 0){&#xa;            refreshSelect(selectClaseModificar, controller.listarClasesDeSedeConEstado((Sede) selectSedeModificar.getSelectedItem(), (EstadoClase) selectEstadoClaseModificar.getSelectedItem()));    &#xa;        } "/>

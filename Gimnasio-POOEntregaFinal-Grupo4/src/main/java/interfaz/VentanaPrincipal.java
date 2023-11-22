@@ -210,16 +210,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             Cliente cliente = controller.buscarCliente(Nombre, DNI);
             
-            if (cliente == null) {
-                throw new RuntimeException("No se encontró el cliente");
-            }
-            System.out.print(cliente);
+            assert cliente != null : "No se encontro el Cliente";                    
                     
             VentanaCliente ventanaCliente = new VentanaCliente(this.controller, cliente);
             ventanaCliente.setLocationRelativeTo(null);
             ventanaCliente.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);
@@ -266,7 +263,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
                 // Asignar sedes a los administrativos
                 asignarSedesAAdministrativos(controller, controller.listarAdministrativos().get(0));
-
+                
 
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controller);
                 ventanaPrincipal.setLocationRelativeTo(null);

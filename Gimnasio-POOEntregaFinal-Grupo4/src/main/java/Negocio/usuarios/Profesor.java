@@ -51,8 +51,8 @@ public class Profesor extends Usuario{
         if (clasesDelDia.size() < 3){
             for (Clase clase : clasesDelDia) {
                 //chequea si para cada clase ya agendada si se superpone en 3 hs con el horario actual
-                if (!(clase.getFechaHoraInicio().toLocalTime().isBefore(fHI.toLocalTime().minusHours(3)) || 
-                    clase.getFechaHoraFin().toLocalTime().isAfter(fHI.toLocalTime().plusHours(3)))) {
+                if (!(clase.getFechaHoraInicio().isBefore(fHI.minusHours(3)) || 
+                    clase.getFechaHoraFin().isAfter(fHI.plusHours(3)))) {
                     disponible = false;
                     break;
                 }                

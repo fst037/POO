@@ -266,7 +266,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             ventanaExito.setLocationRelativeTo(null);
             ventanaExito.setVisible(true);
             
-        } catch (Exception e){
+        } catch (Throwable e){
             VentanaError ventanaError = new VentanaError(e.toString());
             ventanaError.setLocationRelativeTo(null);
             ventanaError.setVisible(true);

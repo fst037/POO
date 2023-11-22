@@ -433,6 +433,11 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 selectClaseModificarFocusGained(evt);
             }
         });
+        selectClaseModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectClaseModificarActionPerformed(evt);
+            }
+        });
 
         labelNuevoEstadoClaseModificar.setText("Nuevo estado de la Clase:");
 
@@ -1528,6 +1533,10 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private void selectTipoArticuloAltaArticuloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoArticuloAltaArticuloFocusGained
         refreshSelect(selectTipoArticuloAltaArticulo, controller.listarTiposDeArticulo());
     }//GEN-LAST:event_selectTipoArticuloAltaArticuloFocusGained
+
+    private void selectClaseModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClaseModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectClaseModificarActionPerformed
 
     /**
      * @param args the command line arguments

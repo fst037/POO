@@ -241,7 +241,7 @@ public class Gimnasio {
     
     public Cliente buscarCliente(String nombre, int DNI){
         for (Cliente cliente : this.clientes){
-            if (cliente.getDni() == DNI && cliente.getNombre() == nombre){
+            if (cliente.getDni() == DNI && nombre.equals(cliente.getNombre())){
                 return cliente;
             }
         }        
