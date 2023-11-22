@@ -43,7 +43,7 @@ public class Profesor extends Usuario{
 
     public boolean isDisponibleParaClase(LocalDateTime fHI, LocalTime duracion) {  //verifica si el profesor esta disponible para dar una clase
         boolean disponible = true;
-
+              
         List<Clase> clasesDelDia = new ArrayList<Clase>();       
 
         for (Clase clase : this.getClases()) {

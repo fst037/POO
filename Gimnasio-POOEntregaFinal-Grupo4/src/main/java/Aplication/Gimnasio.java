@@ -48,8 +48,25 @@ public class Gimnasio {
         return this.tiposDeClase;
     }
     
+    public List<Clase> listarClasesDeSedeConEstado(Sede sede, EstadoClase estado){
+            switch (estado) {
+            case Agendada:
+                return sede.getClasesAgendadas();
+            case Confirmada:
+                return sede.getClasesConfirmadas();
+            case Finalizada:             
+                return sede.getClasesFinalizadas();        
+            default:
+                return null;
+        }
+    }
+    
     public List<TipoArticulo> listarTiposDeArticulo(){
         return this.tiposDeArticulo;
+    }
+    
+    public List<EstadoClase> listarEstadosClase(){
+        return Arrays.asList(EstadoClase.values());
     }
     
     public List<Cliente> listarClientes(){
@@ -63,6 +80,7 @@ public class Gimnasio {
     public List<Profesor> listarProfesores(){
         return this.profesores;
     }
+    
     public SoporteTecnico mostrarSoporteTecnico(){
         return this.soporteTecnico;
     }

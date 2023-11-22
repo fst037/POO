@@ -16,6 +16,8 @@ import Negocio.usuarios.SoporteTecnico;
 
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -312,6 +314,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private static void asignarSedesAAdministrativos(Gimnasio controller, Administrativo administrativo) {
         for (Sede sede: controller.listarSedes()) {
             controller.agregarSedeAdministrativo(administrativo, sede);
+        }
+    }
+    
+    
+    //FUNCIONES GENERALES
+    
+    public <T> void refreshSelect(JComboBox<T> select, List<T> elementos) {
+        select.removeAllItems();
+        for (T item : elementos) {
+            select.addItem(item);
         }
     }
 

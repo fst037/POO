@@ -60,8 +60,8 @@ public class Articulo {
     }
 
     public boolean isDisponibleParaFechaHorario(LocalDateTime fechaHoraInicio, LocalTime duracion) {
-        boolean disponible = true;
-
+        boolean disponible = true;        
+              
         LocalTime horaFin = LocalTime.of(fechaHoraInicio.getHour() + duracion.getHour(), fechaHoraInicio.getMinute() + duracion.getMinute());
         LocalDateTime fechaHoraFin = LocalDateTime.of(fechaHoraInicio.toLocalDate(), horaFin);
 

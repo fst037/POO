@@ -20,6 +20,7 @@ import Negocio.usuarios.Profesor;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -57,19 +58,11 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         panelAgendarClase = new javax.swing.JPanel();
         labelTituloAgendarClase = new javax.swing.JLabel();
         labelProfesorAgendar = new javax.swing.JLabel();
-        selectProfesorAgendar = new javax.swing.JComboBox<>();
         labelTipoClaseAgendar = new javax.swing.JLabel();
-        selectTipoClaseAgendar = new javax.swing.JComboBox<>();
         labelSedeAgendar = new javax.swing.JLabel();
-
-        JComboBox<Sede> selectSedeAgendar = new JComboBox<>();
-        List<Sede> sedes = controller.listarSedes();
-        for (Sede sede : sedes) {
-            selectSedeAgendar.addItem(sede);
-        }
-
+        selectTipoClaseAgendar = new javax.swing.JComboBox<>();
         labelEmplazamientoAgendar = new javax.swing.JLabel();
-        selectEmplazamientoAgendar = new javax.swing.JComboBox<>();
+        selectProfesorAgendar = new javax.swing.JComboBox<>();
         labelFechaHoraAgendar = new javax.swing.JLabel();
         labelMesAgendar = new javax.swing.JLabel();
         spinnerDiaAgendar = new javax.swing.JSpinner();
@@ -87,6 +80,8 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         spinnerDuracionHorasAgendar = new javax.swing.JSpinner();
         labelDuracionHorasAgendar = new javax.swing.JLabel();
         btnAgendarClase = new javax.swing.JButton();
+        selectSedeAgendar = new javax.swing.JComboBox<>();
+        selectEmplazamientoAgendar = new javax.swing.JComboBox<>();
         panelModificarClase = new javax.swing.JPanel();
         labelTituloModificarClase = new javax.swing.JLabel();
         labelClaseModificar = new javax.swing.JLabel();
@@ -168,7 +163,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         selectVerDesgasteBajaArticulo = new javax.swing.JComboBox<>();
         labelVerDesgasteBajaArticulo = new javax.swing.JLabel();
         btnDarBajaArticulo = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panelDarAltaArticulo = new javax.swing.JPanel();
         labelTituloDarAltaArticulo = new javax.swing.JLabel();
         labelTipoArticuloAltaArticulo = new javax.swing.JLabel();
         selectSedeAltaArticulo = new javax.swing.JComboBox<>();
@@ -190,40 +185,48 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelProfesorAgendar.setText("Profesor:");
 
-        JComboBox<Profesor> selectProfesorAgendar = new JComboBox<>();
-        List<Profesor> profesores = controller.listarProfesores();
-        for (Profesor profesor : profesores) {
-            selectProfesorAgendar.addItem(profesor);
-        }
-
-
         labelTipoClaseAgendar.setText("Tipo de Clase:");
-
-        JComboBox<TipoClase> selectTipoClaseAgendar = new JComboBox<>();
-        List<TipoClase> tiposDeClase = controller.listarTiposDeClase();
-        for (TipoClase tipoClase : tiposDeClase) {
-            selectTipoClaseAgendar.addItem(tipoClase);
-        }
-
 
         labelSedeAgendar.setText("Sede:");
 
+        refreshSelect(selectTipoClaseAgendar, controller.listarTiposDeClase());
+        selectTipoClaseAgendar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectTipoClaseAgendarFocusGained(evt);
+            }
+        });
+        selectTipoClaseAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTipoClaseAgendarActionPerformed(evt);
+            }
+        });
+
         labelEmplazamientoAgendar.setText("Emplazamiento:");
-        JComboBox<Emplazamiento> selectEmplazamientoAgendar = new JComboBox<>();
-        List<Emplazamiento> emplazamientos = controller.listarEmplazamientosSede((Sede) selectSedeAgendar.getSelectedItem());
-        for (Emplazamiento emplazamiento : emplazamientos) {
-            selectEmplazamientoAgendar.addItem(emplazamiento);
-        }
+
+        refreshSelect(selectProfesorAgendar, controller.listarProfesores());
+        selectProfesorAgendar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectProfesorAgendarFocusGained(evt);
+            }
+        });
 
         labelFechaHoraAgendar.setText("Fecha y Hora:");
 
         labelMesAgendar.setText("Mes:");
 
+        spinnerDiaAgendar.setValue(1);
+
+        spinnerMesAgendar.setValue(1);
+
         labelDiaAgendar.setText("Dia:");
+
+        spinnerAñoAgendar.setValue(1);
 
         labelAñoAgendar.setText("Año:");
 
         labelHoraAgendar.setText("Hora:");
+
+        spinnerMinutoAgendar.setVerifyInputWhenFocusTarget(false);
 
         labelMinutoAgendar.setText("Minuto:");
 
@@ -231,35 +234,38 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelDuracionMinutosAgendar.setText("Minutos:");
 
+        spinnerDuracionHorasAgendar.setValue(1);
+
         labelDuracionHorasAgendar.setText("Horas:");
 
         btnAgendarClase.setText("Agendar Clase");
-        btnAgendarClase.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Obtener los valores de los campos y seleccionar elementos relevantes
-                Profesor profesor = (Profesor) selectProfesorAgendar.getSelectedItem();
-                TipoClase tipoClase = (TipoClase) selectTipoClaseAgendar.getSelectedItem();
-                Sede sede = (Sede) selectSedeAgendar.getSelectedItem();
+        btnAgendarClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendarClaseActionPerformed(evt);
+            }
+        });
 
-                Emplazamiento emplazamiento = (Emplazamiento) selectEmplazamientoAgendar.getSelectedItem();
+        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        selectSedeAgendar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeAgendarFocusGained(evt);
+            }
+        });
+        selectSedeAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSedeAgendarActionPerformed(evt);
+            }
+        });
 
-                int dia = (Integer) spinnerDiaAgendar.getValue();
-                int mes = (Integer) spinnerMesAgendar.getValue();
-                int año = (Integer) spinnerAñoAgendar.getValue();
-                int hora = (Integer) spinnerHoraAgendar.getValue();
-                int minuto = (Integer) spinnerMinutoAgendar.getValue();
-                LocalDateTime fechaHoraInicio = LocalDateTime.of(año, mes, dia, hora, minuto);
-
-                int duracionHoras = (Integer) spinnerDuracionHorasAgendar.getValue();
-                int duracionMinutos = (Integer) spinnerDuracionMinutosAgendar.getValue();
-                LocalTime duracion = LocalTime.of(duracionHoras, duracionMinutos);
-
-                if(controller.agendarClase(profesor, tipoClase, sede, emplazamiento, fechaHoraInicio, duracion, administrativoIniciado)) {
-                    JOptionPane.showMessageDialog(null, "Clase agendada con éxito.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo agendar.");
-                }
+        if (selectSedeAgendar.getItemCount() > 0){             refreshSelect(selectEmplazamientoAgendar, controller.listarEmplazamientosSede((Sede) selectSedeAgendar.getSelectedItem()));         }
+        selectEmplazamientoAgendar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectEmplazamientoAgendarFocusGained(evt);
+            }
+        });
+        selectEmplazamientoAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectEmplazamientoAgendarActionPerformed(evt);
             }
         });
 
@@ -268,6 +274,12 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         panelAgendarClaseLayout.setHorizontalGroup(
             panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTituloAgendarClase)
+                    .addComponent(btnAgendarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelFechaHoraAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -275,6 +287,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                     .addGroup(panelAgendarClaseLayout.createSequentialGroup()
                         .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(selectEmplazamientoAgendar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectProfesorAgendar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(panelAgendarClaseLayout.createSequentialGroup()
                                     .addGap(6, 6, 6)
@@ -287,11 +300,10 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                                         .addComponent(labelDuracionMinutosAgendar)))
                                 .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(labelEmplazamientoAgendar)
-                                    .addComponent(labelProfesorAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(selectProfesorAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(selectTipoClaseAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelTipoClaseAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labelProfesorAgendar)
+                                    .addComponent(labelTipoClaseAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(labelSedeAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(selectTipoClaseAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(selectSedeAgendar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(panelAgendarClaseLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
@@ -307,7 +319,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                                             .addGroup(panelAgendarClaseLayout.createSequentialGroup()
                                                 .addComponent(labelAñoAgendar)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(spinnerAñoAgendar))
+                                            .addComponent(spinnerAñoAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(labelHoraAgendar)
@@ -319,12 +331,6 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                                         .addGap(31, 31, 31)))))
                         .addGap(0, 21, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
-            .addGroup(panelAgendarClaseLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTituloAgendarClase)
-                    .addComponent(btnAgendarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelAgendarClaseLayout.setVerticalGroup(
             panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,17 +345,17 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addComponent(labelTipoClaseAgendar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectTipoClaseAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(labelSedeAgendar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectSedeAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
-                        .addComponent(labelEmplazamientoAgendar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectEmplazamientoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
+                .addComponent(labelEmplazamientoAgendar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectEmplazamientoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgendarClaseLayout.createSequentialGroup()
                         .addComponent(labelFechaHoraAgendar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelAgendarClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,11 +371,11 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                                 .addComponent(labelMesAgendar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(spinnerMesAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgendarClaseLayout.createSequentialGroup()
                         .addComponent(labelHoraAgendar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spinnerHoraAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAgendarClaseLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgendarClaseLayout.createSequentialGroup()
                         .addComponent(labelMinutoAgendar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spinnerMinutoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -396,11 +402,41 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelClaseModificar.setText("Clase:");
 
+        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        selectSedeModificar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeModificarFocusGained(evt);
+            }
+        });
+
         labelSedeModificar.setText("Sede:");
+
+        refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());
+        selectEstadoClaseModificar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectEstadoClaseModificarFocusGained(evt);
+            }
+        });
 
         labelEstadoClaseModificar.setText("Estado clase:");
 
+        if (selectSedeModificar.getItemCount() > 0){
+            refreshSelect(selectClaseModificar, controller.listarClasesDeSedeConEstado((Sede) selectSedeModificar.getSelectedItem(), (EstadoClase) selectEstadoClaseModificar.getSelectedItem()));
+        }
+        selectClaseModificar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectClaseModificarFocusGained(evt);
+            }
+        });
+
         labelNuevoEstadoClaseModificar.setText("Nuevo estado de la Clase:");
+
+        refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());
+        selectNuevoEstadoClaseModificar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectNuevoEstadoClaseModificarFocusGained(evt);
+            }
+        });
 
         btnModificarClase.setText("Modificar Clase");
 
@@ -459,6 +495,13 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         labelTipoClaseGrabaciones.setText("Tipo de Clase:");
 
+        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+        selectSedeGrabaciones.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectSedeGrabacionesFocusGained(evt);
+            }
+        });
+
         labelSedeGrabaciones.setText("Sede:");
 
         btnListarClasesGrabadas.setText("Listar Clases Grabadas");
@@ -471,6 +514,13 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listClasesEncontradas);
 
         labelClasesEncontradas.setText("Clases Encontradas:");
+
+        refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClase());
+        selectTipoClaseGrabaciones.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                selectTipoClaseGrabacionesFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelSistemaStreamingLayout = new javax.swing.GroupLayout(panelSistemaStreaming);
         panelSistemaStreaming.setLayout(panelSistemaStreamingLayout);
@@ -947,44 +997,44 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDarAltaArticuloLayout = new javax.swing.GroupLayout(panelDarAltaArticulo);
+        panelDarAltaArticulo.setLayout(panelDarAltaArticuloLayout);
+        panelDarAltaArticuloLayout.setHorizontalGroup(
+            panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDarAltaArticuloLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnDarAltaArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelTituloDarAltaArticulo)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelDarAltaArticuloLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(labelFechaFabricacionAltaArticulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(panelDarAltaArticuloLayout.createSequentialGroup()
                                     .addGap(6, 6, 6)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(labelDiaFechaFabricacionAltaArticulo)
                                         .addComponent(spinnerDiaFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(labelMesFechaFabricacionAltaArticulo)
                                         .addComponent(spinnerMesFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(labelAñoFechaFabricacionAltaArticulo)
                                         .addComponent(spinnerAñoFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(110, 110, 110)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(labelTipoArticuloAltaArticulo)
                                 .addComponent(labelSedeAltaArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(selectSedeAltaArticulo, 0, 385, Short.MAX_VALUE)
                                 .addComponent(selectTipoArticuloAltaArticulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelDarAltaArticuloLayout.setVerticalGroup(
+            panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDarAltaArticuloLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(labelTituloDarAltaArticulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -998,16 +1048,16 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelFechaFabricacionAltaArticulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panelDarAltaArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDarAltaArticuloLayout.createSequentialGroup()
                         .addComponent(labelDiaFechaFabricacionAltaArticulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spinnerDiaFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDarAltaArticuloLayout.createSequentialGroup()
                         .addComponent(labelAñoFechaFabricacionAltaArticulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spinnerAñoFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDarAltaArticuloLayout.createSequentialGroup()
                         .addComponent(labelMesFechaFabricacionAltaArticulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spinnerMesFechaFabricacionAltaArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1016,7 +1066,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                 .addContainerGap(220, Short.MAX_VALUE))
         );
 
-        opcionesAdministrarArticulos.addTab("DarAltaArticulo", jPanel1);
+        opcionesAdministrarArticulos.addTab("DarAltaArticulo", panelDarAltaArticulo);
 
         javax.swing.GroupLayout panelAdministrarArticulosLayout = new javax.swing.GroupLayout(panelAdministrarArticulos);
         panelAdministrarArticulos.setLayout(panelAdministrarArticulosLayout);
@@ -1044,14 +1094,6 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtProfesorAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfesorAgendarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProfesorAgendarActionPerformed
-
-    private void txtTipoClaseAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoClaseAgendarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoClaseAgendarActionPerformed
 
     private void btnListarClasesGrabadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarClasesGrabadasActionPerformed
         // TODO add your handling code here:
@@ -1089,10 +1131,110 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDarAltaArticuloActionPerformed
 
+    private void selectTipoClaseAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTipoClaseAgendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectTipoClaseAgendarActionPerformed
+
+    private void selectSedeAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSedeAgendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectSedeAgendarActionPerformed
+
+    private void selectEmplazamientoAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEmplazamientoAgendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectEmplazamientoAgendarActionPerformed
+
+    private void selectProfesorAgendarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectProfesorAgendarFocusGained
+        refreshSelect(selectProfesorAgendar, controller.listarProfesores());
+    }//GEN-LAST:event_selectProfesorAgendarFocusGained
+
+    private void selectTipoClaseAgendarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoClaseAgendarFocusGained
+        refreshSelect(selectTipoClaseAgendar, controller.listarTiposDeClase());
+    }//GEN-LAST:event_selectTipoClaseAgendarFocusGained
+
+    private void selectSedeAgendarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeAgendarFocusGained
+        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+    }//GEN-LAST:event_selectSedeAgendarFocusGained
+
+    private void selectEmplazamientoAgendarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectEmplazamientoAgendarFocusGained
+        if (selectSedeAgendar.getItemCount() > 0){
+            refreshSelect(selectEmplazamientoAgendar, controller.listarEmplazamientosSede((Sede) selectSedeAgendar.getSelectedItem()));
+        }            
+    }//GEN-LAST:event_selectEmplazamientoAgendarFocusGained
+
+    private void selectSedeModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeModificarFocusGained
+        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+    }//GEN-LAST:event_selectSedeModificarFocusGained
+
+    private void selectEstadoClaseModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectEstadoClaseModificarFocusGained
+        refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());
+    }//GEN-LAST:event_selectEstadoClaseModificarFocusGained
+
+    private void selectClaseModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectClaseModificarFocusGained
+        if (selectSedeModificar.getItemCount() > 0){
+            refreshSelect(selectClaseModificar, controller.listarClasesDeSedeConEstado((Sede) selectSedeModificar.getSelectedItem(), (EstadoClase) selectEstadoClaseModificar.getSelectedItem()));    
+        }         
+    }//GEN-LAST:event_selectClaseModificarFocusGained
+
+    private void selectNuevoEstadoClaseModificarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectNuevoEstadoClaseModificarFocusGained
+        refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());
+    }//GEN-LAST:event_selectNuevoEstadoClaseModificarFocusGained
+
+    private void selectTipoClaseGrabacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectTipoClaseGrabacionesFocusGained
+        refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClase());
+    }//GEN-LAST:event_selectTipoClaseGrabacionesFocusGained
+
+    private void selectSedeGrabacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectSedeGrabacionesFocusGained
+        refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));
+    }//GEN-LAST:event_selectSedeGrabacionesFocusGained
+
+    private void btnAgendarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarClaseActionPerformed
+        LocalDateTime fechaHoraInicio = LocalDateTime.of(
+                (int)spinnerAñoAgendar.getValue(),
+                (int)spinnerMesAgendar.getValue(),
+                (int)spinnerDiaAgendar.getValue(),
+                (int)spinnerHoraAgendar.getValue(),
+                (int)spinnerMinutoAgendar.getValue());
+        
+        LocalTime duracion = LocalTime.of(
+                (int)spinnerDuracionHorasAgendar.getValue(), 
+                (int)spinnerDuracionMinutosAgendar.getValue());
+        
+        
+        try {            
+            controller.agendarClase(
+                (Profesor)selectProfesorAgendar.getSelectedItem(), 
+                (TipoClase)selectTipoClaseAgendar.getSelectedItem(),
+                (Sede)selectSedeAgendar.getSelectedItem(), 
+                (Emplazamiento)selectEmplazamientoAgendar.getSelectedItem(), 
+                fechaHoraInicio, 
+                duracion, 
+                administrativoIniciado);
+            
+            VentanaExito ventanaExito = new VentanaExito("Se creo la clase con exito.");
+            ventanaExito.setLocationRelativeTo(null);
+            ventanaExito.setVisible(true);
+            
+        } catch (Exception e){
+            VentanaError ventanaError = new VentanaError(e.toString());
+            ventanaError.setLocationRelativeTo(null);
+            ventanaError.setVisible(true);
+        }
+        
+        
+    }//GEN-LAST:event_btnAgendarClaseActionPerformed
+
     /**
      * @param args the command line arguments
      */
-
+    
+    //FUNCIONES GENERALES
+    
+    public <T> void refreshSelect(JComboBox<T> select, List<T> elementos) {
+        select.removeAllItems();
+        for (T item : elementos) {
+            select.addItem(item);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendarClase;
@@ -1104,7 +1246,6 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JButton btnListarClasesGrabadas;
     private javax.swing.JButton btnModificarClase;
     private javax.swing.JButton btnModificarCliente;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelArticulosDisponiblesEncontrados;
@@ -1175,6 +1316,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JPanel panelAgendarClase;
     private javax.swing.JPanel panelAltaCliente;
     private javax.swing.JPanel panelBajaCliente;
+    private javax.swing.JPanel panelDarAltaArticulo;
     private javax.swing.JPanel panelModificarClase;
     private javax.swing.JPanel panelModificarCliente;
     private javax.swing.JPanel panelSistemaStreaming;
@@ -1189,7 +1331,6 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JComboBox<EstadoClase> selectNuevoEstadoClaseModificar;
     private javax.swing.JComboBox<Nivel> selectNuevoNivelClienteModificar;
     private javax.swing.JComboBox<Profesor> selectProfesorAgendar;
-    private javax.swing.JComboBox<TipoClase> selectTipoClaseAgendar;
     private javax.swing.JComboBox<Sede> selectSedeAgendar;
     private javax.swing.JComboBox<Sede> selectSedeAltaArticulo;
     private javax.swing.JComboBox<Sede> selectSedeArticulosDisponibles;
@@ -1197,6 +1338,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JComboBox<Sede> selectSedeModificar;
     private javax.swing.JComboBox<Sede> selectSedeVerDesgasteBajaArticulos;
     private javax.swing.JComboBox<TipoArticulo> selectTipoArticuloAltaArticulo;
+    private javax.swing.JComboBox<TipoClase> selectTipoClaseAgendar;
     private javax.swing.JComboBox<TipoClase> selectTipoClaseGrabaciones;
     private javax.swing.JComboBox<Articulo> selectVerDesgasteBajaArticulo;
     private javax.swing.JSpinner spinnerAñoAgendar;

@@ -4,6 +4,7 @@ import Negocio.clases.Clase;
 import Negocio.enums.TipoEmplazamiento;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Emplazamiento {
@@ -14,6 +15,7 @@ public class Emplazamiento {
     public Emplazamiento(TipoEmplazamiento tipo, float metrosCuadrados) {
         this.tipo = tipo;
         this.metrosCuadrados = metrosCuadrados;
+        this.agendaReservas = new ArrayList<Clase>();
     }
 
     public String toString(){

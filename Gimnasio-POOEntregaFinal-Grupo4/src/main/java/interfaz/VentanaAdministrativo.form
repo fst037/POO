@@ -76,7 +76,15 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelTituloAgendarClase" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAgendarClase" min="-2" pref="400" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="labelFechaHoraAgendar" alignment="1" max="32767" attributes="0"/>
@@ -84,6 +92,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="selectEmplazamientoAgendar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="selectProfesorAgendar" alignment="0" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -100,11 +109,10 @@
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="labelEmplazamientoAgendar" min="-2" max="-2" attributes="0"/>
                                                   <Component id="labelProfesorAgendar" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtProfesorAgendar" max="32767" attributes="0"/>
-                                                  <Component id="txtTipoClaseAgendar" alignment="0" pref="370" max="32767" attributes="0"/>
                                                   <Component id="labelTipoClaseAgendar" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="labelSedeAgendar" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="selectSedeAgendar" max="32767" attributes="0"/>
+                                                  <Component id="selectTipoClaseAgendar" max="32767" attributes="0"/>
+                                                  <Component id="selectSedeAgendar" alignment="0" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -122,7 +130,7 @@
                                                               <Component id="labelAñoAgendar" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                           </Group>
-                                                          <Component id="spinnerAñoAgendar" max="32767" attributes="0"/>
+                                                          <Component id="spinnerAñoAgendar" pref="79" max="32767" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -144,14 +152,6 @@
                               </Group>
                               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelTituloAgendarClase" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnAgendarClase" min="-2" pref="400" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -162,22 +162,22 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="labelProfesorAgendar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtProfesorAgendar" min="-2" max="-2" attributes="0"/>
+                              <Component id="selectProfesorAgendar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="labelTipoClaseAgendar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtTipoClaseAgendar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="selectTipoClaseAgendar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="labelSedeAgendar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="selectSedeAgendar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelEmplazamientoAgendar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="selectEmplazamientoAgendar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="labelEmplazamientoAgendar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="selectEmplazamientoAgendar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="labelFechaHoraAgendar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -198,12 +198,12 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="labelHoraAgendar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="spinnerHoraAgendar" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="labelMinutoAgendar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="spinnerMinutoAgendar" min="-2" max="-2" attributes="0"/>
@@ -242,34 +242,29 @@
                         <Property name="text" type="java.lang.String" value="Profesor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtProfesorAgendar">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProfesorAgendarActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="labelTipoClaseAgendar">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Tipo de Clase:"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtTipoClaseAgendar">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoClaseAgendarActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelSedeAgendar">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Sede:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="selectSedeAgendar">
+                    <Component class="javax.swing.JComboBox" name="selectTipoClaseAgendar">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectTipoClaseAgendarFocusGained"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectTipoClaseAgendarActionPerformed"/>
+                      </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectTipoClaseAgendar, controller.listarTiposDeClase());"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TipoClase&gt;"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelEmplazamientoAgendar">
@@ -277,14 +272,18 @@
                         <Property name="text" type="java.lang.String" value="Emplazamiento:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="selectEmplazamientoAgendar">
+                    <Component class="javax.swing.JComboBox" name="selectProfesorAgendar">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectProfesorAgendarFocusGained"/>
+                      </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Emplazamiento&gt;"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectProfesorAgendar, controller.listarProfesores());"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Profesor&gt;"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelFechaHoraAgendar">
@@ -298,8 +297,18 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerDiaAgendar">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerMesAgendar">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelDiaAgendar">
                       <Properties>
@@ -307,6 +316,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerA&#xf1;oAgendar">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelA&#xf1;oAgendar">
                       <Properties>
@@ -321,6 +335,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerMinutoAgendar">
+                      <Properties>
+                        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelMinutoAgendar">
                       <Properties>
@@ -340,6 +357,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="spinnerDuracionHorasAgendar">
+                      <Properties>
+                        <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="1" type="code"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="labelDuracionHorasAgendar">
                       <Properties>
@@ -350,6 +372,39 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Agendar Clase"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendarClaseActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="selectSedeAgendar">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeAgendarFocusGained"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectSedeAgendarActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="selectEmplazamientoAgendar">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectEmplazamientoAgendarFocusGained"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectEmplazamientoAgendarActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (selectSedeAgendar.getItemCount() &gt; 0){             refreshSelect(selectEmplazamientoAgendar, controller.listarEmplazamientosSede((Sede) selectSedeAgendar.getSelectedItem()));         } "/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Emplazamiento&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -435,7 +490,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeModificarFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
                       </AuxValues>
                     </Component>
@@ -450,7 +509,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectEstadoClaseModificarFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;EstadoClase&gt;"/>
                       </AuxValues>
                     </Component>
@@ -465,7 +528,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectClaseModificarFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (selectSedeModificar.getItemCount() &gt; 0){&#xa;            refreshSelect(selectClaseModificar, controller.listarClasesDeSedeConEstado((Sede) selectSedeModificar.getSelectedItem(), (EstadoClase) selectEstadoClaseModificar.getSelectedItem()));    &#xa;        } "/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Clase&gt;"/>
                       </AuxValues>
                     </Component>
@@ -480,7 +547,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectNuevoEstadoClaseModificarFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectEstadoClaseModificar, controller.listarEstadosClase());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;EstadoClase&gt;"/>
                       </AuxValues>
                     </Component>
@@ -567,7 +638,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectSedeGrabacionesFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectSedeAgendar, controller.listarSedesAdministrativo(administrativoIniciado));"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Sede&gt;"/>
                       </AuxValues>
                     </Component>
@@ -614,7 +689,11 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selectTipoClaseGrabacionesFocusGained"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshSelect(selectTipoClaseGrabaciones, controller.listarTiposDeClase());"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TipoClase&gt;"/>
                       </AuxValues>
                     </Component>
@@ -1355,7 +1434,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel1">
+                <Container class="javax.swing.JPanel" name="panelDarAltaArticulo">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="DarAltaArticulo">
