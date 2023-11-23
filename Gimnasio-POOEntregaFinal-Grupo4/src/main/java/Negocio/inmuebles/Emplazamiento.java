@@ -9,10 +9,10 @@ import java.util.List;
 
 public class Emplazamiento {
     private TipoEmplazamiento tipo;
-    private float metrosCuadrados;    
+    private int metrosCuadrados;    
     private List<Clase> agendaReservas;
 
-    public Emplazamiento(TipoEmplazamiento tipo, float metrosCuadrados) {
+    public Emplazamiento(TipoEmplazamiento tipo, int metrosCuadrados) {
         this.tipo = tipo;
         this.metrosCuadrados = metrosCuadrados;
         this.agendaReservas = new ArrayList<Clase>();

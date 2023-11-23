@@ -5,6 +5,8 @@
 package interfaz;
 
 import Aplication.Gimnasio;
+import Negocio.articulos.Articulo;
+import Negocio.articulos.TipoArticulo;
 import Negocio.clases.Clase;
 import Negocio.enums.Amortizacion;
 import Negocio.enums.Nivel;
@@ -292,19 +294,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         controller.agregarEmplazamiento(sede1, TipoEmplazamiento.AireLibre, 20);
         controller.agregarEmplazamiento(sede2, TipoEmplazamiento.Pileta, 30);
-        controller.agregarEmplazamiento(sede3, TipoEmplazamiento.Salon, 4);
-
-        // TIPOS DE CLASE
-        controller.crearTipoClase("Yoga", new ArrayList<>(), new ArrayList<>(), 60);
-        controller.crearTipoClase("Pilates", new ArrayList<>(), new ArrayList<>(), 60);
-        controller.crearTipoClase("Spinning", new ArrayList<>(), new ArrayList<>(), 60);
-        controller.crearTipoClase("Jiu-Jitsu", new ArrayList<>(), new ArrayList<>(), 0);
+        controller.agregarEmplazamiento(sede3, TipoEmplazamiento.Salon, 4);        
 
         // TIPOS DE ARTICULO
-        controller.crearTipoDePesa(soporteTecnico, 10, TipoUsoPesa.DeMano, Amortizacion.porUso, 100, "Marca Pesa", "Pesa 10kg", 500);
-        controller.crearTipoDeColchoneta(soporteTecnico, 1.2f, 2.0f, Amortizacion.porFecha, 100, "Marca Colchoneta", "Colchoneta Grande", 200);
-        controller.crearTipoDeAccesorio("Banda Elástica", Amortizacion.porUso, 100, "Marca Banda", "Banda Elástica", 50);
+        controller.crearTipoDePesa(soporteTecnico, 10, TipoUsoPesa.DeMano, Amortizacion.porUso, 10, "Marca Pesa", "Pesa 10kg", 500);
+        controller.crearTipoDeColchoneta(soporteTecnico, 1.2f, 2.0f, Amortizacion.porUso, 10, "Marca Colchoneta", "Colchoneta Grande", 200);
+        controller.crearTipoDeAccesorio(soporteTecnico, "Banda Elástica", Amortizacion.porUso, 10, "Marca Banda", "Banda Elástica", 50);
 
+        // TIPOS DE CLASE
+        List<TipoArticulo> articulosYoga = new ArrayList<>();
+        articulosYoga.add(controller.listarTiposDeArticulo().get(1));
+        controller.crearTipoClase("Yoga", articulosYoga, articulosYoga, 60);
+        controller.crearTipoClase("Pilates", new ArrayList<>(), new ArrayList<>(), 60);
+        controller.crearTipoClase("Spinning(no online)", new ArrayList<>(), new ArrayList<>(), 0);
+        
         // CLIENTES
         Administrativo adm1 = controller.listarAdministrativos().get(0);
         Administrativo adm2 = controller.listarAdministrativos().get(1);

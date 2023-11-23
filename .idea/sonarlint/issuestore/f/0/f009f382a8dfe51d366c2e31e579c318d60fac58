@@ -1,0 +1,158 @@
+
+w
+java:S1450Ô	"[Remove the "jScrollPane1" field and declare it as a local variable in the relevant methods.(¤á×ÿÿÿÿÿ
+w
+java:S1450Õ	"[Remove the "jScrollPane2" field and declare it as a local variable in the relevant methods.(ŠÌ«·şÿÿÿÿ
+~
+java:S1450Ö	"bRemove the "labelAdministrativo" field and declare it as a local variable in the relevant methods.(ƒœ”öùÿÿÿÿ
+
+java:S1450×	"eRemove the "labelAgregarArtCliente" field and declare it as a local variable in the relevant methods.(Ê×¹Àøÿÿÿÿ
+‚
+java:S1450Ø	"fRemove the "labelAgregarArtProfesor" field and declare it as a local variable in the relevant methods.(ÆÒßÅşÿÿÿÿ
+x
+java:S1450Ù	"\Remove the "labelAlquiler" field and declare it as a local variable in the relevant methods.(î×ƒèÿÿÿÿÿ
+z
+java:S1450Ú	"cRemove the "labelAnchoColchoneta" field and declare it as a local variable in the relevant methods.(‘²®è
+z
+java:S1450Û	"^Remove the "labelArtCliente" field and declare it as a local variable in the relevant methods.(ğ¢·ÿÿÿÿÿ
+v
+java:S1450Ü	"_Remove the "labelArtProfesor" field and declare it as a local variable in the relevant methods.(´ˆÛ¸
+v
+java:S1450İ	"ZRemove the "labelBarrio" field and declare it as a local variable in the relevant methods.(—ŠÀ“ÿÿÿÿÿ
+…
+java:S1450Ş	"nRemove the "labelCaracteristicasEspecificas" field and declare it as a local variable in the relevant methods.(Âãâñ
+ˆ
+java:S1450ß	"lRemove the "labelCaracteristicasGenerales" field and declare it as a local variable in the relevant methods.(òâÁ«ûÿÿÿÿ
+}
+java:S1450à	"aRemove the "labelCostoArticulo" field and declare it as a local variable in the relevant methods.(§Ğëñşÿÿÿÿ
+†
+java:S1450á	"jRemove the "labelCrearNuevoTipoArticulo" field and declare it as a local variable in the relevant methods.(çÉµ±ÿÿÿÿÿ
+|
+java:S1450â	"eRemove the "labelDNIAdministrativo" field and declare it as a local variable in the relevant methods.(†‰˜
+{
+java:S1450ã	"_Remove the "labelDNIProfesor" field and declare it as a local variable in the relevant methods.(å••ûÿÿÿÿ
+„
+java:S1450ä	"hRemove the "labelDescripcionAccesorio" field and declare it as a local variable in the relevant methods.(Ô÷‚«øÿÿÿÿ
+~
+java:S1450å	"bRemove the "labelDesgastoMaximo" field and declare it as a local variable in the relevant methods.(Êàİ§ûÿÿÿÿ
+Š
+java:S1450æ	"nRemove the "labelFiltroNombreAdministrativo" field and declare it as a local variable in the relevant methods.(öëå²ùÿÿÿÿ
+€
+java:S1450ç	"dRemove the "labelFiltroNombreSede" field and declare it as a local variable in the relevant methods.(÷ãÛÄÿÿÿÿÿ
+~
+java:S1450è	"bRemove the "labelGrabacionesMax" field and declare it as a local variable in the relevant methods.( èË­üÿÿÿÿ
+z
+java:S1450é	"cRemove the "labelLargoColchoneta" field and declare it as a local variable in the relevant methods.(­ìÁ
+x
+java:S1450ê	"aRemove the "labelMarcaArticulo" field and declare it as a local variable in the relevant methods.(Æ¥Ï×
+u
+java:S1450ë	"YRemove the "labelNivel" field and declare it as a local variable in the relevant methods.(—´²®øÿÿÿÿ
+p
+java:S1450ì	"ZRemove the "labelNombre" field and declare it as a local variable in the relevant methods.(á˜‹-
+
+java:S1450í	"hRemove the "labelNombreAdministrativo" field and declare it as a local variable in the relevant methods.(ë«‹
+~
+java:S1450î	"bRemove the "labelNombreArticulo" field and declare it as a local variable in the relevant methods.(Ó×ÂŒúÿÿÿÿ
+y
+java:S1450ï	"bRemove the "labelNombreProfesor" field and declare it as a local variable in the relevant methods.(ÙÀœ¤
+y
+java:S1450ğ	"cRemove the "labelNombreTipoClase" field and declare it as a local variable in the relevant methods.(«‚ß
+s
+java:S1450ñ	"\Remove the "labelPesoPesa" field and declare it as a local variable in the relevant methods.(÷ë•€
+z
+java:S1450ò	"cRemove the "labelSalarioProfesor" field and declare it as a local variable in the relevant methods.(ùÒ¼´
+t
+java:S1450ó	"XRemove the "labelSede" field and declare it as a local variable in the relevant methods.(Åó€™øÿÿÿÿ
+w
+java:S1450ô	"aRemove the "labelTipoDeUsoPesa" field and declare it as a local variable in the relevant methods.(˜ÌÜ.
+v
+java:S1450õ	"`Remove the "labelTipoDesgaste" field and declare it as a local variable in the relevant methods.(ÿ«Å
+‰
+java:S1450ö	"mRemove the "labelTituloCrearNuevoTipoClase" field and declare it as a local variable in the relevant methods.(Å‘›ïùÿÿÿÿ
+y
+java:S1450÷	"]Remove the "listArtCliente" field and declare it as a local variable in the relevant methods.(“íÖÊıÿÿÿÿ
+z
+java:S1450ø	"^Remove the "listArtProfesor" field and declare it as a local variable in the relevant methods.(›Æ’ûÿÿÿÿ
+Š
+java:S1450ù	"nRemove the "opcionesEspecificasTipoArticulo" field and declare it as a local variable in the relevant methods.(±Ã–Üÿÿÿÿÿ
+}
+java:S1450ú	"fRemove the "panelCrearTipoAccesorio" field and declare it as a local variable in the relevant methods.(ªÚ¦Õ
+ƒ
+java:S1450û	"gRemove the "panelCrearTipoColchoneta" field and declare it as a local variable in the relevant methods.(‡êø¿ıÿÿÿÿ
+x
+java:S1450ü	"aRemove the "panelCrearTipoPesa" field and declare it as a local variable in the relevant methods.(¦ŒØ¬
+‘
+java:S1450ı	"nRemove the "panelElegirAccionSoporteTecnico" field and declare it as a local variable in the relevant methods.(¾‡Å‰şÿÿÿÿ8¯åĞ¿1
+†
+java:S1450ş	"oRemove the "panelOpcionesAdministrarUsuarios" field and declare it as a local variable in the relevant methods.(·óåš
+}
+java:S1450€
+"fRemove the "selectAgregarArtCliente" field and declare it as a local variable in the relevant methods.(»á·Ú
+ƒ
+java:S1450
+"gRemove the "selectAgregarArtProfesor" field and declare it as a local variable in the relevant methods.(ÌÀ¶´úÿÿÿÿ
+~
+java:S1450„
+"bRemove the "selectTipoDeUsoPesa" field and declare it as a local variable in the relevant methods.( ÑÕµøÿÿÿÿ
+}
+java:S1450…
+"aRemove the "selectTipoDesgaste" field and declare it as a local variable in the relevant methods.(‹™îôÿÿÿÿÿ
+€
+java:S1450†
+"dRemove the "spinnerDesgasteMaximo" field and declare it as a local variable in the relevant methods.(Êı»øùÿÿÿÿ
+|
+java:S1450‡
+"eRemove the "tabAdministrarUsuarios" field and declare it as a local variable in the relevant methods.(°«×ô
+‚
+java:S1450ˆ
+"kRemove the "tabAgregarSedeAdministrativo" field and declare it as a local variable in the relevant methods.(Äÿ«
+{
+java:S1450‰
+"eRemove the "tabCrearAdministrativo" field and declare it as a local variable in the relevant methods.(Ûª
+v
+java:S1450Š
+"_Remove the "tabCrearProfesor" field and declare it as a local variable in the relevant methods.(ö°ıÌ
+r
+java:S1450‹
+"[Remove the "tabCrearSede" field and declare it as a local variable in the relevant methods.(ëÃı
+z
+java:S1450Œ
+"cRemove the "tabCrearTipoArticulo" field and declare it as a local variable in the relevant methods.(ñËò²
+~
+java:S1450
+"`Remove the "tabCrearTipoClase" field and declare it as a local variable in the relevant methods.(´ªÏÇ8ˆ˜ÙĞ¿1
+Š
+java:S1450
+"nRemove the "tituloAgregarSedeAdministrativo" field and declare it as a local variable in the relevant methods.(“Ã€ıÿÿÿÿ
+
+java:S1450
+"hRemove the "tituloCrearAdministrativo" field and declare it as a local variable in the relevant methods.(Ãö§ƒ
+~
+java:S1450
+"bRemove the "tituloCrearProfesor" field and declare it as a local variable in the relevant methods.(ûø¶¸ùÿÿÿÿ
+x
+java:S1450’
+"aRemove the "txtAnchoColchoneta" field and declare it as a local variable in the relevant methods.(Í¥¹¡
+{
+java:S1450”
+"_Remove the "txtCostoArticulo" field and declare it as a local variable in the relevant methods.(Ñïìûÿÿÿÿ
+}
+java:S1450—
+"fRemove the "txtDescripcionAccesorio" field and declare it as a local variable in the relevant methods.(Ó³æ
+}
+java:S1450š
+"aRemove the "txtLargoColchoneta" field and declare it as a local variable in the relevant methods.(„ö¶†şÿÿÿÿ
+{
+java:S1450›
+"_Remove the "txtMarcaArticulo" field and declare it as a local variable in the relevant methods.(œÌ†üÿÿÿÿ
+w
+java:S1450
+"`Remove the "txtNombreArticulo" field and declare it as a local variable in the relevant methods.(»ÿÃ¢
+w
+java:S1450 
+"aRemove the "txtNombreTipoClase" field and declare it as a local variable in the relevant methods.(™‘ƒP
+v
+java:S1450¡
+"ZRemove the "txtPesoPesa" field and declare it as a local variable in the relevant methods.(ÅÅô¿ùÿÿÿÿ
+R
+java:S1128"5Remove this unused import 'Negocio.usuarios.Cliente'.(º„ë8¼‹äĞ¿1

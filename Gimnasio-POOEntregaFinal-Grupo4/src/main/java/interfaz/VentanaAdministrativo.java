@@ -1439,7 +1439,8 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
             
             assert sedeElegida != null : "No se eligio una sede";
             assert claseElegida != null : "No se eligio una clase";
-            assert estadoElegido != null : "No se eligio un estado nuevo";
+            assert estadoElegido != null : "No se eligio un estado nuevo";            
+            
             
             controller.actualizarEstadoClase(
                     sedeElegida, 
@@ -1447,6 +1448,7 @@ public class VentanaAdministrativo extends javax.swing.JFrame {
                     administrativoIniciado, 
                     estadoElegido
                     );
+            
             
             VentanaExito ventanaExito = new VentanaExito("Se modificó la clase con éxito.");
             ventanaExito.setLocationRelativeTo(null);

@@ -24,7 +24,7 @@ public class SoporteTecnico extends Usuario {
         Sede sedeNueva = new Sede(nombre, nivelMinimo, barrio, alquiler);
         return sedeNueva;
     }
-
+    
     public Cliente crearNuevoCliente(String nombre, int dni, Nivel nivel) {
         Cliente nuevoCliente = new Cliente(nombre, dni, nivel);
         return nuevoCliente;
@@ -64,9 +64,8 @@ public class SoporteTecnico extends Usuario {
         return nuevoTipoAccesorio;
     }
 
-    public Emplazamiento crearEmplazamiento(Sede sede, TipoEmplazamiento tipo, float metrosCuadrados) {
+    public void crearEmplazamiento(Sede sede, TipoEmplazamiento tipo, int metrosCuadrados) {
         Emplazamiento emplazamiento = new Emplazamiento(tipo, metrosCuadrados);
-        sede.agregarEmplazamiento(emplazamiento);
-        return emplazamiento;
+        sede.addEmplazamiento(emplazamiento);
     }
 }

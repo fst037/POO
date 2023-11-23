@@ -44,6 +44,37 @@ public class Gimnasio {
         return this.sedes;
     }
     
+    public List<Sede> listarSedesConFiltro(Administrativo administrativo,String filtro){
+        List<Sede> resultado = new ArrayList<Sede>();
+        
+        
+        for (Sede sede : this.sedes){
+            if (sede.getNombre().contains(filtro) && !administrativo.getSedes().contains(sede)){
+                resultado.add(sede);
+            }                
+        }
+        
+        return resultado;
+    }
+    
+    public List<Sede> listarSedesConFiltro(Administrativo administrativo){
+        List<Sede> resultado = new ArrayList<Sede>();
+        
+        
+        for (Sede sede : this.sedes){
+            if (!administrativo.getSedes().contains(sede)){
+                resultado.add(sede);
+            }                
+        }
+        
+        return resultado;
+    }
+    
+    public List<TipoEmplazamiento> listarTiposEmplazamiento(){        
+        return Arrays.asList(TipoEmplazamiento.values());
+    }
+
+    
     public List<TipoClase> listarTiposDeClase(){
         return this.tiposDeClase;
     }
@@ -84,6 +115,15 @@ public class Gimnasio {
         return Arrays.asList(Nivel.values());
     }
     
+    public List<TipoUsoPesa> listarTiposUsoPesas(){
+        return Arrays.asList(TipoUsoPesa.values());
+    }
+    
+    public List<Amortizacion> listarAmortizaciones(){
+        return Arrays.asList(Amortizacion.values());
+    }
+    
+    
     public List<Cliente> listarClientes(){
         return this.clientes;
     }
@@ -104,6 +144,18 @@ public class Gimnasio {
         return this.administrativos;
     }
     
+     public List<Administrativo> listarAdministrativosConFiltro(String filtro){
+        List<Administrativo> resultado = new ArrayList<Administrativo>();
+        
+        for (Administrativo administrativo : this.administrativos){
+            if (administrativo.getNombre().contains(filtro)){
+                resultado.add(administrativo);
+            }                
+        }
+        
+        return resultado;
+    }
+    
     public List<Profesor> listarProfesores(){
         return this.profesores;
     }
@@ -120,8 +172,8 @@ public class Gimnasio {
         sedes.add(sede);
     }
     
-    public void agregarEmplazamiento(Sede sede, TipoEmplazamiento tipo, float metrosCuadrados) {
-        Emplazamiento emplazamiento = soporteTecnico.crearEmplazamiento( sede, tipo, metrosCuadrados);        
+    public void agregarEmplazamiento(Sede sede, TipoEmplazamiento tipo, int metrosCuadrados) {
+        soporteTecnico.crearEmplazamiento( sede, tipo, metrosCuadrados);        
     }
 
     public void crearAdministrativo(String nombre, int dni) {
@@ -153,18 +205,18 @@ public class Gimnasio {
         tiposDeClase.add(tipoClase);
     }
 
-    public void crearTipoDePesa(SoporteTecnico soporteTecnico, float peso, TipoUsoPesa tipoUso, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
-        TipoPesa nuevoTipoDePesa = this.soporteTecnico.crearTipoDePesa(peso, tipoUso, amortizacion, desgasteMax, marca, nombre, costo);
+    public void crearTipoDePesa(SoporteTecnico soporteTecnico,float peso, TipoUsoPesa tipoUso, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
+        TipoPesa nuevoTipoDePesa = soporteTecnico.crearTipoDePesa(peso, tipoUso, amortizacion, desgasteMax, marca, nombre, costo);
         this.tiposDeArticulo.add(nuevoTipoDePesa);
     }
 
     public void crearTipoDeColchoneta(SoporteTecnico soporteTecnico, float ancho, float largo, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
-        TipoColchoneta nuevoTipoColchoneta = this.soporteTecnico.crearTipoDeColchoneta(ancho, largo, amortizacion, desgasteMax, marca, nombre, costo);
+        TipoColchoneta nuevoTipoColchoneta = soporteTecnico.crearTipoDeColchoneta(ancho, largo, amortizacion, desgasteMax, marca, nombre, costo);
         this.tiposDeArticulo.add(nuevoTipoColchoneta);
     }
  
-    public void crearTipoDeAccesorio(String descripcion, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
-        TipoAccesorio nuevoTipoAccesorio = this.soporteTecnico.crearTipoDeAccesorio(descripcion, amortizacion, desgasteMax, marca, nombre, costo);
+    public void crearTipoDeAccesorio(SoporteTecnico soporteTecnico, String descripcion, Amortizacion amortizacion, int desgasteMax, String marca, String nombre, float costo) {
+        TipoAccesorio nuevoTipoAccesorio = soporteTecnico.crearTipoDeAccesorio(descripcion, amortizacion, desgasteMax, marca, nombre, costo);
         this.tiposDeArticulo.add(nuevoTipoAccesorio);  
     }
 

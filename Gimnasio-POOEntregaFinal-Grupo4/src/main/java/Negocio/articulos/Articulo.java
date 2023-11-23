@@ -93,14 +93,20 @@ public class Articulo {
     }
 
     public boolean tieneVidaUtilRestante() {
-        this.setDesgasteActual(this.fechaFabricacion.until(LocalDate.now()).getDays());
+        if (this.tipo.getAmortizacion() == Amortizacion.porFecha){
+            this.setDesgasteActual(this.fechaFabricacion.until(LocalDate.now()).getDays());
+        }        
         return this.getDesgasteActual() < this.getDesgasteMax();
     }
 
     public void actualizarDesgaste() {
+        
         // si su desgaste es por uso, le suma 1 y sino calcula la diferencia de dias entre la fecha de fabricacion y la fecha actual
         if (this.getAmortizacion() == Amortizacion.porUso) {
             this.setDesgasteActual(this.getDesgasteActual() + 1);
+            System.out.print(this.desgasteActual);
+            System.out.print(this.getDesgasteMax());
+            System.out.print(this.verDesgasteEnPorcentaje());
         } else {
             this.setDesgasteActual(this.fechaFabricacion.until(LocalDate.now()).getDays());
         }
@@ -108,7 +114,7 @@ public class Articulo {
     
     public final float verDesgasteEnPorcentaje() {
         // devuelve el desgaste entre 1.00 y 0.00. Siendo 1.00 el 100% de desgaste y 0.00 el 0% de desgaste
-        return this.getDesgasteActual() / this.getDesgasteMax();
+        return ((float)this.getDesgasteActual() / (float)this.getDesgasteMax())*100;
     }
 
 }

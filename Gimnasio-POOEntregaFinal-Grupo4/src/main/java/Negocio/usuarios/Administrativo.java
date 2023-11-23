@@ -46,7 +46,12 @@ public class Administrativo extends Usuario {
     }
 
     public void actualizarClase(Clase clase, EstadoClase estado) {
-        clase.setEstadoClase(estado);
+        if (estado == EstadoClase.Finalizada && clase.getEstadoClase() == EstadoClase.Confirmada){
+            clase.dictarClase();
+            System.out.println("Se dicto la clase");
+        } else {
+            clase.setEstadoClase(estado);
+        }        
     }
 
     public Cliente darAltaCliente(String nombre, int dni, Nivel nivel) {
@@ -82,9 +87,9 @@ public class Administrativo extends Usuario {
     }
 
     public List<Clase> verClasesAlmacenadas(TipoClase tipoClase, Sede sede) {
-        for (StreamingClass clase : sede.getClasesAlmacenadasPorTipo()){
-            if(clase.getTipoClase() == tipoClase){
-                return clase.getClases();
+        for (StreamingClass claseOnline : sede.getClasesAlmacenadasPorTipo()){
+            if(claseOnline.getTipoClase() == tipoClase){
+                return claseOnline.getClases();
             }
         }
             return new ArrayList();
@@ -114,5 +119,5 @@ public class Administrativo extends Usuario {
         }
 
         return articulosDisponibles;
-    }
+    }    
 }

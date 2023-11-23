@@ -113,6 +113,10 @@ public class Sede {
                 claseGrabadaDeTipo.addClase(clase);
             }
         }
+        StreamingClass nuevaClaseOnline = new StreamingClass(clase.getTipoClase());
+        nuevaClaseOnline.addClase(clase);
+        this.clasesGrabadasPorTipo.add(nuevaClaseOnline);
+        
     }
 
     public List<Articulo> getArticulos() {
@@ -146,7 +150,8 @@ public class Sede {
     public void setEmplazamientos(List<Emplazamiento> emplazamientos) {
         this.emplazamientos = emplazamientos;
     }
-    public void agregarEmplazamiento(Emplazamiento emplazamiento) {
+    
+    public void addEmplazamiento(Emplazamiento emplazamiento) {
         this.emplazamientos.add(emplazamiento);
     }
 }
